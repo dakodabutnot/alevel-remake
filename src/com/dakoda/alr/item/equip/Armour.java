@@ -9,20 +9,18 @@ public class Armour extends Item {
     private EquipMaterial equipMaterial;
 
     public Armour(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial) {
-        setItemType(ARMOUR);
-        setName(name);
         setMoneyValue(1);
-        defaulted(armourSlot, equipMaterial);
+        defaulted(name, armourSlot, equipMaterial);
     }
 
     public Armour(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial, int moneyValue) {
-        setItemType(ARMOUR);
-        setName(name);
         setMoneyValue(moneyValue);
-        defaulted(armourSlot, equipMaterial);
+        defaulted(name, armourSlot, equipMaterial);
     }
 
-    private void defaulted(ArmourSlot armourSlot, EquipMaterial equipMaterial) {
+    private void defaulted(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial) {
+        setName(name);
+        setItemType(ARMOUR);
         this.armourSlot = armourSlot;
         this.armourLevel = equipMaterial.getArmourLevel();
         this.equipMaterial = equipMaterial;

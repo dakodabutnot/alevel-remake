@@ -14,20 +14,18 @@ public class Weapon extends Item {
     private EquipMaterial equipMaterial;
 
     public Weapon(String name, WeaponType weaponType, EquipMaterial equipMaterial, int moneyValue) {
-        setItemType(WEAPON);
-        setName(name);
         setMoneyValue(moneyValue);
-        defaulted(weaponType, equipMaterial);
+        defaulted(name, weaponType, equipMaterial);
     }
 
     public Weapon(String name, WeaponType weaponType, EquipMaterial equipMaterial) {
-        setItemType(WEAPON);
-        setName(name);
         setMoneyValue(1);
-        defaulted(weaponType, equipMaterial);
+        defaulted(name, weaponType, equipMaterial);
     }
 
-    private void defaulted(WeaponType weaponType, EquipMaterial equipMaterial) {
+    private void defaulted(String name, WeaponType weaponType, EquipMaterial equipMaterial) {
+        setItemType(WEAPON);
+        setName(name);
         this.weaponType = weaponType;
         this.isDoubleHanded = weaponType.isDoubleHanded();
         this.isRanged = weaponType.isRanged();

@@ -6,9 +6,20 @@ public class ItemQuest extends Item {
 
     private Quest quest;
 
-    public ItemQuest(Quest quest) {
-        this.quest = quest;
+    public ItemQuest(String name, Quest quest, int moneyValue) {
+        setMoneyValue(moneyValue);
+        defaulted(name, quest);
+    }
+
+    public ItemQuest(String name, Quest quest) {
+        setMoneyValue(1);
+        defaulted(name, quest);
+    }
+
+    private void defaulted(String name, Quest quest) {
+        setName(name);
         setItemType(QUEST);
+        this.quest = quest;
     }
 
     public Quest getRelatedQuest() {
