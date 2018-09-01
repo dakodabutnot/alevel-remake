@@ -8,22 +8,22 @@ public enum WeaponType {
     SWORD("Sword",
             false,
             false,
-            new ArrayList<>(Arrays.asList(Profession.WARRIOR))
+            new ArrayList<>(Arrays.asList())
     ),
     GREATSWORD("Greatsword",
             true,
             false,
-            new ArrayList<>(Arrays.asList(Profession.WARRIOR))
+            new ArrayList<>(Arrays.asList())
     ),
     LONGBOW("Longbow",
             true,
             true,
-            new ArrayList<>(Arrays.asList(Profession.RANGER))
+            new ArrayList<>(Arrays.asList())
     ),
     WAND("Wand",
             false,
             true,
-            new ArrayList<>(Arrays.asList(Profession.MAGE))
+            new ArrayList<>(Arrays.asList())
     );
 
     private String displayText;
