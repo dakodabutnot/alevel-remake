@@ -3,7 +3,7 @@ import com.dakoda.alr.entity.npc.NPC;
 import com.dakoda.alr.entity.npc.OffersQuest;
 import com.dakoda.alr.entity.npc.OffersStore;
 
-public class NPCMerchantQuestgiver extends NPC implements OffersStore, OffersQuest {
+public class NPCMerchantQuestgiver implements OffersStore, OffersQuest, NPC {
 
     public void queryQuests() {
 
