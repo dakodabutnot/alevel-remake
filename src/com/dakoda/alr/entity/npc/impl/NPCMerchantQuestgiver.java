@@ -1,9 +1,9 @@
 package com.dakoda.alr.entity.npc.impl;
 import com.dakoda.alr.entity.npc.NPC;
-import com.dakoda.alr.entity.npc.OffersQuest;
-import com.dakoda.alr.entity.npc.OffersStore;
+import com.dakoda.alr.entity.npc.Questgiver;
+import com.dakoda.alr.entity.npc.Merchant;
 
-public class NPCMerchantQuestgiver implements OffersStore, OffersQuest, NPC {
+public class NPCMerchantQuestgiver implements Merchant, Questgiver, NPC {
 
     public void queryQuests() {
 
