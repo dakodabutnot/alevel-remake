@@ -1,6 +1,6 @@
 package com.dakoda.alr.entity.npc;
 
-public interface GivesQuest {
+public interface Questgiver {
 
     void queryQuests();
     void querySortedQuests();
