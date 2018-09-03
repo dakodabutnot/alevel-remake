@@ -1,4 +1,6 @@
-package com.dakoda.alr.item;
+package com.dakoda.alr.item.misc;
+import com.dakoda.alr.item.Item;
+
 import static com.dakoda.alr.item.ItemType.JUNK;
 
 public class ItemJunk extends Item {
