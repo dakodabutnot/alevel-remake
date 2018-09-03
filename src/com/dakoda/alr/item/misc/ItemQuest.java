@@ -1,5 +1,5 @@
 package com.dakoda.alr.item.misc;
-import com.dakoda.alr.game.Quest;
+import com.dakoda.alr.game.quest.Quest;
 import com.dakoda.alr.item.Item;
 
 import static com.dakoda.alr.item.ItemType.QUEST;
