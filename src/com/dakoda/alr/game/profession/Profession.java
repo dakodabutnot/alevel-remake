@@ -1,4 +1,4 @@
-package com.dakoda.alr.game;
+package com.dakoda.alr.game.profession;
 
 public enum Profession {
 

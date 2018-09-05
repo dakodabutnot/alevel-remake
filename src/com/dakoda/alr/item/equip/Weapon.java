@@ -1,5 +1,5 @@
 package com.dakoda.alr.item.equip;
-import com.dakoda.alr.game.Profession;
+import com.dakoda.alr.game.profession.Profession;
 import com.dakoda.alr.item.Item;
 
 import java.util.ArrayList;
