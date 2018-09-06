@@ -2,21 +2,35 @@ package com.dakoda.alr.loc;
 
 public enum LocationType {
 
-    FIELD("Field"),             // hostiles, no rest
-    CAMP("Camp"),               // hostiles, rest
-    SETTLEMENT("Settlement"),   // no hostiles, no rest
-    ESTATE("Estate"),           // no hostiles, no rest
-    INN("Inn");                 // no hostiles, rest, merchant
+    FIELD("Field", true, false),
+    CAMP("Camp", true, true),
+    SETTLEMENT("Settlement", false, false),
+    ESTATE("Estate", false, false),
+    INN("Inn", false, true);
 
     private String displayText;
+    private boolean encounterable;
+    private boolean restable;
 
     LocationType(
-            String displayText
+            String displayText,
+            boolean encounterable,
+            boolean restable
     ) {
         this.displayText = displayText;
+        this.encounterable = encounterable;
+        this.restable = restable;
     }
 
     public String getDisplayText() {
         return displayText;
+    }
+
+    public boolean isEncounterable() {
+        return encounterable;
+    }
+
+    public boolean isRestable() {
+        return restable;
     }
 }
