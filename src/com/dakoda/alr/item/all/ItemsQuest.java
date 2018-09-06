@@ -1,5 +1,4 @@
 package com.dakoda.alr.item.all;
-
 import com.dakoda.alr.item.misc.quest.ItemQuest;
 
 public enum ItemsQuest {
