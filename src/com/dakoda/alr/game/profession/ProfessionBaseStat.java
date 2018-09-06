@@ -1,6 +1,6 @@
 package com.dakoda.alr.game.profession;
 
-public enum ProfessionBaseStats {
+public enum ProfessionBaseStat {
 
     DUELIST,
     PALADIN,
