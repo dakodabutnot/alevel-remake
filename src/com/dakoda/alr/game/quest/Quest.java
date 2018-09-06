@@ -98,7 +98,7 @@ public class Quest {
                 hasHostilesLeftToKill = true;
             }
         }
-        hasGot = !hasHostilesLeftToKill;
+        hasKilled = !hasHostilesLeftToKill;
         checkCanFinish();
     }
 
@@ -108,10 +108,6 @@ public class Quest {
         private Location toGo;
         private HashMap<ItemQuest, Integer> toGet;
         private String description;
-
-        public QuestBuilder() {
-
-        }
 
         private void initToKill() {
             toKill = new HashMap<>();
