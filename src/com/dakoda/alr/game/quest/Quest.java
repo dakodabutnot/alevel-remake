@@ -9,12 +9,11 @@ import java.util.HashMap;
 public class Quest {
 
     private HashMap<EntityHostile, Integer> toKill = null;
-    private boolean hasKilled = false;
-    private Location toGo = null;
-    private boolean hasGone = false;
     private HashMap<ItemQuest, Integer> toGet = null;
-    private boolean hasGot = false;
-    private boolean questDone = false;
+    private Location toGo = null;
+
+    private boolean hasKilled, hasGone, hasGot, questDone = false;
+    private String description;
 
     public boolean checkCanFinish() {
         if (hasKilled && hasGone && hasGot) {
@@ -31,6 +30,10 @@ public class Quest {
 
     public boolean isQuestDone() {
         return questDone;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     private void construct() {
@@ -104,6 +107,7 @@ public class Quest {
         private HashMap<EntityHostile, Integer> toKill;
         private Location toGo;
         private HashMap<ItemQuest, Integer> toGet;
+        private String description;
 
         public QuestBuilder() {
 
@@ -134,11 +138,17 @@ public class Quest {
             return this;
         }
 
+        public QuestBuilder setDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
         public Quest build() {
             Quest quest = new Quest();
             quest.toKill = this.toKill;
             quest.toGo = this.toGo;
             quest.toGet = this.toGet;
+            quest.description = this.description;
             quest.construct();
             return quest;
         }
