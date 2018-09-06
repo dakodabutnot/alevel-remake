@@ -4,7 +4,7 @@ public enum Profession {
 
     DUELIST("Duelist"), // equivalent of a Warrior
     PALADIN("Paladin"), // self-explanatory
-    ANTIQUAN("Antiquan"), // similar to Revenant from Guild Wars 2
+    ANTIQUER("Antiquer"), // similar to Revenant from Guild Wars 2
                           // channels a legend or an emotion to the extreme
     PERFORATOR("Perforator"), // similar to Lancer in other MMOs
 
@@ -16,9 +16,7 @@ public enum Profession {
 
     SHAMAN("Shaman"), // equivalent of a Mage/Wizard/Witch (with some abilities of Necromancer)
     PRIEST("Priest"), // healer
-    CHRONOL("Chronol"), // specialises in time-bending abilities
-                        // abilities that take time to do,
-                        // reverting conditions, etc.
+    CHRONOL("Chronol"), // turns back time, to the good old days
     BARD("Bard"); // self-explanatory
 
     private String displayText;
