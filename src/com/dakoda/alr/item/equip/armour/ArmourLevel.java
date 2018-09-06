@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.equip;
+package com.dakoda.alr.item.equip.armour;
 
 public enum ArmourLevel {
 

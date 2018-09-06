@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.misc;
+package com.dakoda.alr.item.misc.junk;
 import com.dakoda.alr.item.Item;
 
 import static com.dakoda.alr.item.ItemType.JUNK;

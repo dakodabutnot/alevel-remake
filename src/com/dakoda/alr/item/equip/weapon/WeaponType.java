@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.equip;
+package com.dakoda.alr.item.equip.weapon;
 import com.dakoda.alr.game.profession.Profession;
 import java.util.ArrayList;
 import java.util.Arrays;
