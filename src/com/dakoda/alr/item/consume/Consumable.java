@@ -5,32 +5,36 @@ import static com.dakoda.alr.item.ItemType.CONSUMABLE;
 public class Consumable extends Item {
 
     private ConsumableType consumableType;
-    private float affect;
+    private float potency;
 
-    public Consumable(ConsumableType consumableType) {
+    public Consumable(ConsumableType consumableType, float potency) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
+        this.potency = potency;
         setMoneyValue(1);
         setName(getConsumableTypeDisplay() + " potion");
     }
 
-    public Consumable(ConsumableType consumableType, int moneyValue) {
+    public Consumable(ConsumableType consumableType, float potency, int moneyValue) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
+        this.potency = potency;
         setMoneyValue(moneyValue);
         setName(getConsumableTypeDisplay() + " potion");
     }
 
-    public Consumable(String name, ConsumableType consumableType, int moneyValue) {
+    public Consumable(String name, ConsumableType consumableType, float potency, int moneyValue) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
+        this.potency = potency;
         setMoneyValue(moneyValue);
         setName(name);
     }
 
-    public Consumable(String name, ConsumableType consumableType) {
+    public Consumable(String name, ConsumableType consumableType, float potency) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
+        this.potency = potency;
         setMoneyValue(1);
         setName(name);
     }
