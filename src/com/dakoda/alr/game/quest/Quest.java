@@ -1,7 +1,8 @@
 package com.dakoda.alr.game.quest;
 import com.dakoda.alr.entity.hostile.EntityHostile;
 import com.dakoda.alr.game.quest.exception.PointlessQuestException;
-import com.dakoda.alr.item.misc.ItemQuest;
+import com.dakoda.alr.item.Item;
+import com.dakoda.alr.item.misc.quest.ItemQuest;
 import com.dakoda.alr.loc.Location;
 import java.util.HashMap;
 
@@ -100,21 +101,31 @@ public class Quest {
 
     public static class QuestBuilder {
 
-        private HashMap<EntityHostile, Integer> toKill = new HashMap<>();
+        private HashMap<EntityHostile, Integer> toKill;
         private Location toGo;
-        private HashMap<ItemQuest, Integer> toGet = new HashMap<>();
+        private HashMap<ItemQuest, Integer> toGet;
 
         public QuestBuilder() {
 
         }
 
+        private void initToKill() {
+            toKill = new HashMap<>();
+        }
+
+        private void initToGet() {
+            toGet = new HashMap<>();
+        }
+
         public QuestBuilder addKillRequirement(EntityHostile entityToKill, Integer numberToKill) {
+            if (toKill == null) { initToKill(); }
             this.toKill.put(entityToKill, numberToKill);
             return this;
         }
 
-        public QuestBuilder addItemRequirement(ItemQuest itemToGet, Integer numberToGet) {
-            this.toGet.put(itemToGet, numberToGet);
+        public QuestBuilder addItemRequirement(Item itemToGet, Integer numberToGet) {
+            if (toGet == null) { initToGet(); }
+            this.toGet.put((ItemQuest) itemToGet, numberToGet);
             return this;
         }
 
