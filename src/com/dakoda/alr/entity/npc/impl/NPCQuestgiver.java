@@ -2,7 +2,7 @@ package com.dakoda.alr.entity.npc.impl;
 import com.dakoda.alr.entity.npc.NPC;
 import com.dakoda.alr.entity.npc.Questgiver;
 
-public class NPCQuestgiver implements Questgiver, NPC {
+public class NPCQuestgiver extends NPC implements Questgiver {
 
     public void queryQuests() {
 

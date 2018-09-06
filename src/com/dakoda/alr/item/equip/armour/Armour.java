@@ -1,5 +1,7 @@
-package com.dakoda.alr.item.equip;
+package com.dakoda.alr.item.equip.armour;
 import com.dakoda.alr.item.Item;
+import com.dakoda.alr.item.equip.EquipMaterial;
+
 import static com.dakoda.alr.item.ItemType.ARMOUR;
 
 public class Armour extends Item {

@@ -1,5 +1,7 @@
 package com.dakoda.alr.item.equip;
-import static com.dakoda.alr.item.equip.ArmourLevel.*;
+import com.dakoda.alr.item.equip.armour.ArmourLevel;
+
+import static com.dakoda.alr.item.equip.armour.ArmourLevel.*;
 
 public enum EquipMaterial {
 
