@@ -15,10 +15,6 @@ public enum ArmourSlot {
 
     private String displayText;
 
-    private String heavyText;
-    private String mediumText;
-    private String lightText;
-
     ArmourSlot(
             String displayText
     ) {
