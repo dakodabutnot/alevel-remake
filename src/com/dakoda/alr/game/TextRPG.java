@@ -1,6 +1,6 @@
 package com.dakoda.alr.game;
 import com.dakoda.alr.game.quest.Quest;
-import com.dakoda.alr.item.all.ItemsQuest;
+import com.dakoda.alr.item.all.QuestItems;
 
 public class TextRPG {
 
@@ -8,7 +8,7 @@ public class TextRPG {
 
     public static void main(String[] args) {
         Quest quest = new Quest.QuestBuilder()
-                .addItemRequirement(ItemsQuest.APPLE.get(), 10)
+                .addItemRequirement(QuestItems.APPLE.get(), 10)
                 .build();
     }
 }
