@@ -2,13 +2,17 @@ package com.dakoda.alr.item.all;
 import com.dakoda.alr.item.consume.Consumable;
 import com.dakoda.alr.item.consume.ConsumableType;
 
-public enum ItemsConsumable {
+public enum Consumables {
 
-    APPLE(new Consumable("Apple", ConsumableType.HEALTH, 0.1f));
+    APPLE(new Consumable("Apple", ConsumableType.HEALTH, 0.1f)) {
+        boolean embue(String health) {
+            return true;
+        }
+    };
 
     private final Consumable item;
 
-    ItemsConsumable(
+    Consumables(
             Consumable item
     ) {
         this.item = item;
@@ -17,4 +21,6 @@ public enum ItemsConsumable {
     public Consumable get() {
         return item;
     }
+
+    abstract boolean embue(String health);
 }

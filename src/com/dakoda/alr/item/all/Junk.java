@@ -2,13 +2,13 @@ package com.dakoda.alr.item.all;
 
 import com.dakoda.alr.item.misc.junk.ItemJunk;
 
-public enum ItemsJunk {
+public enum Junk {
 
     ;
 
     private final ItemJunk item;
 
-    ItemsJunk(
+    Junk(
             ItemJunk item
     ) {
         this.item = item;

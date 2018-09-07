@@ -2,13 +2,13 @@ package com.dakoda.alr.item.all;
 
 import com.dakoda.alr.item.equip.weapon.Weapon;
 
-public enum ItemsWeapon {
+public enum Weapons {
 
     ;
 
     private final Weapon item;
 
-    ItemsWeapon (
+    Weapons(
             Weapon item
     ) {
         this.item = item;
