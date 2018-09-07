@@ -7,7 +7,7 @@ public class Consumable extends Item {
     private ConsumableType consumableType;
     private float potency;
 
-    public Consumable(ConsumableType consumableType, float potency) {
+    public Consumable(ConsumableType consumableType) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
         this.potency = potency;
@@ -15,7 +15,7 @@ public class Consumable extends Item {
         setName(getConsumableTypeDisplay() + " potion");
     }
 
-    public Consumable(ConsumableType consumableType, float potency, int moneyValue) {
+    public Consumable(ConsumableType consumableType, int moneyValue) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
         this.potency = potency;
@@ -23,7 +23,7 @@ public class Consumable extends Item {
         setName(getConsumableTypeDisplay() + " potion");
     }
 
-    public Consumable(String name, ConsumableType consumableType, float potency, int moneyValue) {
+    public Consumable(String name, ConsumableType consumableType, int moneyValue) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
         this.potency = potency;
@@ -31,7 +31,7 @@ public class Consumable extends Item {
         setName(name);
     }
 
-    public Consumable(String name, ConsumableType consumableType, float potency) {
+    public Consumable(String name, ConsumableType consumableType) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
         this.potency = potency;

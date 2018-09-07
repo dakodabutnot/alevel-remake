@@ -4,7 +4,7 @@ import com.dakoda.alr.item.consume.ConsumableType;
 
 public enum Consumables {
 
-    APPLE(new Consumable("Apple", ConsumableType.HEALTH, 0.1f)) {
+    APPLE(new Consumable("Apple", ConsumableType.HEALTH)) {
         boolean embue(String health) {
             return true;
         }
