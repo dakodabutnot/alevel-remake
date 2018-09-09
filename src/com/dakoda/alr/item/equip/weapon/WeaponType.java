@@ -1,30 +1,87 @@
 package com.dakoda.alr.item.equip.weapon;
-import com.dakoda.alr.game.profession.Profession;
 import java.util.ArrayList;
 import java.util.Arrays;
+import com.dakoda.alr.game.profession.Profession;
+
+import static com.dakoda.alr.game.profession.Profession.*;
 
 public enum WeaponType {
 
+    // MELEE ----------------------------------------------------------
     SWORD("Sword",
             false,
             false,
-            new ArrayList<>(Arrays.asList())
+            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, ANTIQUER, ASSASSIN, PERFORATOR, NAGUAL, ARCHER, BARD))
     ),
     GREATSWORD("Greatsword",
             true,
             false,
-            new ArrayList<>(Arrays.asList())
+            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, ANTIQUER))
     ),
+    DAGGER("Dagger",
+            false,
+            false,
+            new ArrayList<>(Arrays.asList(ASSASSIN, NAGUAL, ARCHER, HUNTER, DUELIST, PERFORATOR))
+            ),
+    AXE("Axe",
+            false,
+            false,
+            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, CHRONOL, HUNTER))
+            ),
+    GREATAXE("Greataxe",
+            true,
+            false,
+            new ArrayList<>(Arrays.asList(ANTIQUER, DUELIST, PALADIN))
+            ),
+    MACE("Mace",
+            false,
+            false,
+            new ArrayList<>(Arrays.asList(HUNTER, PERFORATOR, NAGUAL))
+            ),
+    PIKE("Pike",
+            true,
+            false,
+            new ArrayList<>(Arrays.asList(PERFORATOR, ANTIQUER, BARD))
+            ),
+
+    // RANGED ----------------------------------------------------------
     LONGBOW("Longbow",
             true,
             true,
-            new ArrayList<>(Arrays.asList())
+            new ArrayList<>(Arrays.asList(ARCHER, ASSASSIN, NAGUAL, HUNTER))
     ),
+    CROSSBOW("Crossbow",
+            false,
+            true,
+            new ArrayList<>(Arrays.asList(ARCHER, HUNTER, NAGUAL))
+            ),
     WAND("Wand",
             false,
             true,
-            new ArrayList<>(Arrays.asList())
-    );
+            new ArrayList<>(Arrays.asList(ARCHER, PRIEST, CHRONOL, SHAMAN))
+    ),
+    STAFF("Staff",
+            true,
+            true,
+            new ArrayList<>(Arrays.asList(ARCHER, PRIEST, CHRONOL, SHAMAN, ASSASSIN, PERFORATOR))
+            ),
+    TOME("Tome",
+            true,
+            true,
+            new ArrayList<>(Arrays.asList(PRIEST, SHAMAN, CHRONOL, NAGUAL, ANTIQUER, PALADIN))
+    ),
+    INSTRUMENT("Instrument",
+            true,
+            true,
+            new ArrayList<>(Arrays.asList(BARD))
+    ),
+    HALLOW("Hallow",
+            false,
+            true,
+            new ArrayList<>(Arrays.asList(BARD, PRIEST, SHAMAN, CHRONOL, NAGUAL, ASSASSIN))
+    ),
+
+    ;
 
     private String displayText;
     private boolean isDoubleHanded;
