@@ -1,4 +1,5 @@
 package com.dakoda.alr.entity;
 
-public interface Entity {
+public abstract class Entity {
+
 }
