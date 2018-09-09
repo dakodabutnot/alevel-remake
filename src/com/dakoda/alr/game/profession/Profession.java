@@ -14,7 +14,7 @@ public enum Profession {
     HUNTER("Hunter"), // similar to Archer, but specialises guns and tools
                       // think Van Helsing
 
-    SHAMAN("Shaman"), // equivalent of a Mage/Wizard/Witch (with some abilities of Necromancer)
+    SHAMAN("Shaman"), // equivalent of a Mage/Wizard/Witch
     PRIEST("Priest"), // healer
     CHRONOL("Chronol"), // turns back time, to the good old days
     BARD("Bard"); // self-explanatory
