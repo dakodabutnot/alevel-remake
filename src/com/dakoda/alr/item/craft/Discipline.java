@@ -25,7 +25,7 @@ public enum Discipline {
     // -
     BOTANIST("Botanist"),           // nature                   (Archer)
     SHADOW("Shadow"),               // stealth                  (Assassin)
-    ANALYST("Analyst"),             // genes                    (Nagual)
+    GLAMOURIST("Analyst"),          // glamour                  (Nagual)
     PIONEER("Pioneer"),             // invention                (Hunter)
     // -
     THANATOLOGIST("Thanatologist"), // death                    (Shaman)
