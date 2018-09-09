@@ -4,4 +4,7 @@ public abstract class Entity {
 
     private EntityStats entityStats;
 
+    public EntityStats getEntityStats() {
+        return entityStats;
+    }
 }
