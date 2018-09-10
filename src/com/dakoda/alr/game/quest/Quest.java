@@ -2,7 +2,7 @@ package com.dakoda.alr.game.quest;
 import com.dakoda.alr.entity.hostile.Hostile;
 import com.dakoda.alr.game.quest.exception.PointlessQuestException;
 import com.dakoda.alr.item.Item;
-import com.dakoda.alr.item.ItemQuest;
+import com.dakoda.alr.item.type.ItemQuest;
 import com.dakoda.alr.loc.Location;
 import java.util.HashMap;
 

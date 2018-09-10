@@ -2,6 +2,7 @@ package com.dakoda.alr.item;
 
 import com.dakoda.alr.item.equip.armour.Armour;
 import com.dakoda.alr.item.equip.weapon.Weapon;
+import com.dakoda.alr.item.type.*;
 
 public class Items {
 
@@ -24,21 +25,21 @@ public class Items {
 
     public enum Consumables {
 
-        APPLE(new Consumable("Apple", Consumable.Type.HEALTH)) {
+        APPLE(new ItemConsumable("Apple", ItemConsumable.Type.HEALTH)) {
             boolean embue(String health) {
                 return true;
             }
         };
 
-        private final Consumable item;
+        private final ItemConsumable item;
 
         Consumables(
-                Consumable item
+                ItemConsumable item
         ) {
             this.item = item;
         }
 
-        public Consumable get() {
+        public ItemConsumable get() {
             return item;
         }
 
@@ -66,15 +67,15 @@ public class Items {
 
         ;
 
-        private final CraftingMaterial item;
+        private final ItemMaterial item;
 
         Materials(
-                CraftingMaterial item
+                ItemMaterial item
         ) {
             this.item = item;
         }
 
-        public CraftingMaterial get() {
+        public ItemMaterial get() {
             return item;
         }
 
