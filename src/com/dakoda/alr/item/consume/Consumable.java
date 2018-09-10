@@ -39,7 +39,7 @@ public class Consumable extends Item {
         setName(name);
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item can be consumed for a specific effect or to replenish a stat.";
     }
 

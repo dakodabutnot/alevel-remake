@@ -16,7 +16,7 @@ public class ItemJunk extends Item {
         setName(name);
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item can only be sold.";
     }
 }

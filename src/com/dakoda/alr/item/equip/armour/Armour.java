@@ -28,7 +28,7 @@ public class Armour extends Item {
         this.equipMaterial = equipMaterial;
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item is used in combat to protect the wearer, and can only be equipped by certain professions.";
     }
 

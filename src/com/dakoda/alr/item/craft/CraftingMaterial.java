@@ -20,7 +20,7 @@ public class CraftingMaterial extends Item {
         setItemType(CRAFTING_MATERIAL);
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item is used as a requirement to craft another item.";
     }
 

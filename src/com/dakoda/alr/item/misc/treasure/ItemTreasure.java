@@ -11,7 +11,7 @@ public class ItemTreasure extends Item {
         setItemType(TREASURE);
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item can be sold at a high price.";
     }
 }

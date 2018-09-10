@@ -33,7 +33,7 @@ public class Weapon extends Item {
         this.equipMaterial = equipMaterial;
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item is used in combat to deal damage, and can only be equipped by certain professions.";
     }
 
