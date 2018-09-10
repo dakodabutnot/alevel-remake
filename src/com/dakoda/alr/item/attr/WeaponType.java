@@ -1,6 +1,8 @@
 package com.dakoda.alr.item.attr;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+
 import com.dakoda.alr.game.character.Profession;
 import static com.dakoda.alr.game.character.Profession.Type.*;
 
@@ -72,7 +74,7 @@ public enum WeaponType {
     INSTRUMENT("Instrument",
             true,
             true,
-            new ArrayList<>(Arrays.asList(BARD))
+            new ArrayList<>(Collections.singletonList(BARD))
     ),
     HALLOW("Hallow",
             false,
