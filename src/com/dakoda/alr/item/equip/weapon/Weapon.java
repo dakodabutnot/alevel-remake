@@ -1,7 +1,8 @@
 package com.dakoda.alr.item.equip.weapon;
 import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.item.Item;
-import com.dakoda.alr.item.equip.EquipMaterial;
+import com.dakoda.alr.item.attr.EquipMaterial;
+import com.dakoda.alr.item.attr.WeaponType;
 
 import java.util.ArrayList;
 
@@ -53,7 +54,7 @@ public class Weapon extends Item {
         return equipMaterial;
     }
 
-    public ArrayList<Profession> getApplicableProfessions() {
+    public ArrayList<Profession.Type> getApplicableProfessions() {
         return weaponType.getApplicableProfessions();
     }
 }
