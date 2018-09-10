@@ -1,5 +1,4 @@
-package com.dakoda.alr.item.craft;
-import com.dakoda.alr.item.Item;
+package com.dakoda.alr.item;
 import static com.dakoda.alr.item.ItemType.CRAFTING_MATERIAL;
 
 public class CraftingMaterial extends Item {

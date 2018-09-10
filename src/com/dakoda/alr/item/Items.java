@@ -1,13 +1,7 @@
 package com.dakoda.alr.item;
 
-import com.dakoda.alr.item.consume.Consumable;
-import com.dakoda.alr.item.consume.ConsumableType;
-import com.dakoda.alr.item.craft.CraftingMaterial;
 import com.dakoda.alr.item.equip.armour.Armour;
 import com.dakoda.alr.item.equip.weapon.Weapon;
-import com.dakoda.alr.item.misc.junk.ItemJunk;
-import com.dakoda.alr.item.misc.quest.ItemQuest;
-import com.dakoda.alr.item.misc.treasure.ItemTreasure;
 
 public class Items {
 

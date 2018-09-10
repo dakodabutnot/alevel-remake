@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.consume;
+package com.dakoda.alr.item;
 
 public enum ConsumableType {
 

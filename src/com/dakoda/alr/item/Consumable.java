@@ -1,5 +1,4 @@
-package com.dakoda.alr.item.consume;
-import com.dakoda.alr.item.Item;
+package com.dakoda.alr.item;
 import static com.dakoda.alr.item.ItemType.CONSUMABLE;
 
 public class Consumable extends Item {

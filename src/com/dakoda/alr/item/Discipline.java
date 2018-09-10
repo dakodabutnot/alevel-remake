@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.craft;
+package com.dakoda.alr.item;
 
 public enum Discipline {
 

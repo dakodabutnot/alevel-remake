@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.misc.treasure;
+package com.dakoda.alr.item;
 import com.dakoda.alr.item.Item;
 
 import static com.dakoda.alr.item.ItemType.TREASURE;
