@@ -1,4 +1,4 @@
-package com.dakoda.alr.item;
+package com.dakoda.alr.game.character;
 
 public class Discipline {
 
