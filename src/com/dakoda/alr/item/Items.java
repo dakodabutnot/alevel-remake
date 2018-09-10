@@ -5,13 +5,13 @@ import com.dakoda.alr.item.type.*;
 
 public class Items {
 
-    public enum Armours {
+    public enum Armour {
 
         ;
 
         private final ItemArmour item;
 
-        Armours(
+        Armour(
                 ItemArmour item
         ) {
             this.item = item;
@@ -22,7 +22,7 @@ public class Items {
         }
     }
 
-    public enum Consumables {
+    public enum Consumable {
 
         APPLE(new ItemConsumable("Apple", ItemConsumable.Type.HEALTH)) {
             boolean embue(String health) {
@@ -32,7 +32,7 @@ public class Items {
 
         private final ItemConsumable item;
 
-        Consumables(
+        Consumable(
                 ItemConsumable item
         ) {
             this.item = item;
@@ -62,13 +62,13 @@ public class Items {
         }
     }
 
-    public enum Materials {
+    public enum Material {
 
         ;
 
         private final ItemMaterial item;
 
-        Materials(
+        Material(
                 ItemMaterial item
         ) {
             this.item = item;
@@ -80,13 +80,13 @@ public class Items {
 
     }
 
-    public enum QuestItems {
+    public enum Quest {
 
         APPLE(new ItemQuest("Apple"));
 
         private final ItemQuest item;
 
-        QuestItems(
+        Quest(
                 ItemQuest item
         ) {
             this.item = item;
@@ -97,13 +97,13 @@ public class Items {
         }
     }
 
-    public enum Treasures {
+    public enum Treasure {
 
         ;
 
         private final ItemTreasure item;
 
-        Treasures(
+        Treasure(
                 ItemTreasure item
         ) {
             this.item = item;
@@ -114,13 +114,13 @@ public class Items {
         }
     }
 
-    public enum Weapons {
+    public enum Weapon {
 
         ;
 
         private final ItemWeapon item;
 
-        Weapons(
+        Weapon(
                 ItemWeapon item
         ) {
             this.item = item;
