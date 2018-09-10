@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.equip.weapon;
+package com.dakoda.alr.item.type;
 import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.item.Item;
 import com.dakoda.alr.item.attr.EquipMaterial;
@@ -8,19 +8,19 @@ import java.util.ArrayList;
 
 import static com.dakoda.alr.item.ItemType.WEAPON;
 
-public class Weapon extends Item {
+public class ItemWeapon extends Item {
 
     private boolean isDoubleHanded;
     private boolean isRanged;
     private WeaponType weaponType;
     private EquipMaterial equipMaterial;
 
-    public Weapon(String name, WeaponType weaponType, EquipMaterial equipMaterial, int moneyValue) {
+    public ItemWeapon(String name, WeaponType weaponType, EquipMaterial equipMaterial, int moneyValue) {
         setMoneyValue(moneyValue);
         defaulted(name, weaponType, equipMaterial);
     }
 
-    public Weapon(String name, WeaponType weaponType, EquipMaterial equipMaterial) {
+    public ItemWeapon(String name, WeaponType weaponType, EquipMaterial equipMaterial) {
         setMoneyValue(1);
         defaulted(name, weaponType, equipMaterial);
     }

@@ -1,7 +1,7 @@
 package com.dakoda.alr.item;
 
-import com.dakoda.alr.item.equip.armour.Armour;
-import com.dakoda.alr.item.equip.weapon.Weapon;
+import com.dakoda.alr.item.type.ItemArmour;
+import com.dakoda.alr.item.type.ItemWeapon;
 import com.dakoda.alr.item.type.*;
 
 public class Items {
@@ -10,15 +10,15 @@ public class Items {
 
         ;
 
-        private final Armour item;
+        private final ItemArmour item;
 
         Armours(
-                Armour item
+                ItemArmour item
         ) {
             this.item = item;
         }
 
-        public Armour get() {
+        public ItemArmour get() {
             return item;
         }
     }
@@ -119,15 +119,15 @@ public class Items {
 
         ;
 
-        private final Weapon item;
+        private final ItemWeapon item;
 
         Weapons(
-                Weapon item
+                ItemWeapon item
         ) {
             this.item = item;
         }
 
-        public Weapon get() {
+        public ItemWeapon get() {
             return item;
         }
     }

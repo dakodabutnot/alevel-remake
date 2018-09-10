@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.equip.armour;
+package com.dakoda.alr.item.type;
 import com.dakoda.alr.item.Item;
 import com.dakoda.alr.item.attr.ArmourLevel;
 import com.dakoda.alr.item.attr.ArmourSlot;
@@ -6,18 +6,18 @@ import com.dakoda.alr.item.attr.EquipMaterial;
 
 import static com.dakoda.alr.item.ItemType.ARMOUR;
 
-public class Armour extends Item {
+public class ItemArmour extends Item {
 
     private ArmourLevel armourLevel;
     private ArmourSlot armourSlot;
     private EquipMaterial equipMaterial;
 
-    public Armour(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial) {
+    public ItemArmour(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial) {
         setMoneyValue(1);
         defaulted(name, armourSlot, equipMaterial);
     }
 
-    public Armour(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial, int moneyValue) {
+    public ItemArmour(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial, int moneyValue) {
         setMoneyValue(moneyValue);
         defaulted(name, armourSlot, equipMaterial);
     }
