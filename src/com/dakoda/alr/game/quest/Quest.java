@@ -1,5 +1,5 @@
 package com.dakoda.alr.game.quest;
-import com.dakoda.alr.entity.hostile.EntityHostile;
+import com.dakoda.alr.entity.hostile.Hostile;
 import com.dakoda.alr.game.quest.exception.PointlessQuestException;
 import com.dakoda.alr.item.Item;
 import com.dakoda.alr.item.misc.quest.ItemQuest;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class Quest {
 
-    private HashMap<EntityHostile, Integer> toKill = null;
+    private HashMap<Hostile, Integer> toKill = null;
     private HashMap<ItemQuest, Integer> toGet = null;
     private Location toGo = null;
 
@@ -45,7 +45,7 @@ public class Quest {
         }
     }
 
-    public HashMap<EntityHostile, Integer> getToKill() {
+    public HashMap<Hostile, Integer> getToKill() {
         return toKill;
     }
 
@@ -57,13 +57,13 @@ public class Quest {
         return toGet;
     }
 
-    public HashMap<EntityHostile, Integer> queryToKill() {
+    public HashMap<Hostile, Integer> queryToKill() {
         return getToKill();
     }
 
-    public void tallyKill(EntityHostile entityHostile) {
-        if (toKill.containsKey(entityHostile)) {
-            toKill.replace(entityHostile, toKill.get(entityHostile) - 1);
+    public void tallyKill(Hostile hostile) {
+        if (toKill.containsKey(hostile)) {
+            toKill.replace(hostile, toKill.get(hostile) - 1);
         }
     }
 
@@ -104,7 +104,7 @@ public class Quest {
 
     public static class QuestBuilder {
 
-        private HashMap<EntityHostile, Integer> toKill;
+        private HashMap<Hostile, Integer> toKill;
         private Location toGo;
         private HashMap<ItemQuest, Integer> toGet;
         private String description;
@@ -117,7 +117,7 @@ public class Quest {
             toGet = new HashMap<>();
         }
 
-        public QuestBuilder addKillRequirement(EntityHostile entityToKill, Integer numberToKill) {
+        public QuestBuilder addKillRequirement(Hostile entityToKill, Integer numberToKill) {
             if (toKill == null) { initToKill(); }
             this.toKill.put(entityToKill, numberToKill);
             return this;
