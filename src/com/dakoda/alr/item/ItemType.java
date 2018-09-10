@@ -3,12 +3,12 @@ package com.dakoda.alr.item;
 public enum ItemType {
 
     JUNK("Junk"),
-    CRAFTING_MATERIAL("Crafting material"),
+    CRAFTING_MATERIAL("Material"),
     CONSUMABLE("Consumable"),
     WEAPON("Weapon"),
     ARMOUR("Armour"),
     TREASURE("Treasure"),
-    QUEST("Quest item");
+    QUEST("Quest-specific item");
 
     private String displayText;
 
