@@ -1,9 +1,9 @@
 package com.dakoda.alr.item.equip.weapon;
 import java.util.ArrayList;
 import java.util.Arrays;
-import com.dakoda.alr.game.profession.Profession;
+import com.dakoda.alr.game.character.Profession;
 
-import static com.dakoda.alr.game.profession.Profession.*;
+import static com.dakoda.alr.game.character.Profession.*;
 
 public enum WeaponType {
 

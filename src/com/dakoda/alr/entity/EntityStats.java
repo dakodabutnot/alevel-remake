@@ -1,5 +1,5 @@
 package com.dakoda.alr.entity;
-import com.dakoda.alr.game.profession.Profession;
+import com.dakoda.alr.game.character.Profession;
 
 public class EntityStats {
 

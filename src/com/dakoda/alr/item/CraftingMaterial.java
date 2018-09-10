@@ -1,4 +1,6 @@
 package com.dakoda.alr.item;
+import com.dakoda.alr.game.character.Discipline;
+
 import static com.dakoda.alr.item.ItemType.CRAFTING_MATERIAL;
 
 public class CraftingMaterial extends Item {

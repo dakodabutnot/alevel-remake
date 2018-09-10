@@ -1,5 +1,5 @@
 package com.dakoda.alr.item.equip.weapon;
-import com.dakoda.alr.game.profession.Profession;
+import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.item.Item;
 import com.dakoda.alr.item.equip.EquipMaterial;
 
