@@ -1,20 +1,21 @@
-package com.dakoda.alr.item;
+package com.dakoda.alr.item.type;
 import com.dakoda.alr.game.character.Discipline;
+import com.dakoda.alr.item.Item;
 
 import static com.dakoda.alr.item.ItemType.CRAFTING_MATERIAL;
 
-public class CraftingMaterial extends Item {
+public class ItemMaterial extends Item {
 
     private Discipline discipline;
 
-    public CraftingMaterial(String name, Discipline discipline, int moneyValue) {
+    public ItemMaterial(String name, Discipline discipline, int moneyValue) {
         this.discipline = discipline;
         setMoneyValue(moneyValue);
         setName(name);
         setItemType(CRAFTING_MATERIAL);
     }
 
-    public CraftingMaterial(String name, Discipline discipline) {
+    public ItemMaterial(String name, Discipline discipline) {
         this.discipline = discipline;
         setMoneyValue(1);
         setName(name);

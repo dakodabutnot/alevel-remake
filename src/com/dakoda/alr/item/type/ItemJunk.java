@@ -1,4 +1,4 @@
-package com.dakoda.alr.item;
+package com.dakoda.alr.item.type;
 import com.dakoda.alr.item.Item;
 
 import static com.dakoda.alr.item.ItemType.JUNK;

@@ -1,12 +1,14 @@
-package com.dakoda.alr.item;
+package com.dakoda.alr.item.type;
+import com.dakoda.alr.item.Item;
+
 import static com.dakoda.alr.item.ItemType.CONSUMABLE;
 
-public class Consumable extends Item {
+public class ItemConsumable extends Item {
 
     private Type consumableType;
     private float potency;
 
-    public Consumable(String name, Type consumableType, int moneyValue) {
+    public ItemConsumable(String name, Type consumableType, int moneyValue) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
         this.potency = potency;
@@ -14,7 +16,7 @@ public class Consumable extends Item {
         setName(name);
     }
 
-    public Consumable(String name, Type consumableType) {
+    public ItemConsumable(String name, Type consumableType) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
         this.potency = potency;
