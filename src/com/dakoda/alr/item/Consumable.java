@@ -3,10 +3,10 @@ import static com.dakoda.alr.item.ItemType.CONSUMABLE;
 
 public class Consumable extends Item {
 
-    private ConsumableType consumableType;
+    private Type consumableType;
     private float potency;
 
-    public Consumable(String name, ConsumableType consumableType, int moneyValue) {
+    public Consumable(String name, Type consumableType, int moneyValue) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
         this.potency = potency;
@@ -14,7 +14,7 @@ public class Consumable extends Item {
         setName(name);
     }
 
-    public Consumable(String name, ConsumableType consumableType) {
+    public Consumable(String name, Type consumableType) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
         this.potency = potency;
@@ -26,7 +26,7 @@ public class Consumable extends Item {
         return "This item can be consumed for a specific effect or to replenish a stat.";
     }
 
-    public ConsumableType getConsumableType() {
+    public Type getConsumableType() {
         return consumableType;
     }
 
@@ -34,7 +34,7 @@ public class Consumable extends Item {
         return consumableType.getDisplayText();
     }
 
-    public enum ConsumableType {
+    public enum Type {
 
         HEALTH("Health"),
         ENERGY("Energy"),
@@ -43,7 +43,7 @@ public class Consumable extends Item {
 
         private String displayText;
 
-        ConsumableType(
+        Type(
                 String displayText
         ) {
             this.displayText = displayText;

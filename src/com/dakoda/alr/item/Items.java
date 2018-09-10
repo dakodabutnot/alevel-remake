@@ -24,7 +24,7 @@ public class Items {
 
     public enum Consumables {
 
-        APPLE(new Consumable("Apple", ConsumableType.HEALTH)) {
+        APPLE(new Consumable("Apple", Consumable.Type.HEALTH)) {
             boolean embue(String health) {
                 return true;
             }
