@@ -2,9 +2,9 @@ package com.dakoda.alr.entity;
 
 public abstract class Entity {
 
-    private EntityStats entityStats;
+    private Attributes attributes;
 
-    public EntityStats getEntityStats() {
-        return entityStats;
+    public Attributes getAttributes() {
+        return attributes;
     }
 }
