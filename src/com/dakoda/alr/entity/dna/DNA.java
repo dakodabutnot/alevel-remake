@@ -3,10 +3,10 @@ package com.dakoda.alr.entity.dna;
 public class DNA {
 
     private final Race race;
-    private String skinOrFurColour;
-    private String eyeColour;
-    private Gender gender;
-    private Sexuality sexuality;
+    private String skinOrFurColour = null;
+    private String eyeColour = null;
+    private Gender gender = null;
+    private Sexuality sexuality = null;
 
     private DNA(Race race) {
         this.race = race;
