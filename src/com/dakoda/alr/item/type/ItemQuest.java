@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.misc.quest;
+package com.dakoda.alr.item.type;
 import com.dakoda.alr.item.Item;
 
 import static com.dakoda.alr.item.ItemType.QUEST;
@@ -20,7 +20,7 @@ public class ItemQuest extends Item {
         setItemType(QUEST);
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item is required for a quest.";
     }
 }

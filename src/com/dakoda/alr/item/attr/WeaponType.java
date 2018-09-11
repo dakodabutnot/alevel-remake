@@ -1,9 +1,10 @@
-package com.dakoda.alr.item.equip.weapon;
+package com.dakoda.alr.item.attr;
 import java.util.ArrayList;
 import java.util.Arrays;
-import com.dakoda.alr.game.profession.Profession;
+import java.util.Collections;
 
-import static com.dakoda.alr.game.profession.Profession.*;
+import com.dakoda.alr.game.character.Profession;
+import static com.dakoda.alr.game.character.Profession.Type.*;
 
 public enum WeaponType {
 
@@ -73,7 +74,7 @@ public enum WeaponType {
     INSTRUMENT("Instrument",
             true,
             true,
-            new ArrayList<>(Arrays.asList(BARD))
+            new ArrayList<>(Collections.singletonList(BARD))
     ),
     HALLOW("Hallow",
             false,
@@ -86,13 +87,13 @@ public enum WeaponType {
     private String displayText;
     private boolean isDoubleHanded;
     private boolean isRanged;
-    private ArrayList<Profession> usedBy;
+    private ArrayList<Profession.Type> usedBy;
 
     WeaponType(
             String displayText,
             boolean isDoubleHanded,
             boolean isRanged,
-            ArrayList<Profession> usedBy
+            ArrayList<Profession.Type> usedBy
     ) {
         this.displayText = displayText;
         this.isDoubleHanded = isDoubleHanded;
@@ -112,7 +113,7 @@ public enum WeaponType {
         return isRanged;
     }
 
-    public ArrayList<Profession> getApplicableProfessions() {
+    public ArrayList<Profession.Type> getApplicableProfessions() {
         return usedBy;
     }
 }

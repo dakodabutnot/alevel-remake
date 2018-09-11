@@ -1,5 +1,5 @@
 package com.dakoda.alr.loc;
-import com.dakoda.alr.entity.hostile.EntityHostile;
+import com.dakoda.alr.entity.hostile.Hostile;
 import com.dakoda.alr.entity.npc.NPC;
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public class Location {
     private boolean encounterable;
     private int levelScale;
     private LocationType locationType;
-    private ArrayList<EntityHostile> hostileArrayList;
+    private ArrayList<Hostile> hostileArrayList;
     private ArrayList<NPC> npcArrayList;
     private ArrayList<Location> subLocationArrayList;
     private ArrayList<Location> linkedLocationArrayList;
@@ -44,7 +44,7 @@ public class Location {
         return locationType;
     }
 
-    public ArrayList<EntityHostile> getHostiles() {
+    public ArrayList<Hostile> getHostiles() {
         return hostileArrayList;
     }
 
@@ -67,7 +67,7 @@ public class Location {
         private boolean encounterable;
         private int levelScale;
         private LocationType locationType;
-        private ArrayList<EntityHostile> hostileArrayList;
+        private ArrayList<Hostile> hostileArrayList;
         private ArrayList<NPC> npcArrayList;
         private ArrayList<Location> subLocationArrayList;
 
@@ -108,9 +108,9 @@ public class Location {
             return this;
         }
 
-        public LocationBuilder addHostileEncounter(EntityHostile entityHostile) {
+        public LocationBuilder addHostileEncounter(Hostile hostile) {
             if (hostileArrayList == null) { initHostileList(); }
-            this.hostileArrayList.add(entityHostile);
+            this.hostileArrayList.add(hostile);
             return this;
         }
 

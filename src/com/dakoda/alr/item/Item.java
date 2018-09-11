@@ -6,33 +6,33 @@ public abstract class Item {
     private ItemType itemType;
     private int moneyValue;
 
-    protected String getName() {
+    public String getName() {
         return name;
     }
 
-    protected ItemType getItemType() {
+    public ItemType getItemType() {
         return itemType;
     }
 
-    protected String getItemTypeDisplay(boolean b) {
+    public String getItemTypeDisplay() {
         return getItemType().getDisplayText();
     }
 
-    protected abstract String getDescription();
+    public abstract String getDescription();
 
-    protected void setItemType(ItemType itemType) {
+    public void setItemType(ItemType itemType) {
         this.itemType = itemType;
     }
 
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    protected int getMoneyValue() {
+    public int getMoneyValue() {
         return moneyValue;
     }
 
-    protected void setMoneyValue(int moneyValue) {
+    public void setMoneyValue(int moneyValue) {
         this.moneyValue = moneyValue;
     }
 }

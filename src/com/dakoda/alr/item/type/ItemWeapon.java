@@ -1,25 +1,26 @@
-package com.dakoda.alr.item.equip.weapon;
-import com.dakoda.alr.game.profession.Profession;
+package com.dakoda.alr.item.type;
+import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.item.Item;
-import com.dakoda.alr.item.equip.EquipMaterial;
+import com.dakoda.alr.item.attr.EquipMaterial;
+import com.dakoda.alr.item.attr.WeaponType;
 
 import java.util.ArrayList;
 
 import static com.dakoda.alr.item.ItemType.WEAPON;
 
-public class Weapon extends Item {
+public class ItemWeapon extends Item {
 
     private boolean isDoubleHanded;
     private boolean isRanged;
     private WeaponType weaponType;
     private EquipMaterial equipMaterial;
 
-    public Weapon(String name, WeaponType weaponType, EquipMaterial equipMaterial, int moneyValue) {
+    public ItemWeapon(String name, WeaponType weaponType, EquipMaterial equipMaterial, int moneyValue) {
         setMoneyValue(moneyValue);
         defaulted(name, weaponType, equipMaterial);
     }
 
-    public Weapon(String name, WeaponType weaponType, EquipMaterial equipMaterial) {
+    public ItemWeapon(String name, WeaponType weaponType, EquipMaterial equipMaterial) {
         setMoneyValue(1);
         defaulted(name, weaponType, equipMaterial);
     }
@@ -33,7 +34,7 @@ public class Weapon extends Item {
         this.equipMaterial = equipMaterial;
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item is used in combat to deal damage, and can only be equipped by certain professions.";
     }
 
@@ -53,7 +54,7 @@ public class Weapon extends Item {
         return equipMaterial;
     }
 
-    public ArrayList<Profession> getApplicableProfessions() {
+    public ArrayList<Profession.Type> getApplicableProfessions() {
         return weaponType.getApplicableProfessions();
     }
 }

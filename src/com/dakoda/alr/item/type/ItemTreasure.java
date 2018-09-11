@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.misc.treasure;
+package com.dakoda.alr.item.type;
 import com.dakoda.alr.item.Item;
 
 import static com.dakoda.alr.item.ItemType.TREASURE;
@@ -11,7 +11,7 @@ public class ItemTreasure extends Item {
         setItemType(TREASURE);
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item can be sold at a high price.";
     }
 }

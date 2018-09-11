@@ -1,4 +1,4 @@
-package com.dakoda.alr.item.misc.junk;
+package com.dakoda.alr.item.type;
 import com.dakoda.alr.item.Item;
 
 import static com.dakoda.alr.item.ItemType.JUNK;
@@ -16,7 +16,7 @@ public class ItemJunk extends Item {
         setName(name);
     }
 
-    protected String getDescription() {
+    public String getDescription() {
         return "This item can only be sold.";
     }
 }
