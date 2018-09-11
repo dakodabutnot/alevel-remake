@@ -6,12 +6,10 @@ import static com.dakoda.alr.item.ItemType.CONSUMABLE;
 public class ItemConsumable extends Item {
 
     private Type consumableType;
-    private float potency;
 
     public ItemConsumable(String name, Type consumableType, int moneyValue) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
-        this.potency = potency;
         setMoneyValue(moneyValue);
         setName(name);
     }
@@ -19,7 +17,6 @@ public class ItemConsumable extends Item {
     public ItemConsumable(String name, Type consumableType) {
         setItemType(CONSUMABLE);
         this.consumableType = consumableType;
-        this.potency = potency;
         setMoneyValue(1);
         setName(name);
     }
