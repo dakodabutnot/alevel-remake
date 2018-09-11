@@ -67,26 +67,6 @@ public class Attributes {
             this.luck = luck;
         }
 
-        public int getCourage() {
-            return courage;
-        }
-
-        public int getDexterity() {
-            return dexterity;
-        }
-
-        public int getWisdom() {
-            return wisdom;
-        }
-
-        public int getCharisma() {
-            return charisma;
-        }
-
-        public int getLuck() {
-            return luck;
-        }
-
         public String getProfessionName() {
             return name;
         }
