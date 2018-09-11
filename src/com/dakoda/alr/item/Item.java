@@ -20,19 +20,24 @@ public abstract class Item {
 
     public abstract String getDescription();
 
-    public void setItemType(ItemType itemType) {
-        this.itemType = itemType;
+    public int getMoneyValue() {
+        return moneyValue;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getMoneyValue() {
-        return moneyValue;
-    }
-
     public void setMoneyValue(int moneyValue) {
         this.moneyValue = moneyValue;
+    }
+
+    public void setItemType(ItemType itemType) {
+        this.itemType = itemType;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Item) && ((Item) obj).getItemType().equals(this.itemType) && (((Item) obj).getName().equals(this.name));
     }
 }

@@ -1,5 +1,5 @@
 package com.dakoda.alr.game;
-import com.dakoda.alr.entity.Player;
+import com.dakoda.alr.entity.player.Player;
 
 public class GameMaster {
 
