@@ -30,45 +30,44 @@ public class Attributes {
     }
 
     private enum Base {
+        //                                          c  d  w  ch l
+        DUELIST(Profession.Type.DUELIST,            7, 3, 1, 2, 2), // 15
+        PALADIN(Profession.Type.PALADIN,            8, 2, 3, 1, 1), // 15
+        ANTIQUER(Profession.Type.ANTIQUER,          7, 2, 4, 1, 1), // 15
+        PERFORATOR(Profession.Type.PERFORATOR,      9, 2, 1, 2, 1), // 15
+        //                                          c  d  w  ch l
+        ARCHER(Profession.Type.ARCHER,              3, 6, 2, 2, 2), // 15
+        ASSASSIN(Profession.Type.ASSASSIN,          4, 7, 1, 1, 2), // 15
+        NAGUAL(Profession.Type.NAGUAL,              5, 6, 1, 1, 2), // 15
+        HUNTER(Profession.Type.HUNTER,              1, 8, 2, 2, 2), // 15
+        //                                          c  d  w  ch l
+        SHAMAN(Profession.Type.SHAMAN,              3, 2, 7, 2, 1), // 15
+        PRIEST(Profession.Type.PRIEST,              2, 3, 7, 1, 2), // 15
+        CHRONOL(Profession.Type.CHRONOL,            2, 2, 8, 2, 1), // 15
+        BARD(Profession.Type.BARD,                  1, 3, 5, 3, 3); // 15
 
-//                                                    c   d   w  ch   l
-            DUELIST     (Profession.Type.DUELIST    , 7,  3,  1,  2,  2), // 15
-            PALADIN     (Profession.Type.PALADIN    , 8,  2,  3,  1,  1), // 15
-            ANTIQUER    (Profession.Type.ANTIQUER   , 7,  2,  4,  1,  1), // 15
-            PERFORATOR  (Profession.Type.PERFORATOR , 9,  2,  1,  2,  1), // 15
-//                                                    c   d   w  ch   l
-            ARCHER      (Profession.Type.ARCHER     , 3,  5,  3,  2,  2), // 15
-            ASSASSIN    (Profession.Type.ASSASSIN   , 4,  7,  1,  1,  2), // 15
-            NAGUAL      (Profession.Type.NAGUAL     , 6,  5,  1,  1,  2), // 15
-            HUNTER      (Profession.Type.HUNTER     , 4,  5,  2,  2,  2), // 15
-//                                                    c   d   w  ch   l
-            SHAMAN      (Profession.Type.SHAMAN     , 3,  2,  7,  2,  1), // 15
-            PRIEST      (Profession.Type.PRIEST     , 2,  3,  7,  1,  2), // 15
-            CHRONOL     (Profession.Type.CHRONOL    , 2,  2,  8,  2,  1), // 15
-            BARD        (Profession.Type.BARD       , 1,  3,  5,  3,  3); // 15
+        private final Profession.Type profession;
+        private final int courage;
+        private final int dexterity;
+        private final int wisdom;
+        private final int charisma;
+        private final int luck;
 
-            private final Profession.Type profession;
-            private final int courage;
-            private final int dexterity;
-            private final int wisdom;
-            private final int charisma;
-            private final int luck;
-
-            Base(
-                    Profession.Type profession,
-                    int courage,
-                    int dexterity,
-                    int wisdom,
-                    int charisma,
-                    int luck
-            ) {
-                this.profession = profession;
-                this.courage = courage;
-                this.dexterity = dexterity;
-                this.wisdom = wisdom;
-                this.charisma = charisma;
-                this.luck = luck;
-            }
+        Base(
+                Profession.Type profession,
+                int courage,
+                int dexterity,
+                int wisdom,
+                int charisma,
+                int luck
+        ) {
+            this.profession = profession;
+            this.courage = courage;
+            this.dexterity = dexterity;
+            this.wisdom = wisdom;
+            this.charisma = charisma;
+            this.luck = luck;
+        }
 
         public int getCourage() {
             return courage;
@@ -95,7 +94,7 @@ public class Attributes {
         }
 
         private Attributes getProfessionBaseAttributes(Profession.Type profession) {
-                Attributes.Base baseAttr = Arrays.stream(Base.values()).filter(base -> base.getProfession() == profession).findFirst().orElse(null);
+            Attributes.Base baseAttr = Arrays.stream(Base.values()).filter(base -> base.getProfession() == profession).findFirst().orElse(null);
             try {
                 return new Attributes(
                         baseAttr.courage,
