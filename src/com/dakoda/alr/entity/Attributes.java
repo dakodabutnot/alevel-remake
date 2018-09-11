@@ -32,20 +32,20 @@ public class Attributes {
     private enum Base {
 
 //                                                    c   d   w  ch   l
-            DUELIST     (Profession.Type.DUELIST    , 6,  3,  1,  1,  2), // 13
-            PALADIN     (Profession.Type.PALADIN    , 7,  2,  3,  1,  1), // 14
-            ANTIQUER    (Profession.Type.ANTIQUER   , 6,  2,  4,  1,  1), // 14
-            PERFORATOR  (Profession.Type.PERFORATOR , 8,  2,  1,  2,  1), // 14
+            DUELIST     (Profession.Type.DUELIST    , 7,  3,  1,  2,  2), // 15
+            PALADIN     (Profession.Type.PALADIN    , 8,  2,  3,  1,  1), // 15
+            ANTIQUER    (Profession.Type.ANTIQUER   , 7,  2,  4,  1,  1), // 15
+            PERFORATOR  (Profession.Type.PERFORATOR , 9,  2,  1,  2,  1), // 15
 //                                                    c   d   w  ch   l
-            ARCHER      (Profession.Type.ARCHER     , 4,  5,  3,  2,  3), // 17
-            ASSASSIN    (Profession.Type.ASSASSIN   , 5,  7,  1,  1,  4), // 18
-            NAGUAL      (Profession.Type.NAGUAL     , 6,  6,  1,  1,  3), // 17
-            HUNTER      (Profession.Type.HUNTER     , 5,  5,  2,  2,  2), // 16
+            ARCHER      (Profession.Type.ARCHER     , 3,  5,  3,  2,  2), // 15
+            ASSASSIN    (Profession.Type.ASSASSIN   , 4,  7,  1,  1,  2), // 15
+            NAGUAL      (Profession.Type.NAGUAL     , 6,  5,  1,  1,  2), // 15
+            HUNTER      (Profession.Type.HUNTER     , 4,  5,  2,  2,  2), // 15
 //                                                    c   d   w  ch   l
-            SHAMAN      (Profession.Type.SHAMAN     , 1,  2,  6,  2,  1), // 12
-            PRIEST      (Profession.Type.PRIEST     , 1,  2,  5,  1,  2),
-            CHRONOL     (Profession.Type.CHRONOL    , 2,  2,  7,  1,  1),
-            BARD        (Profession.Type.BARD       , 2,  3,  5,  3,  4);
+            SHAMAN      (Profession.Type.SHAMAN     , 3,  2,  7,  2,  1), // 15
+            PRIEST      (Profession.Type.PRIEST     , 2,  3,  7,  1,  2), // 15
+            CHRONOL     (Profession.Type.CHRONOL    , 2,  2,  8,  2,  1), // 15
+            BARD        (Profession.Type.BARD       , 1,  3,  5,  3,  3); // 15
 
             private final Profession.Type profession;
             private final int courage;
@@ -105,7 +105,7 @@ public class Attributes {
                         baseAttr.luck
                 );
             } catch (NullPointerException e) {
-                throw new RuntimeException("You tried to instantiate Attributes will null parameters.");
+                throw new RuntimeException("You tried to instantiate an Attributes class with null parameters.");
             }
         }
     }
