@@ -2,18 +2,18 @@ package com.dakoda.alr.game.character;
 
 public class Profession {
 
-    private String name;
+    private Type type;
     private int level, experience, nextLevel;
 
-    public Profession(String name) {
-        this.name = name;
+    public Profession(Type type) {
+        this.type = type;
         this.level = 1;
         this.experience = 0;
         this.nextLevel = 10;
     }
 
-    public String getName() {
-        return name;
+    public Type get() {
+        return type;
     }
 
     public int getCurrentLevel() {
