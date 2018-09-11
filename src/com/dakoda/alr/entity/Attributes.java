@@ -4,16 +4,19 @@ import java.util.Arrays;
 
 public class Attributes {
 
-    private final Profession profession;
-
     private int courage;        // affects health,
     private int dexterity;      // affects speed, dodge chance
     private int wisdom;         // affects mana (or energy), spell (or skill) damage
     private int charisma;       // affects speech dialog success and likableness
     private int luck;           // affects chance of something good happening
 
-    public Attributes(Profession profession) {
-        this.profession = profession;
+    public Attributes(Profession.Type professionType) {
+        Attributes b = Base.getProfessionBaseAttributes(professionType);
+        this.courage = b.courage;
+        this.dexterity = b.dexterity;
+        this.wisdom = b.wisdom;
+        this.charisma = b.charisma;
+        this.luck = b.luck;
     }
 
     private Attributes(int c, int d, int w, int ch, int l) {
@@ -22,31 +25,26 @@ public class Attributes {
         this.wisdom = w;
         this.charisma = ch;
         this.luck = l;
-        this.profession = null;
-    }
-
-    public Profession getProfession() {
-        return profession;
     }
 
     private enum Base {
-        //                                          c  d  w  ch l
-        DUELIST(Profession.Type.DUELIST,            7, 3, 1, 2, 2), // 15
-        PALADIN(Profession.Type.PALADIN,            8, 2, 3, 1, 1), // 15
-        ANTIQUER(Profession.Type.ANTIQUER,          7, 2, 4, 1, 1), // 15
-        PERFORATOR(Profession.Type.PERFORATOR,      9, 2, 1, 2, 1), // 15
-        //                                          c  d  w  ch l
-        ARCHER(Profession.Type.ARCHER,              3, 6, 2, 2, 2), // 15
-        ASSASSIN(Profession.Type.ASSASSIN,          4, 7, 1, 1, 2), // 15
-        NAGUAL(Profession.Type.NAGUAL,              5, 6, 1, 1, 2), // 15
-        HUNTER(Profession.Type.HUNTER,              1, 8, 2, 2, 2), // 15
-        //                                          c  d  w  ch l
-        SHAMAN(Profession.Type.SHAMAN,              3, 2, 7, 2, 1), // 15
-        PRIEST(Profession.Type.PRIEST,              2, 3, 7, 1, 2), // 15
-        CHRONOL(Profession.Type.CHRONOL,            2, 2, 8, 2, 1), // 15
-        BARD(Profession.Type.BARD,                  1, 3, 5, 3, 3); // 15
+        //                            c  d  w  ch l
+        DUELIST("Duelist",            7, 3, 1, 2, 2), // 15
+        PALADIN("Paladin",            8, 2, 3, 1, 1), // 15
+        ANTIQUER("Antiquer",          7, 2, 4, 1, 1), // 15
+        PERFORATOR("Perforator",      9, 2, 1, 2, 1), // 15
+        //                            c  d  w  ch l
+        ARCHER("Archer",              3, 6, 2, 2, 2), // 15
+        ASSASSIN("Assassin",          4, 7, 1, 1, 2), // 15
+        NAGUAL("Nagual",              5, 6, 1, 1, 2), // 15
+        HUNTER("Hunter",              1, 8, 2, 2, 2), // 15
+        //                            c  d  w  ch l
+        SHAMAN("Shaman",              3, 2, 7, 2, 1), // 15
+        PRIEST("Priest",              2, 3, 7, 1, 2), // 15
+        CHRONOL("Chronol",            2, 2, 8, 2, 1), // 15
+        BARD("Bard",                  1, 3, 5, 3, 3); // 15
 
-        private final Profession.Type profession;
+        private final String name;
         private final int courage;
         private final int dexterity;
         private final int wisdom;
@@ -54,14 +52,14 @@ public class Attributes {
         private final int luck;
 
         Base(
-                Profession.Type profession,
+                String name,
                 int courage,
                 int dexterity,
                 int wisdom,
                 int charisma,
                 int luck
         ) {
-            this.profession = profession;
+            this.name = name;
             this.courage = courage;
             this.dexterity = dexterity;
             this.wisdom = wisdom;
@@ -89,12 +87,14 @@ public class Attributes {
             return luck;
         }
 
-        public Profession.Type getProfession() {
-            return profession;
+        public String getProfessionName() {
+            return name;
         }
 
-        private Attributes getProfessionBaseAttributes(Profession.Type profession) {
-            Attributes.Base baseAttr = Arrays.stream(Base.values()).filter(base -> base.getProfession() == profession).findFirst().orElse(null);
+        public static Attributes getProfessionBaseAttributes(Profession.Type profession) {
+            Attributes.Base baseAttr = Arrays.stream(Base.values())
+                    .filter(base -> base.getProfessionName().equalsIgnoreCase(profession.getDisplayText()))
+                    .findFirst().orElse(null);
             try {
                 return new Attributes(
                         baseAttr.courage,
