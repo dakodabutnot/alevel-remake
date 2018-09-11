@@ -73,24 +73,4 @@ public class Profession {
             return displayText;
         }
     }
-
-    public enum BaseStat {
-
-        // TODO: 10/09/2018
-        DUELIST,
-        PALADIN,
-        ANTIQUER,
-        PERFORATOR,
-
-        ARCHER,
-        ASSASSIN,
-        NAGUAL,
-        HUNTER,
-
-        SHAMAN,
-        PRIEST,
-        CHRONOL,
-        BARD;
-
-    }
 }
