@@ -1,7 +1,6 @@
 package com.dakoda.alr.item.type;
 import com.dakoda.alr.item.Item;
-
-import static com.dakoda.alr.item.ItemType.QUEST;
+import static com.dakoda.alr.item.Item.Type.QUEST;
 
 public class ItemQuest extends Item {
 

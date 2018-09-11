@@ -3,7 +3,7 @@ import com.dakoda.alr.item.Item;
 import com.dakoda.alr.item.attr.ArmourLevel;
 import com.dakoda.alr.item.attr.ArmourSlot;
 import com.dakoda.alr.item.attr.EquipMaterial;
-import static com.dakoda.alr.item.ItemType.ARMOUR;
+import static com.dakoda.alr.item.Item.Type.ARMOUR;
 
 public class ItemArmour extends Item {
 

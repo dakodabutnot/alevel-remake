@@ -3,10 +3,8 @@ import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.item.Item;
 import com.dakoda.alr.item.attr.EquipMaterial;
 import com.dakoda.alr.item.attr.WeaponType;
-
 import java.util.ArrayList;
-
-import static com.dakoda.alr.item.ItemType.WEAPON;
+import static com.dakoda.alr.item.Item.Type.WEAPON;
 
 public class ItemWeapon extends Item {
 
