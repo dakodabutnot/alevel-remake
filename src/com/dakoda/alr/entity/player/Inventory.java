@@ -1,6 +1,6 @@
 package com.dakoda.alr.entity.player;
 import com.dakoda.alr.item.Item;
-import com.dakoda.alr.item.ItemType;
+import com.dakoda.alr.item.Item.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,7 +66,7 @@ public class Inventory {
         return items;
     }
 
-    public HashMap<Item, Integer> getFiltered(ItemType itemType) {
+    public HashMap<Item, Integer> getFiltered(Item.Type itemType) {
         HashMap<Item, Integer> hashMap = new HashMap<>();
         for (Map.Entry<Item, Integer> entry : getAllItems().entrySet()) {
             if (entry.getKey().getItemType().equals(itemType)) {
