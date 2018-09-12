@@ -1,5 +1,4 @@
 package com.dakoda.alr.item;
-import com.dakoda.alr.game.character.Discipline;
 import com.dakoda.alr.item.attr.ArmourSlot;
 import com.dakoda.alr.item.attr.WeaponType;
 import com.dakoda.alr.item.type.*;
