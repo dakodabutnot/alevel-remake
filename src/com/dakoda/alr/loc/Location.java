@@ -15,7 +15,7 @@ public class Location {
     private ArrayList<Location> subLocationArrayList;
     private ArrayList<Location> linkedLocationArrayList;
 
-    public static void linkLocations(Location loc1, Location loc2) {
+    public static void link(Location loc1, Location loc2) {
         loc1.addLinkedLocation(loc2);
         loc2.addLinkedLocation(loc1);
     }
