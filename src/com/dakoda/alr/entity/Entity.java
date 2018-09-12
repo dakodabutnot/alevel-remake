@@ -16,4 +16,12 @@ public abstract class Entity {
     public DNA getDNA() {
         return dna;
     }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
