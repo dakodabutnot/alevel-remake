@@ -1,4 +1,5 @@
 package com.dakoda.alr.game.character;
+import java.util.Arrays;
 
 public class Discipline {
 
@@ -10,84 +11,107 @@ public class Discipline {
 
         // CRAFTING ---------------------------------------------------------
         CHEF("Chef",
-                new Discipline("Chef")
+                new Discipline("Chef"),
+                null
                 ),                   // cooking
         TAILOR("Tailor",
-                new Discipline("Tailor")
+                new Discipline("Tailor"),
+                null
                 ),               // clothing (and light, medium armour)
         BLACKSMITH("Blacksmith",
-                new Discipline("Blacksmith")
+                new Discipline("Blacksmith"),
+                null
                 ),       // metal weapons, heavy armour
         BOWYER("Bowyer",
-                new Discipline("Bowyer")
+                new Discipline("Bowyer"),
+                null
                 ),               // bows, crossbows
         ALCHEMIST("Alchemist",
-                new Discipline("Alchemist")
+                new Discipline("Alchemist"),
+                null
                 ),         // consumables
         CONJURSMITH("Conjursmith",
-                new Discipline("Conjursmith")
+                new Discipline("Conjursmith"),
+                null
                 ),     // wands, staves
         // ------------------------------------------------------------------
 
         // HARVESTING -------------------------------------------------------
         FARMER("Farmer",
-                new Discipline("Farmer")
+                new Discipline("Farmer"),
+                null
                 ),               // growing materials
         WORKER("Worker",
-                new Discipline("Worker")
+                new Discipline("Worker"),
+                null
                 ),               // harvesting natural materials
         MINER("Miner",
-                new Discipline("Miner")
+                new Discipline("Miner"),
+                null
                 ),                 // harvesting ores, specialty materials
         // ------------------------------------------------------------------
 
         // SPECIALISED DEVELOPMENT --------------------------------for: -----
         TACTICIAN("Tactician",
-                new Discipline("Tactician", true)
-                ),         // stratagem                (Duelist)
+                new Discipline("Tactician", true),
+                Profession.Type.DUELIST
+                ),         // stratagem
         SENTINEL("Sentinel",
-                new Discipline("Sentinel", true)
-                ),           // peacekeeping             (Paladin)
+                new Discipline("Sentinel", true),
+                Profession.Type.PALADIN
+                ),           // peacekeeping
         HISTORIAN("Historian",
-                 new Discipline("Historian", true)
-                ),         // legend                   (Antiquer)
+                 new Discipline("Historian", true),
+                Profession.Type.ANTIQUER
+                ),         // legend
         HERALD("Herald",
-                new Discipline("Herald", true)
-                ),               // justice                  (Perforator)
+                new Discipline("Herald", true),
+                Profession.Type.PERFORATOR
+                ),               // justice
         // -
         BOTANIST("Botanist",
-                new Discipline("Botanist", true)
-                ),           // nature                   (Archer)
+                new Discipline("Botanist", true),
+                Profession.Type.ARCHER
+                ),           // nature
         SHADOW("Shadow",
-                new Discipline("Shadow", true)
-                ),               // stealth                  (Assassin)
+                new Discipline("Shadow", true),
+                Profession.Type.ASSASSIN
+                ),               // stealth
         GLAMOURIST("Glamourist",
-                new Discipline("Glamourist", true)
-                ),       // glamour                  (Nagual)
+                new Discipline("Glamourist", true),
+                Profession.Type.NAGUAL
+                ),       // glamour
         PIONEER("Pioneer",
-                new Discipline("Pioneer", true)
-                ),             // invention                (Hunter)
+                new Discipline("Pioneer", true),
+                Profession.Type.HUNTER
+                ),             // invention
         // -
         THANATOLOGIST("Thanatologist",
-                new Discipline("Thanatologist", true)
-                ), // death                    (Shaman)
+                new Discipline("Thanatologist", true),
+                Profession.Type.SHAMAN
+                ), // death
         THEOLOGIAN("Theologian",
-                new Discipline("Theologian", true)
-                ),       // God                      (Priest)
+                new Discipline("Theologian", true),
+                Profession.Type.PRIEST
+                ),       // God
         ORACLE("Oracle",
-                new Discipline("Oracle", true)
-                ),               // prophecy                 (Chronol)
+                new Discipline("Oracle", true),
+                Profession.Type.CHRONOL
+                ),               // prophecy
         RADIOL("Radiol",
-                new Discipline("Radiol", true)
-                ),               // music                    (Bard)
+                new Discipline("Radiol", true),
+                Profession.Type.BARD
+                ),               // music
         // ------------------------------------------------------------------
 
         // MISC -------------------------------------------------------------
         DIVINER("Diviner",
-                new Discipline("Diviner")
+                new Discipline("Diviner"),
+                null
                 ),             // enchanting
         CARPENTER("Carpenter",
-                new Discipline("Carpenter")
+                new Discipline("Carpenter"),
+                null
                 ),         // furniture
         // ------------------------------------------------------------------
 
@@ -95,13 +119,16 @@ public class Discipline {
 
         private String displayText;
         private Discipline discipline;
+        private Profession.Type professionRequired;
 
         Disciplines(
                 String displayText,
-                Discipline discipline
+                Discipline discipline,
+                Profession.Type professionRequired
         ) {
             this.displayText = displayText;
             this.discipline = discipline;
+            this.professionRequired = professionRequired;
         }
 
         public String getDisplayText() {
@@ -115,6 +142,10 @@ public class Discipline {
 
         public Discipline get() {
             return discipline;
+        }
+
+        public Profession.Type getProfessionRequired() {
+            return professionRequired;
         }
     }
 
@@ -158,5 +189,14 @@ public class Discipline {
 
     public boolean isSpecialisedDiscipline() {
         return specialised;
+    }
+
+    public static Discipline.Disciplines getMatchingSpecialisedDiscipline(Profession.Type profession) {
+        Disciplines fetch = Arrays.stream(Disciplines.values()).filter(entry -> entry.getProfessionRequired() == profession).findFirst().orElse(null);
+        if (fetch != null) {
+            return fetch;
+        } else {
+            throw new RuntimeException("A profession that you have defined in Profession.Type does not have its own specialised discipline. Make one.");
+        }
     }
 }
