@@ -31,13 +31,13 @@ public class Profession {
     public enum Type {
 
         // HEAVY ------------------------------------------------------------
-        DUELIST("Duelist"),                             // combatant (Warrior)
+        DUELIST("Duelist"),                             // combatant
 
-        PALADIN("Paladin"),                             // protector of evil (Guardian from Guild Wars 2)
+        PALADIN("Paladin"),                             // protector of evil
 
-        ANTIQUER("Antiquer"),                           // channels a legend to gain power (Revenant from Guild Wars 2)
+        ANTIQUER("Antiquer"),                           // channels a legend to gain power
 
-        PERFORATOR("Perforator"),                       // delivers justice (Lancer)
+        PERFORATOR("Perforator"),                       // delivers justice
         // ------------------------------------------------------------------
         // MEDIUM -----------------------------------------------------------
         ARCHER("Archer"),                               // bows. pets. nature.
