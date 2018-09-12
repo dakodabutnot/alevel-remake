@@ -12,6 +12,7 @@ public class ItemJunk extends Item {
 
     public ItemJunk(String name) {
         setMoneyValue(1);
+        setItemType(JUNK);
         setName(name);
     }
 
