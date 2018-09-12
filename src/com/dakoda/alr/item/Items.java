@@ -1,11 +1,18 @@
 package com.dakoda.alr.item;
-import com.dakoda.alr.item.type.ItemArmour;
-import com.dakoda.alr.item.type.ItemWeapon;
+import com.dakoda.alr.game.character.Discipline;
+import com.dakoda.alr.item.attr.ArmourSlot;
+import com.dakoda.alr.item.attr.WeaponType;
 import com.dakoda.alr.item.type.*;
+import static com.dakoda.alr.item.attr.WeaponType.*;
+import com.dakoda.alr.item.attr.EquipMaterial;
+import com.dakoda.alr.item.attr.WeaponMaterial;
+
 
 public class Items {
 
     public enum Armour {
+
+        IRON_HELMET(new ItemArmour("Iron Helmet", ArmourSlot.HEAD, EquipMaterial.IRON, 200));
 
         ;
 
@@ -47,6 +54,8 @@ public class Items {
 
     public enum Junk {
 
+        TRASH(new ItemJunk("Trash"));
+
         ;
 
         private final ItemJunk item;
@@ -63,6 +72,8 @@ public class Items {
     }
 
     public enum Material {
+
+        WOOD(new ItemMaterial("Wood", 1))
 
         ;
 
@@ -99,6 +110,8 @@ public class Items {
 
     public enum Treasure {
 
+        HAND_OF_MIDAS(new ItemTreasure("Hand of Midas", 1_000_000))
+
         ;
 
         private final ItemTreasure item;
@@ -115,6 +128,9 @@ public class Items {
     }
 
     public enum Weapon {
+
+        IRON_SWORD(new ItemWeapon("Iron Sword", SWORD, WeaponMaterial.WOOD, 10)),
+        BOW(new ItemWeapon("Bow", WeaponType.LONGBOW, WeaponMaterial.WOOD, 20))
 
         ;
 
