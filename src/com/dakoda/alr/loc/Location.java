@@ -3,7 +3,7 @@ import com.dakoda.alr.entity.hostile.Hostile;
 import com.dakoda.alr.entity.npc.NPC;
 import java.util.ArrayList;
 
-public class Location {
+public final class Location {
 
     private String name;
     private boolean restable;

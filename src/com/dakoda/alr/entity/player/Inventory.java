@@ -4,7 +4,7 @@ import com.dakoda.alr.item.Item.Type;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Inventory {
+public final class Inventory {
 
     private HashMap<Item, Integer> items = new HashMap<>();
 

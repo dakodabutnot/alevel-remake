@@ -6,7 +6,7 @@ import com.dakoda.alr.item.type.ItemQuest;
 import com.dakoda.alr.loc.Location;
 import java.util.HashMap;
 
-public class Quest {
+public final class Quest {
 
     private HashMap<Hostile, Integer> toKill = null;
     private HashMap<ItemQuest, Integer> toGet = null;
