@@ -1,7 +1,6 @@
 package com.dakoda.alr.game;
 import com.dakoda.alr.entity.player.Inventory;
 import com.dakoda.alr.game.quest.Quest;
-import com.dakoda.alr.item.Item;
 import static com.dakoda.alr.item.Item.Type.*;
 import com.dakoda.alr.item.Items;
 public class TextRPG {
