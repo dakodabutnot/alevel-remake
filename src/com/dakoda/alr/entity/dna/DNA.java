@@ -6,7 +6,6 @@ public class DNA {
     private String skinOrFurColour = null;
     private String eyeColour = null;
     private Gender gender = null;
-    private Sexuality sexuality = null;
 
     private DNA(Race race) {
         this.race = race;
@@ -28,16 +27,12 @@ public class DNA {
         return gender;
     }
 
-    public Sexuality getSexuality() {
-        return sexuality;
-    }
 
     public static final class Builder {
         private Race race;
         private String skinOrFurColour;
         private String eyeColour;
         private Gender gender;
-        private Sexuality sexuality;
 
         private Builder() {
 
@@ -63,16 +58,10 @@ public class DNA {
             return this;
         }
 
-        public Builder sexuality(Sexuality sexuality) {
-            this.sexuality = sexuality;
-            return this;
-        }
-
         public DNA build() {
             DNA dna = new DNA(this.race);
             dna.skinOrFurColour = this.skinOrFurColour;
             dna.eyeColour = this.eyeColour;
-            dna.sexuality = this.sexuality;
             dna.gender = this.gender;
             return dna;
         }
