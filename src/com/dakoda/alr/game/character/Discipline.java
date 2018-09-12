@@ -167,10 +167,6 @@ public class Discipline {
 
     }
 
-    public Discipline(Object loadedDiscipline) {
-        // TODO: 10/09/2018
-    }
-
     public int getCurrentExperience() {
         return experience;
     }
