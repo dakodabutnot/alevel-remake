@@ -1,4 +1,5 @@
 package com.dakoda.alr.world.item;
+import com.dakoda.alr.game.structure.Currency;
 
 public abstract class Item {
 
@@ -19,6 +20,10 @@ public abstract class Item {
     }
 
     public abstract String getDescription();
+
+    public String getSellDescription() {
+        return "This item can be sold for " + Currency.convertToCSG(moneyValue);
+    }
 
     public int getMoneyValue() {
         return moneyValue;
