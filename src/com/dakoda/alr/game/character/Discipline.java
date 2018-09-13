@@ -189,10 +189,7 @@ public class Discipline {
 
     public static Discipline.Disciplines getMatchingSpecialisedDiscipline(Profession.Type profession) {
         Disciplines fetch = Arrays.stream(Disciplines.values()).filter(entry -> entry.getProfessionRequired() == profession).findFirst().orElse(null);
-        if (fetch != null) {
-            return fetch;
-        } else {
-            throw new RuntimeException("A profession that you have defined in Profession.Type does not have its own specialised discipline. Make one.");
-        }
+        if (fetch != null) return fetch;
+        throw new RuntimeException("A profession that you have defined in Profession.Type does not have its own specialised discipline. Make one.");
     }
 }
