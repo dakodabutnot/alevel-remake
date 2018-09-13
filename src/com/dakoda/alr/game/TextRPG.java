@@ -8,16 +8,16 @@ public class TextRPG {
     //stop committing things irrelevant to the branch you're better than this
 
     public static void main(String[] args) {
-        Quest quest = new Quest.QuestBuilder()
-                .addItemRequirement(Items.Quest.APPLE.get(), 10)
-                .build();
+//        Quest quest = new Quest.QuestBuilder()
+//                .addItemRequirement(Items.Quest.APPLE.get(), 10)
+//                .build();
 
         Inventory inventory = builtInventory();
 
-        inventory.getAllItems().forEach((key, value) -> System.out.println(key.getName() + " | " + key.getItemType().getDisplayText() + " | " + value.toString()));
+//        inventory.getAllItems().forEach((key, value) -> System.out.println(key.getName() + " | " + key.getItemType().getDisplayText() + " | " + value.toString()));
 
-//        inventory.getFiltered(WEAPON)
-//                .forEach((key, value) -> System.out.println(key.getName() + " | " + key.getItemType().getDisplayText() + " | " + value.toString()));
+        inventory.getFiltered(WEAPON)
+                .forEach((key, value) -> System.out.println(key.getName() + " | " + key.getItemType().getDisplayText() + " | " + value.toString()));
     }
 
     static Inventory builtInventory() {
