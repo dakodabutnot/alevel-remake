@@ -11,42 +11,42 @@ public class Discipline {
 
         // CRAFTING ---------------------------------------------------------
         CHEF("Chef",
-                new Discipline("Chef"),
+                new Discipline("Chef", false),
                 null
                 ),                   // cooking
         TAILOR("Tailor",
-                new Discipline("Tailor"),
+                new Discipline("Tailor", false),
                 null
                 ),               // clothing (and light, medium armour)
         BLACKSMITH("Blacksmith",
-                new Discipline("Blacksmith"),
+                new Discipline("Blacksmith", false),
                 null
                 ),       // metal weapons, heavy armour
         BOWYER("Bowyer",
-                new Discipline("Bowyer"),
+                new Discipline("Bowyer", false),
                 null
                 ),               // bows, crossbows
         ALCHEMIST("Alchemist",
-                new Discipline("Alchemist"),
+                new Discipline("Alchemist", false),
                 null
                 ),         // consumables
         CONJURSMITH("Conjursmith",
-                new Discipline("Conjursmith"),
+                new Discipline("Conjursmith", false),
                 null
                 ),     // wands, staves
         // ------------------------------------------------------------------
 
         // HARVESTING -------------------------------------------------------
         FARMER("Farmer",
-                new Discipline("Farmer"),
+                new Discipline("Farmer", false),
                 null
                 ),               // growing materials
         WORKER("Worker",
-                new Discipline("Worker"),
+                new Discipline("Worker", false),
                 null
                 ),               // harvesting natural materials
         MINER("Miner",
-                new Discipline("Miner"),
+                new Discipline("Miner", false),
                 null
                 ),                 // harvesting ores, specialty materials
         // ------------------------------------------------------------------
@@ -106,11 +106,11 @@ public class Discipline {
 
         // MISC -------------------------------------------------------------
         DIVINER("Diviner",
-                new Discipline("Diviner"),
+                new Discipline("Diviner", false),
                 null
                 ),             // enchanting
         CARPENTER("Carpenter",
-                new Discipline("Carpenter"),
+                new Discipline("Carpenter", false),
                 null
                 ),         // furniture
         // ------------------------------------------------------------------
@@ -147,11 +147,6 @@ public class Discipline {
         public Profession.Type getProfessionRequired() {
             return professionRequired;
         }
-    }
-
-    private Discipline(String name) {
-        defaulted(name);
-        this.nextLevel = 20;
     }
 
     private Discipline(String name, boolean specialised) {
