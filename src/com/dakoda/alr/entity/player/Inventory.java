@@ -1,12 +1,32 @@
 package com.dakoda.alr.entity.player;
 import com.dakoda.alr.item.Item;
-import com.dakoda.alr.item.Item.Type;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class Inventory {
 
     private HashMap<Item, Integer> items = new HashMap<>();
+    private long currency;
+
+    public void addCurrency(long add) {
+        if (add > 0) {
+            if (checkValidCurrencyChange(add)) currency += add;
+        } else {
+            if (checkValidCurrencyChange(-add)) currency += -add;
+        }
+    }
+
+    public void subCurrency(long sub) {
+        if (sub > 0) {
+            if (checkValidCurrencyChange(-sub)) currency -= sub;
+        } else {
+            if (checkValidCurrencyChange(sub)) currency -= -sub;
+        }
+    }
+
+    public boolean checkValidCurrencyChange(long change) {
+        return currency + change > 0 && currency + change < Long.MAX_VALUE;
+    }
 
     public void addItem(Item item) {
         addItem(item, 1);
