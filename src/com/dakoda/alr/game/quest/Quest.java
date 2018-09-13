@@ -36,7 +36,7 @@ public final class Quest {
         return description;
     }
 
-    private void construct() {
+    private void validateQuest() {
         if (toKill == null) hasKilled = true;
         if (toGo == null) hasGone = true;
         if (toGet == null) hasGot = true;
@@ -145,7 +145,7 @@ public final class Quest {
             quest.toGo = this.toGo;
             quest.toGet = this.toGet;
             quest.description = this.description;
-            quest.construct();
+            quest.validateQuest();
             return quest;
         }
     }
