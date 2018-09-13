@@ -2,6 +2,7 @@ package com.dakoda.alr.game.player;
 import com.dakoda.alr.world.item.Item;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public final class Inventory {
 
@@ -87,12 +88,9 @@ public final class Inventory {
     }
 
     public HashMap<Item, Integer> getFiltered(Item.Type itemType) {
-        HashMap<Item, Integer> hashMap = new HashMap<>();
-        for (Map.Entry<Item, Integer> entry : getAllItems().entrySet()) {
-            if (entry.getKey().getItemType().equals(itemType)) {
-                hashMap.put(entry.getKey(), entry.getValue());
-            }
-        }
-        return hashMap;
+        return (HashMap<Item, Integer>)
+                (getAllItems().entrySet().stream()
+                .filter(entry -> entry.getKey().getItemType().equals(itemType))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 }
