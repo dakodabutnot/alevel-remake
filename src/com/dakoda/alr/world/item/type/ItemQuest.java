@@ -13,4 +13,9 @@ public class ItemQuest extends Item {
     public String getDescription() {
         return "This item is required for a quest.";
     }
+
+    @Override
+    public String getSellDescription() {
+        return "This item cannot be sold.";
+    }
 }
