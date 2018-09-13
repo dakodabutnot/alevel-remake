@@ -4,19 +4,10 @@ import static com.dakoda.alr.world.item.Item.Type.QUEST;
 
 public class ItemQuest extends Item {
 
-    public ItemQuest(String name, int moneyValue) {
-        setMoneyValue(moneyValue);
-        defaulted(name);
-    }
-
     public ItemQuest(String name) {
-        setMoneyValue(1);
-        defaulted(name);
-    }
-
-    private void defaulted(String name) {
         setName(name);
         setItemType(QUEST);
+        setMoneyValue(-1);
     }
 
     public String getDescription() {
