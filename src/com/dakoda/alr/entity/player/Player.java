@@ -3,13 +3,13 @@ import com.dakoda.alr.entity.Entity;
 
 public final class Player extends Entity {
 
-    private Inventory inventory;
+    private Inventory inv;
 
     public Player() {
 
     }
 
-    public Inventory getInventory() {
-        return inventory;
+    public Inventory inventory() {
+        return inv;
     }
 }
