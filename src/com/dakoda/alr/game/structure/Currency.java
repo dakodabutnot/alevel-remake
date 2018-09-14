@@ -2,7 +2,13 @@ package com.dakoda.alr.game.structure;
 
 public interface Currency {
 
-    static String convertToCSG(long amount) {
+    /**
+     * Divides a given number into the minimum amount of monetary units. Dependent on the Unit enum within the same class.
+     * Stylised based on this current context using StringBuilder.
+     * @param amount number to convert
+     * @return A string explaining the monetary makeup of the number as defined in the Unit enum.
+     */
+    static String convertToUnits(long amount) {
 
         long amountToConvert = amount;
         StringBuilder returned = new StringBuilder();
@@ -21,28 +27,37 @@ public interface Currency {
         return returned.toString();
     }
 
+    /**
+     * Defines preset names for each monetary value. The first element must have a value of 1.
+     * The values of those thereafter define the worth of each element in relation to the first element.
+     */
     enum Unit {
 
-        COPPER(1L),
-        SILVER(50L),
-        GOLD(1000L),
-        PLATINUM(500_000L),
+        COPPER(1),
+        SILVER(50),
+        GOLD(1000),
+        PLATINUM(500_000),
 
         ;
 
-        private final long copperValue;
+        private final long minimumValue;
 
         Unit(
-                long copperValue
+                long minimumValue
         ) {
-            this.copperValue = copperValue;
+            this.minimumValue = minimumValue;
         }
 
         public long value() {
-            return copperValue;
+            return minimumValue;
         }
     }
 
+    /**
+     * Inverts (reverses) a given array.
+     * @param array The Unit[] array to be inverted (reversed).
+     * @return The reversed Unit[] array.
+     */
     static Unit[] invertArray(Unit[] array) {
         for (int i = 0; i < array.length / 2; i++) {
             Unit temp = array[i];
