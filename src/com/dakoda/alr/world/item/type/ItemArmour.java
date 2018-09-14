@@ -1,30 +1,30 @@
 package com.dakoda.alr.world.item.type;
 import com.dakoda.alr.world.item.Item;
 import com.dakoda.alr.world.item.attr.ArmourWeight;
-import com.dakoda.alr.world.item.attr.ArmourSlot;
+import com.dakoda.alr.world.item.attr.ArmourEquipSlot;
 import com.dakoda.alr.world.item.attr.ArmourMaterial;
 import static com.dakoda.alr.world.item.Item.Type.ARMOUR;
 
 public class ItemArmour extends Item {
 
     private ArmourWeight armourWeight;
-    private ArmourSlot armourSlot;
+    private ArmourEquipSlot armourEquipSlot;
     private ArmourMaterial armourMaterial;
 
-    public ItemArmour(String name, ArmourSlot armourSlot, ArmourMaterial armourMaterial) {
+    public ItemArmour(String name, ArmourEquipSlot armourEquipSlot, ArmourMaterial armourMaterial) {
         setMoneyValue(1);
-        defaulted(name, armourSlot, armourMaterial);
+        defaulted(name, armourEquipSlot, armourMaterial);
     }
 
-    public ItemArmour(String name, ArmourSlot armourSlot, ArmourMaterial armourMaterial, int moneyValue) {
+    public ItemArmour(String name, ArmourEquipSlot armourEquipSlot, ArmourMaterial armourMaterial, int moneyValue) {
         setMoneyValue(moneyValue);
-        defaulted(name, armourSlot, armourMaterial);
+        defaulted(name, armourEquipSlot, armourMaterial);
     }
 
-    private void defaulted(String name, ArmourSlot armourSlot, ArmourMaterial armourMaterial) {
+    private void defaulted(String name, ArmourEquipSlot armourEquipSlot, ArmourMaterial armourMaterial) {
         setName(name);
         setItemType(ARMOUR);
-        this.armourSlot = armourSlot;
+        this.armourEquipSlot = armourEquipSlot;
         this.armourWeight = armourMaterial.getArmourWeight();
         this.armourMaterial = armourMaterial;
     }
@@ -41,7 +41,7 @@ public class ItemArmour extends Item {
         return armourMaterial;
     }
 
-    public ArmourSlot getArmourSlot() {
-        return armourSlot;
+    public ArmourEquipSlot getArmourEquipSlot() {
+        return armourEquipSlot;
     }
 }

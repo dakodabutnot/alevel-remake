@@ -1,5 +1,5 @@
 package com.dakoda.alr.world.item;
-import com.dakoda.alr.world.item.attr.ArmourSlot;
+import com.dakoda.alr.world.item.attr.ArmourEquipSlot;
 import com.dakoda.alr.world.item.attr.WeaponType;
 import com.dakoda.alr.world.item.type.*;
 import static com.dakoda.alr.world.item.attr.WeaponType.*;
@@ -11,7 +11,7 @@ public class Items {
 
     public enum Armour {
 
-        IRON_HELMET(new ItemArmour("Iron Helmet", ArmourSlot.HEAD, ArmourMaterial.Heavy.IRON.getMaterial(), 200));
+        IRON_HELMET(new ItemArmour("Iron Helmet", ArmourEquipSlot.HEAD, ArmourMaterial.Heavy.IRON.getMaterial(), 200));
 
         ;
 
