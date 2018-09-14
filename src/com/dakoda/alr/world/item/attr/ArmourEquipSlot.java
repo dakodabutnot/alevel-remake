@@ -1,6 +1,6 @@
 package com.dakoda.alr.world.item.attr;
 
-public enum ArmourSlot {
+public enum ArmourEquipSlot {
 
     HEAD("Head"),
     SHOULDER("Shoulder"),
@@ -15,7 +15,7 @@ public enum ArmourSlot {
 
     private String displayText;
 
-    ArmourSlot(
+    ArmourEquipSlot(
             String displayText
     ) {
         this.displayText = displayText;

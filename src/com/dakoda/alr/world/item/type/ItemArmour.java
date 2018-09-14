@@ -1,47 +1,47 @@
 package com.dakoda.alr.world.item.type;
 import com.dakoda.alr.world.item.Item;
-import com.dakoda.alr.world.item.attr.ArmourLevel;
-import com.dakoda.alr.world.item.attr.ArmourSlot;
-import com.dakoda.alr.world.item.attr.EquipMaterial;
+import com.dakoda.alr.world.item.attr.ArmourWeight;
+import com.dakoda.alr.world.item.attr.ArmourEquipSlot;
+import com.dakoda.alr.world.item.attr.ArmourMaterial;
 import static com.dakoda.alr.world.item.Item.Type.ARMOUR;
 
 public class ItemArmour extends Item {
 
-    private ArmourLevel armourLevel;
-    private ArmourSlot armourSlot;
-    private EquipMaterial equipMaterial;
+    private ArmourWeight armourWeight;
+    private ArmourEquipSlot armourEquipSlot;
+    private ArmourMaterial armourMaterial;
 
-    public ItemArmour(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial) {
+    public ItemArmour(String name, ArmourEquipSlot armourEquipSlot, ArmourMaterial armourMaterial) {
         setMoneyValue(1);
-        defaulted(name, armourSlot, equipMaterial);
+        defaulted(name, armourEquipSlot, armourMaterial);
     }
 
-    public ItemArmour(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial, int moneyValue) {
+    public ItemArmour(String name, ArmourEquipSlot armourEquipSlot, ArmourMaterial armourMaterial, int moneyValue) {
         setMoneyValue(moneyValue);
-        defaulted(name, armourSlot, equipMaterial);
+        defaulted(name, armourEquipSlot, armourMaterial);
     }
 
-    private void defaulted(String name, ArmourSlot armourSlot, EquipMaterial equipMaterial) {
+    private void defaulted(String name, ArmourEquipSlot armourEquipSlot, ArmourMaterial armourMaterial) {
         setName(name);
         setItemType(ARMOUR);
-        this.armourSlot = armourSlot;
-        this.armourLevel = equipMaterial.getArmourLevel();
-        this.equipMaterial = equipMaterial;
+        this.armourEquipSlot = armourEquipSlot;
+        this.armourWeight = armourMaterial.getArmourWeight();
+        this.armourMaterial = armourMaterial;
     }
 
     public String getDescription() {
         return "This item is used in combat to protect the wearer, and can only be equipped by certain professions.";
     }
 
-    public ArmourLevel getArmourLevel() {
-        return armourLevel;
+    public ArmourWeight getArmourWeight() {
+        return armourWeight;
     }
 
-    public EquipMaterial getEquipMaterial() {
-        return equipMaterial;
+    public ArmourMaterial getArmourMaterial() {
+        return armourMaterial;
     }
 
-    public ArmourSlot getArmourSlot() {
-        return armourSlot;
+    public ArmourEquipSlot getArmourEquipSlot() {
+        return armourEquipSlot;
     }
 }

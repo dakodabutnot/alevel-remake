@@ -1,6 +1,6 @@
 package com.dakoda.alr.world.item.attr;
 
-public enum ArmourLevel {
+public enum ArmourWeight {
 
     LIGHT("Light"),
     MEDIUM("Medium"),
@@ -8,7 +8,7 @@ public enum ArmourLevel {
 
     private String displayText;
 
-    ArmourLevel(
+    ArmourWeight(
             String displayText
     ) {
         this.displayText = displayText;
