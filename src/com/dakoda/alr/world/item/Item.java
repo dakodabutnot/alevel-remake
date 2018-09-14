@@ -22,7 +22,7 @@ public abstract class Item {
     public abstract String getDescription();
 
     public String getSellDescription() {
-        return "This item can be sold for " + Currency.convertToCSG(moneyValue);
+        return "This item can be sold for " + Currency.convertToUnits(moneyValue);
     }
 
     public int getMoneyValue() {
