@@ -21,6 +21,11 @@ public abstract class Item {
 
     public abstract String getDescription();
 
+    /**
+     * Used to get a string representing the sell-ability of the item by calling a method of Currency. This method is
+     * overridden for specific children of Item.
+     * @return String informing what the item is sold for.
+     */
     public String getSellDescription() {
         return "This item can be sold for " + Currency.convertToUnits(moneyValue);
     }
@@ -46,6 +51,10 @@ public abstract class Item {
         return (obj instanceof Item) && ((Item) obj).getItemType().equals(this.itemType) && (((Item) obj).getName().equals(this.name));
     }
 
+    /**
+     * Lists the different types of items there are.
+     * For filtering/categorising purposes.
+     */
     public enum Type {
 
         JUNK("Junk"),
