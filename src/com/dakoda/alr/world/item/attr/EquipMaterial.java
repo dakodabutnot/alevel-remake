@@ -2,40 +2,83 @@ package com.dakoda.alr.world.item.attr;
 
 import static com.dakoda.alr.world.item.attr.ArmourLevel.*;
 
-public enum EquipMaterial {
+public class EquipMaterial {
 
-    LEATHER("Leather", MEDIUM),
-    HIDE("Hide", MEDIUM),
-    REINFORCED_LEATHER("Reinforced leather", MEDIUM),
+    public enum Heavy {
 
-    SILK("Silk", LIGHT),
-    CLOTH("Cloth", LIGHT),
-    MANA_SILK("Mana-infused silk", LIGHT),
+        IRON("Iron"),
+        STEEL("Steel"),
+        DARKSTEEL("Darksteel"),
+        TENACIUM("Tenacium"),
+        ;
 
-    COPPER("Copper", HEAVY),
-    SILVER("Silver", HEAVY),
-    IRON("Iron", HEAVY),
-    BRONZE("Bronze", HEAVY),
-    MITHRIL("Mithril", HEAVY),
-    DRACONIUM("Draconium", HEAVY);
-    // TODO: 12/09/2018 come up with better names please
+        private String displayText;
+        private ArmourLevel armourLevel;
 
-    private String displayText;
-    private ArmourLevel armourLevel;
+        Heavy(
+                String displayText
+        ) {
+            this.displayText = displayText;
+        }
 
-    EquipMaterial(
-            String displayText,
-            ArmourLevel armourLevel
-    ) {
-        this.displayText = displayText;
-        this.armourLevel = armourLevel;
+        public String getDisplayText() {
+            return displayText;
+        }
+
+        public ArmourLevel getArmourLevel() {
+            return HEAVY;
+        }
     }
 
-    public String getDisplayText() {
-        return displayText;
+    public enum Medium {
+
+        HIDE("Hide"),
+        THIN_LEATHER("Thin leather"),
+        RUGGED_LEATHER("Rugged leather"),
+        HARDENED_LEATHER("Hardened leather"),
+        ;
+
+        private String displayText;
+        private ArmourLevel armourLevel;
+
+        Medium(
+                String displayText
+        ) {
+            this.displayText = displayText;
+        }
+
+        public String getDisplayText() {
+            return displayText;
+        }
+
+        public ArmourLevel getArmourLevel() {
+            return MEDIUM;
+        }
     }
 
-    public ArmourLevel getArmourLevel() {
-        return armourLevel;
+    public enum Light {
+
+        COTTON("Cotton"),
+        LINEN("Linen"),
+        SILK("Silk"),
+        GOSSAMER("Gossamer"),
+        ;
+
+        private String displayText;
+        private ArmourLevel armourLevel;
+
+        Light(
+                String displayText
+        ) {
+            this.displayText = displayText;
+        }
+
+        public String getDisplayText() {
+            return displayText;
+        }
+
+        public ArmourLevel getArmourLevel() {
+            return MEDIUM;
+        }
     }
 }
