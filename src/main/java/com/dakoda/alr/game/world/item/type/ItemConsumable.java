@@ -1,21 +1,19 @@
 package com.dakoda.alr.game.world.item.type;
 import com.dakoda.alr.game.world.item.Item;
 
-import static com.dakoda.alr.game.world.item.Item.Type.CONSUMABLE;
-
 public class ItemConsumable extends Item {
 
     private Type consumableType;
 
     public ItemConsumable(String name, Type consumableType, int moneyValue) {
-        setItemType(CONSUMABLE);
+        setItemType(Item.Type.CONSUMABLE);
         this.consumableType = consumableType;
         setMoneyValue(moneyValue);
         setName(name);
     }
 
     public ItemConsumable(String name, Type consumableType) {
-        setItemType(CONSUMABLE);
+        setItemType(Item.Type.CONSUMABLE);
         this.consumableType = consumableType;
         setMoneyValue(1);
         setName(name);

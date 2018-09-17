@@ -1,6 +1,6 @@
 package com.dakoda.alr.game.util;
 
-public interface Currency {
+public final class Currency {
 
     /**
      * Divides a given number into the minimum amount of monetary units. Dependent on the Unit enum within the same class.
@@ -8,7 +8,7 @@ public interface Currency {
      * @param amount number to convert
      * @return A string explaining the monetary makeup of the number as defined in the Unit enum.
      */
-    static String convertToUnits(long amount) {
+    public static String convertToUnits(long amount) {
 
         long amountToConvert = amount;
         StringBuilder returned = new StringBuilder();
@@ -31,7 +31,7 @@ public interface Currency {
      * Defines preset names for each monetary value. The first element must have a value of 1.
      * The values of those thereafter define the worth of each element in relation to the first element.
      */
-    enum Unit {
+    public enum Unit {
 
         COPPER(1),
         SILVER(50),
@@ -58,7 +58,7 @@ public interface Currency {
      * @param array The Unit[] array to be inverted (reversed).
      * @return The reversed Unit[] array.
      */
-    static Unit[] invertArray(Unit[] array) {
+    private static Unit[] invertArray(Unit[] array) {
         for (int i = 0; i < array.length / 2; i++) {
             Unit temp = array[i];
             array[i] = array[array.length - 1 - i];

@@ -1,5 +1,4 @@
 package com.dakoda.alr.game.world.item.attribute;
-import static com.dakoda.alr.game.world.item.attribute.ArmourWeight.*;
 
 public class ArmourMaterial {
 
@@ -21,10 +20,10 @@ public class ArmourMaterial {
 
     public enum Heavy {
 
-        IRON(new ArmourMaterial("Iron", HEAVY)),
-        STEEL(new ArmourMaterial("Steel", HEAVY)),
-        DARKSTEEL(new ArmourMaterial("Darksteel", HEAVY)),
-        TENACIUM(new ArmourMaterial("Tenacium", HEAVY)),
+        IRON(new ArmourMaterial("Iron", ArmourWeight.HEAVY)),
+        STEEL(new ArmourMaterial("Steel", ArmourWeight.HEAVY)),
+        DARKSTEEL(new ArmourMaterial("Darksteel", ArmourWeight.HEAVY)),
+        TENACIUM(new ArmourMaterial("Tenacium", ArmourWeight.HEAVY)),
         ;
 
         private ArmourMaterial material;
@@ -42,10 +41,10 @@ public class ArmourMaterial {
 
     public enum Medium {
 
-        HIDE(new ArmourMaterial("Hide", MEDIUM)),
-        THIN_LEATHER(new ArmourMaterial("Thin Leather", MEDIUM)),
-        RUGGED_LEATHER(new ArmourMaterial("Rugged Leather", MEDIUM)),
-        HARDENED_LEATHER(new ArmourMaterial("Hardened Leather", MEDIUM)),
+        HIDE(new ArmourMaterial("Hide", ArmourWeight.MEDIUM)),
+        THIN_LEATHER(new ArmourMaterial("Thin Leather", ArmourWeight.MEDIUM)),
+        RUGGED_LEATHER(new ArmourMaterial("Rugged Leather", ArmourWeight.MEDIUM)),
+        HARDENED_LEATHER(new ArmourMaterial("Hardened Leather", ArmourWeight.MEDIUM)),
         ;
 
         private ArmourMaterial material;
@@ -63,10 +62,10 @@ public class ArmourMaterial {
 
     public enum Light {
 
-        COTTON(new ArmourMaterial("Cotton", LIGHT)),
-        LINEN(new ArmourMaterial("Linen", LIGHT)),
-        SILK(new ArmourMaterial("Silk", LIGHT)),
-        GOSSAMER(new ArmourMaterial("Gossamer", LIGHT)),
+        COTTON(new ArmourMaterial("Cotton", ArmourWeight.LIGHT)),
+        LINEN(new ArmourMaterial("Linen", ArmourWeight.LIGHT)),
+        SILK(new ArmourMaterial("Silk", ArmourWeight.LIGHT)),
+        GOSSAMER(new ArmourMaterial("Gossamer", ArmourWeight.LIGHT)),
         ;
 
         private ArmourMaterial material;

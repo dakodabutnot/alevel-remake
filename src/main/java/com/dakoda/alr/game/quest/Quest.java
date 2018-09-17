@@ -4,6 +4,7 @@ import com.dakoda.alr.game.world.entity.Hostile;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.item.type.ItemQuest;
 import com.dakoda.alr.game.world.location.Location;
+
 import java.util.HashMap;
 
 public final class Quest {

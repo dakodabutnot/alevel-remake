@@ -1,12 +1,11 @@
 package com.dakoda.alr.game.world.item.type;
 import com.dakoda.alr.game.world.item.Item;
-import static com.dakoda.alr.game.world.item.Item.Type.QUEST;
 
 public class ItemQuest extends Item {
 
     public ItemQuest(String name) {
         setName(name);
-        setItemType(QUEST);
+        setItemType(Type.QUEST);
         setMoneyValue(-1);
     }
 
