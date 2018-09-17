@@ -1,4 +1,4 @@
-package com.dakoda.alr.game.player;
+package com.dakoda.alr.game.character;
 import com.dakoda.alr.world.item.Item;
 import java.util.HashMap;
 import java.util.Map;
