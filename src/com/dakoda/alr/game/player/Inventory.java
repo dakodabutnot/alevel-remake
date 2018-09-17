@@ -11,30 +11,30 @@ public final class Inventory {
 
     /**
      * Increases the inventory's currency value by the given value.
-     * A negative value parsed here will validate as if it was positive.
+     * A negative value parsed here will validate as if it was positive,
+     * however a warning will be printed in the console indicating so.
      *
      * @param add The amount to be added.
      */
     public void addCurrency(long add) {
-        if (add > 0) {
-            if (checkValidCurrencyChange(add)) currency += add;
-        } else {
-            if (checkValidCurrencyChange(-add)) currency += -add;
+        if (checkValidCurrencyChange(Math.abs(add))) {
+            currency += Math.abs(add);
         }
+        if (add < 0) System.out.println("!!WARNING: An attempt was made to add a negative amount of currency to the player. The absolute value of the number was evaluated instead.");
     }
 
     /**
      * Decreases the inventory's currency value by the given value.
-     * A negative value parsed here will validate as if it was positive.
+     * A negative value parsed here will validate as if it was positive,
+     * however a warning will be printed in the console indicating so.
      *
      * @param sub The amount to be subtracted.
      */
     public void subCurrency(long sub) {
-        if (sub > 0) {
-            if (checkValidCurrencyChange(-sub)) currency -= sub;
-        } else {
-            if (checkValidCurrencyChange(sub)) currency -= -sub;
+        if (checkValidCurrencyChange(-(Math.abs(sub)))) {
+            currency -= Math.abs(sub);
         }
+        if (sub < 0) System.out.println("!!WARNING: An attempt was made to subtract a negative amount of currency from the player. The absolute value of the number was evaluated instead.");
     }
 
     /**
