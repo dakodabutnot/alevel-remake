@@ -1,6 +1,6 @@
 package com.dakoda.alr.game.battle;
 
-import com.dakoda.alr.world.item.Item;
+import com.dakoda.alr.game.world.item.Item;
 
 import java.util.HashMap;
 

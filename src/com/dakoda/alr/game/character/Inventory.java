@@ -1,5 +1,5 @@
 package com.dakoda.alr.game.character;
-import com.dakoda.alr.world.item.Item;
+import com.dakoda.alr.game.world.item.Item;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;

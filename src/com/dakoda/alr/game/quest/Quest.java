@@ -1,8 +1,9 @@
 package com.dakoda.alr.game.quest;
-import com.dakoda.alr.world.entity.Hostile;
-import com.dakoda.alr.world.item.Item;
-import com.dakoda.alr.world.item.type.ItemQuest;
-import com.dakoda.alr.world.location.Location;
+import com.dakoda.alr.game.exception.PointlessQuestException;
+import com.dakoda.alr.game.world.entity.Hostile;
+import com.dakoda.alr.game.world.item.Item;
+import com.dakoda.alr.game.world.item.type.ItemQuest;
+import com.dakoda.alr.game.world.location.Location;
 import java.util.HashMap;
 
 public final class Quest {
