@@ -1,5 +1,7 @@
 package com.dakoda.alr.game.world.entity;
 import com.dakoda.alr.game.character.Profession;
+import com.dakoda.alr.game.exception.NullAttributesInstantiationException;
+
 import java.util.Arrays;
 
 public class Attributes {
@@ -84,7 +86,7 @@ public class Attributes {
                         baseAttr.luck
                 );
             } catch (NullPointerException e) {
-                throw new RuntimeException("You tried to instantiate an Attributes class with null parameters.");
+                throw new NullAttributesInstantiationException("You tried to instantiate an Attributes class with null parameters.");
             }
         }
     }

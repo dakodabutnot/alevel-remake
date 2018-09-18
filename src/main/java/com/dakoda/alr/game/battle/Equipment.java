@@ -1,4 +1,5 @@
 package com.dakoda.alr.game.battle;
+import com.dakoda.alr.game.exception.NullEquipException;
 import com.dakoda.alr.game.world.item.attribute.ArmourEquipSlot;
 import com.dakoda.alr.game.world.item.type.ItemArmour;
 import com.dakoda.alr.game.world.item.type.ItemWeapon;
@@ -40,7 +41,7 @@ public class Equipment {
                 this.equippedWeapons[slot] = weapon;
             }
         } else {
-            System.out.println("WARNING: An attempt was made to equip a 'null' weapon.");
+            throw new NullEquipException("WARNING: An attempt was made to equip a 'null' weapon.");
         }
     }
 
@@ -59,7 +60,7 @@ public class Equipment {
                 }
             }
         } else {
-            System.out.println("WARNING: An attempt was made to equip a 'null' weapon.");
+            throw new NullEquipException("WARNING: An attempt was made to equip a 'null' weapon.");
         }
     }
 
