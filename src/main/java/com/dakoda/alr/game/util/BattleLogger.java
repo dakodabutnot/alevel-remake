@@ -63,7 +63,7 @@ public final class BattleLogger {
      * @return String representing an entity being poisoned by another.
      */
     static String logStatusPoison(Entity entity, Entity dealer) {
-        return entity.getName() + " has been inflicted with poison from " + dealer.getName() + "!";
+        return entity.getName() + " has been inflicted with poison by " + dealer.getName() + "!";
     }
 
     /**
