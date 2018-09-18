@@ -1,4 +1,6 @@
 package com.dakoda.alr.game.character;
+import com.dakoda.alr.game.exception.IncompleteProfessionDefinitionException;
+
 import java.util.Arrays;
 
 public class Discipline {
@@ -185,6 +187,6 @@ public class Discipline {
     public static Discipline.Disciplines getMatchingSpecialisedDiscipline(Profession.Type profession) {
         Disciplines fetch = Arrays.stream(Disciplines.values()).filter(entry -> entry.getProfessionRequired() == profession).findFirst().orElse(null);
         if (fetch != null) return fetch;
-        throw new RuntimeException("A profession that you have defined in Profession.Type does not have its own specialised discipline. Make one.");
+        throw new IncompleteProfessionDefinitionException("A profession that you have defined in Profession.Type does not have its own specialised discipline. Make one.");
     }
 }

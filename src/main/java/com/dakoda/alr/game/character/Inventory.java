@@ -1,4 +1,7 @@
 package com.dakoda.alr.game.character;
+import com.dakoda.alr.game.exception.InvalidCurrencyChangeException;
+import com.dakoda.alr.game.exception.InvalidInventoryMutationException;
+import com.dakoda.alr.game.exception.NullInventoryMutationException;
 import com.dakoda.alr.game.world.item.Item;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +23,7 @@ public final class Inventory {
         if (checkValidCurrencyChange(Math.abs(add))) {
             currency += Math.abs(add);
         }
-        if (add < 0) System.out.println("!!WARNING: An attempt was made to add a negative amount of currency to the player. The absolute value of the number was evaluated instead.");
+        if (add < 0) throw new InvalidCurrencyChangeException("!!WARNING: An attempt was made to add a negative amount of currency to the player. The absolute value of the number was evaluated instead.");
     }
 
     /**
@@ -34,7 +37,7 @@ public final class Inventory {
         if (checkValidCurrencyChange(-(Math.abs(sub)))) {
             currency -= Math.abs(sub);
         }
-        if (sub < 0) System.out.println("!!WARNING: An attempt was made to subtract a negative amount of currency from the player. The absolute value of the number was evaluated instead.");
+        if (sub < 0) throw new InvalidCurrencyChangeException("!!WARNING: An attempt was made to subtract a negative amount of currency from the player. The absolute value of the number was evaluated instead.");
     }
 
     /**
@@ -69,9 +72,9 @@ public final class Inventory {
      */
     public void addItem(Item item, int amount) {
         if (amount < 0) {
-            throw new RuntimeException("You're trying to add a NEGATIVE amount of items to an inventory. Try 'removeItem' instead.");
+            throw new InvalidInventoryMutationException("You're trying to add a NEGATIVE amount of items to an inventory. Try 'removeItem' instead.");
         } else if (amount < 1){
-            throw new RuntimeException("You're trying to add ZERO of an item to an inventory.");
+            throw new InvalidInventoryMutationException("You're trying to add ZERO of an item to an inventory.");
         } else {
             if (items.containsKey(item)) {
                 items.put(item, items.get(item) + amount);
@@ -112,14 +115,14 @@ public final class Inventory {
      */
     public void removeItem(Item item, int amount) {
         if (amount < 0) {
-            throw new RuntimeException("You're trying to remove a NEGATIVE amount of items from an inventory. Try 'addItem' instead.");
+            throw new InvalidInventoryMutationException("You're trying to remove a NEGATIVE amount of items from an inventory. Try 'addItem' instead.");
         } else if (amount < 1){
-            throw new RuntimeException("You're trying to remove ZERO of an item from an inventory.");
+            throw new InvalidInventoryMutationException("You're trying to remove ZERO of an item from an inventory.");
         } else {
             if (items.containsKey(item)) {
                 items.put(item, items.get(item) + amount);
             } else {
-                throw new RuntimeException("You just tried to remove an item from an inventory that doesn't contain that item.");
+                throw new NullInventoryMutationException("You just tried to remove an item from an inventory that doesn't contain that item.");
             }
         }
         removeRedundantEntries();
