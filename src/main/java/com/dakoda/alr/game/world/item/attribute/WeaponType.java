@@ -8,6 +8,7 @@ import static com.dakoda.alr.game.character.Profession.Type.*;
 
 public enum WeaponType {
 
+    EMPTY("", false, false, null),
     // MELEE ----------------------------------------------------------
     SWORD("Sword",
             false,

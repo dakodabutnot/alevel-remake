@@ -5,6 +5,8 @@ public class ArmourMaterial {
     private String displayText;
     private ArmourWeight armourWeight;
 
+    public static final ArmourMaterial NONE = new ArmourMaterial("", ArmourWeight.NONE);
+
     private ArmourMaterial(String displayText, ArmourWeight armourWeight) {
         this.displayText = displayText;
         this.armourWeight = armourWeight;
