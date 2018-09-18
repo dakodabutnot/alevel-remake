@@ -2,9 +2,12 @@ package com.dakoda.alr.game.world.item.attribute;
 
 public enum ArmourWeight {
 
+    NONE(""),
     LIGHT("Light"),
     MEDIUM("Medium"),
-    HEAVY("Heavy");
+    HEAVY("Heavy"),
+
+    ;
 
     private String displayText;
 

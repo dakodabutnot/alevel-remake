@@ -1,19 +1,18 @@
 package com.dakoda.alr.game.world.item;
 import com.dakoda.alr.game.world.item.attribute.ArmourEquipSlot;
 import com.dakoda.alr.game.world.item.attribute.ArmourMaterial;
-import com.dakoda.alr.game.world.item.attribute.ArmourEquipSlot;
 import com.dakoda.alr.game.world.item.attribute.WeaponType;
 import com.dakoda.alr.game.world.item.type.*;
 import static com.dakoda.alr.game.world.item.attribute.WeaponType.*;
-import com.dakoda.alr.game.world.item.attribute.ArmourMaterial;
+
 import com.dakoda.alr.game.world.item.attribute.WeaponMaterial;
-import com.dakoda.alr.game.world.item.type.*;
 
 
 public class Items {
 
     public enum Armour {
 
+        EMPTY(new ItemArmour("", ArmourEquipSlot.NONE, ArmourMaterial.NONE)),
         IRON_HELMET(new ItemArmour("Iron Helmet", ArmourEquipSlot.HEAD, ArmourMaterial.Heavy.IRON.getMaterial(), 200));
 
         ;
@@ -131,6 +130,7 @@ public class Items {
 
     public enum Weapon {
 
+        EMPTY(new ItemWeapon("empty hand", WeaponType.EMPTY, WeaponMaterial.NONE, 0)),
         IRON_SWORD(new ItemWeapon("Iron Sword", SWORD, WeaponMaterial.WOOD, 10)),
         BOW(new ItemWeapon("Bow", WeaponType.LONGBOW, WeaponMaterial.WOOD, 20))
 
