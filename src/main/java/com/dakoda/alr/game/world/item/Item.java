@@ -1,10 +1,16 @@
 package com.dakoda.alr.game.world.item;
 
+import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.game.mechanic.Currency;
 import com.dakoda.alr.game.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
 
-import static com.dakoda.alr.game.world.item.Item.Item_Armour.Weight.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+import static com.dakoda.alr.game.character.Profession.*;
+import static com.dakoda.alr.game.world.item.Item.Armour.Weight.*;
 
 public interface Item extends Questable, GameObject {
 
@@ -23,45 +29,45 @@ public interface Item extends Questable, GameObject {
     Item withCurrencyValue(Integer currencyValue);
 
     static Item ofType(Type type) {
-        if (type == Type.GENERIC) {
-            return new Item_Generic();
-        } else if (type == Type.ARMOUR) {
-            return new Item_Armour();
-        } else if (type == Type.WEAPON) {
-            return new Item_Weapon();
-        } else if (type == Type.CONSUMABLE) {
-            return new Item_Consumable();
-        } else {
-            return null;
+        switch (type) {
+            case GENERIC:
+                return new Generic();
+            case ARMOUR:
+                return new Armour();
+            case WEAPON:
+                return new Weapon();
+            case CONSUMABLE:
+                return new Consumable();
+            default:
+                return null;
         }
     }
 
     enum Type {
-
-        GENERIC, ARMOUR, WEAPON, CONSUMABLE;
+        GENERIC, ARMOUR, WEAPON, CONSUMABLE
     }
 
-    class Item_Armour implements Item {
+    class Armour implements Item {
 
         String name;
-        Type type = Type.ARMOUR;
+        Item.Type type = Item.Type.ARMOUR;
         Integer currencyValue = 0;
 
-        public Item_Armour withName(String name) {
+        public Armour withName(String name) {
             this.name = name;
             return this;
         }
-        public Item_Armour withCurrencyValue(Integer currencyValue) {
+        public Armour withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
         }
 
         public String name() {
-            return null;
+            return name;
         }
 
-        public Type type() {
-            return null;
+        public Item.Type type() {
+            return type;
         }
 
         public String description() {
@@ -77,7 +83,7 @@ public interface Item extends Questable, GameObject {
         }
 
         public enum Slot {
-            NONE, HEAD, SHOULDER, BACK, BODY, LEGS, FEET, HANDS, TRINKET, RING, NECKLACE;
+            NONE, HEAD, SHOULDER, BACK, BODY, LEGS, FEET, HANDS, TRINKET, RING, NECKLACE
         }
 
         public static class Material {
@@ -165,33 +171,32 @@ public interface Item extends Questable, GameObject {
         }
 
         public enum Weight {
-            NONE, LIGHT, MEDIUM, HEAVY;
+            NONE, LIGHT, MEDIUM, HEAVY
         }
     }
 
-    class Item_Weapon implements Item {
+    class Weapon implements Item {
 
         String name;
-        Type type = Type.WEAPON;
-        String description = "";
+        Item.Type type = Item.Type.WEAPON;
         Integer currencyValue = 0;
 
-        public Item_Weapon withName(String name) {
+        public Weapon withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Item_Weapon withCurrencyValue(Integer currencyValue) {
+        public Weapon withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
         }
 
         public String name() {
-            return null;
+            return name;
         }
 
-        public Type type() {
-            return null;
+        public Item.Type type() {
+            return type;
         }
 
         public String description() {
@@ -205,30 +210,160 @@ public interface Item extends Questable, GameObject {
         public Integer currencyValue() {
             return currencyValue;
         }
+
+        enum Type {
+
+            EMPTY("", false, false, null),
+                    // MELEE ----------------------------------------------------------
+                    SWORD("Sword",
+                            false,
+                            false,
+                            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, ANTIQUER, ASSASSIN, PERFORATOR, NAGUAL, ARCHER, BARD))
+                    ),
+                    GREATSWORD("Greatsword",
+                            true,
+                            false,
+                            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, ANTIQUER))
+                    ),
+                    DAGGER("Dagger",
+                            false,
+                            false,
+                            new ArrayList<>(Arrays.asList(ASSASSIN, NAGUAL, ARCHER, HUNTER, DUELIST, PERFORATOR))
+                    ),
+                    AXE("Axe",
+                            false,
+                            false,
+                            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, CHRONOL, HUNTER))
+                    ),
+                    GREATAXE("Greataxe",
+                            true,
+                            false,
+                            new ArrayList<>(Arrays.asList(ANTIQUER, DUELIST, PALADIN))
+                    ),
+                    MACE("Mace",
+                            false,
+                            false,
+                            new ArrayList<>(Arrays.asList(HUNTER, PERFORATOR, NAGUAL))
+                    ),
+                    PIKE("Pike",
+                            true,
+                            false,
+                            new ArrayList<>(Arrays.asList(PERFORATOR, ANTIQUER, BARD))
+                    ),
+
+                    // RANGED ----------------------------------------------------------
+                    LONGBOW("Longbow",
+                            true,
+                            true,
+                            new ArrayList<>(Arrays.asList(ARCHER, ASSASSIN, NAGUAL, HUNTER))
+                    ),
+                    CROSSBOW("Crossbow",
+                            false,
+                            true,
+                            new ArrayList<>(Arrays.asList(ARCHER, HUNTER, NAGUAL))
+                    ),
+                    WAND("Wand",
+                            false,
+                            true,
+                            new ArrayList<>(Arrays.asList(ARCHER, PRIEST, CHRONOL, SHAMAN))
+                    ),
+                    STAFF("Staff",
+                            true,
+                            true,
+                            new ArrayList<>(Arrays.asList(ARCHER, PRIEST, CHRONOL, SHAMAN, ASSASSIN, PERFORATOR))
+                    ),
+                    TOME("Tome",
+                            true,
+                            true,
+                            new ArrayList<>(Arrays.asList(PRIEST, SHAMAN, CHRONOL, NAGUAL, ANTIQUER, PALADIN))
+                    ),
+                    INSTRUMENT("Instrument",
+                            true,
+                            true,
+                            new ArrayList<>(Collections.singletonList(BARD))
+                    ),
+                    HALLOW("Hallow",
+                            false,
+                            true,
+                            new ArrayList<>(Arrays.asList(BARD, PRIEST, SHAMAN, CHRONOL, NAGUAL, ASSASSIN))
+                    ),
+
+            ;
+
+            private String displayText;
+            private boolean isDoubleHanded;
+            private boolean isRanged;
+            private ArrayList<Profession> usedBy;
+
+            Type (
+                    String displayText,
+            boolean isDoubleHanded,
+            boolean isRanged,
+            ArrayList<Profession> usedBy
+    ) {
+                this.displayText = displayText;
+                this.isDoubleHanded = isDoubleHanded;
+                this.isRanged = isRanged;
+                this.usedBy = usedBy;
+            }
+
+            public String getDisplayText() {
+                return displayText;
+            }
+
+            public boolean isDoubleHanded() {
+                return isDoubleHanded;
+            }
+
+            public boolean isRanged() {
+                return isRanged;
+            }
+
+            public ArrayList<Profession> getApplicableProfessions() {
+                return usedBy;
+            }
+        }
+
+        enum Material {
+
+            NONE, IRON, WOOD
+        }
     }
 
-    class Item_Consumable implements Item {
+    class Consumable implements Item {
 
         String name;
-        Type type = Type.WEAPON;
+        Item.Type type = Item.Type.CONSUMABLE;
         Integer currencyValue = 0;
+        Consumable.Stat restorationStat;
+        Integer restorationValue;
 
-        public Item_Consumable withName(String name) {
+        public Consumable withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Item_Consumable withCurrencyValue(Integer currencyValue) {
+        public Consumable withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
         }
 
-        public String name() {
-            return null;
+        public Consumable withRestorationStat(Consumable.Stat restorationStat) {
+            this.restorationStat = restorationStat;
+            return this;
         }
 
-        public Type type() {
-            return null;
+        public Consumable withRestorationValue(Integer restorationValue) {
+            this.restorationValue = restorationValue;
+            return this;
+        }
+
+        public String name() {
+            return name;
+        }
+
+        public Item.Type type() {
+            return type;
         }
 
         public String description() {
@@ -242,30 +377,34 @@ public interface Item extends Questable, GameObject {
         public Integer currencyValue() {
             return currencyValue;
         }
+
+        public enum Stat {
+            HEALTH, ENERGY, MANA;
+        }
     }
 
-    class Item_Generic implements Item {
+    class Generic implements Item {
 
         String name;
         Type type = Type.WEAPON;
         Integer currencyValue = 0;
 
-        public Item_Generic withName(String name) {
+        public Generic withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Item_Generic withCurrencyValue(Integer currencyValue) {
+        public Generic withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
         }
 
         public String name() {
-            return null;
+            return name;
         }
 
         public Type type() {
-            return null;
+            return type;
         }
 
         public String description() {

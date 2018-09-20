@@ -1,76 +1,58 @@
 package com.dakoda.alr.game.character;
 
-public class Profession {
+public enum Profession {
 
-    private Type type;
-    private int level, experience, nextLevel;
+    DUELIST     (7, 3, 1, 2, 2),
+    PALADIN     (8, 2, 3, 1, 1),
+    ANTIQUER    (7, 2, 4, 1, 1),
+    PERFORATOR  (9, 2, 1, 2, 1),
+    ARCHER      (3, 6, 2, 2, 2),
+    ASSASSIN    (4, 7, 1, 1, 2),
+    NAGUAL      (5, 6, 1, 1, 2),
+    HUNTER      (1, 8, 2, 2, 2),
+    SHAMAN      (3, 2, 7, 2, 1),
+    PRIEST      (2, 3, 7, 1, 2),
+    CHRONOL     (2, 2, 8, 2, 1),
+    BARD        (1, 3, 5, 3, 3);
 
-    public Profession(Type type) {
-        this.type = type;
-        this.level = 1;
-        this.experience = 0;
-        this.nextLevel = 10;
+    private final int baseCourage;
+    private final int baseDexterity;
+    private final int baseWisdom;
+    private final int baseCharisma;
+    private final int baseLuck;
+
+    Profession(
+            int baseCourage,
+            int baseDexterity,
+            int baseWisdom,
+            int baseCharisma,
+            int baseLuck
+    ) {
+
+        this.baseCourage = baseCourage;
+        this.baseDexterity = baseDexterity;
+        this.baseWisdom = baseWisdom;
+        this.baseCharisma = baseCharisma;
+        this.baseLuck = baseLuck;
     }
 
-    public Type get() {
-        return type;
+    public int baseCourage() {
+        return baseCourage;
     }
 
-    public int getCurrentLevel() {
-        return level;
+    public int baseDexterity() {
+        return baseDexterity;
     }
 
-    public int getCurrentExperience() {
-        return experience;
+    public int baseWisdom() {
+        return baseWisdom;
     }
 
-    public int getExperienceToNextLevel() {
-        return nextLevel;
+    public int baseCharisma() {
+        return baseCharisma;
     }
 
-    public enum Type {
-
-        // HEAVY ------------------------------------------------------------
-        DUELIST("Duelist"),                             // combatant
-
-        PALADIN("Paladin"),                             // protector of evil
-
-        ANTIQUER("Antiquer"),                           // channels a legend to gain power
-
-        PERFORATOR("Perforator"),                       // delivers justice
-        // ------------------------------------------------------------------
-        // MEDIUM -----------------------------------------------------------
-        ARCHER("Archer"),                               // bows. pets. nature.
-
-        ASSASSIN("Assassin"),                           // hides in the shadows, using stealth attacks and daggers.
-
-        NAGUAL("Nagual"),                               // uses glamours to change appearance,
-        // and create weapons from imagination.
-
-        HUNTER("Hunter"),                               // similar to Archer, but specialises guns and tools
-        // think Van Helsing
-        // ------------------------------------------------------------------
-        // LIGHT ------------------------------------------------------------
-        SHAMAN("Shaman"),                               // pure magic
-
-        PRIEST("Priest"),                               // power of God
-
-        CHRONOL("Chronol"),                             // turns back time, to the good old days
-
-        BARD("Bard");                                   // power of Music
-        // ------------------------------------------------------------------
-
-        private String displayText;
-
-        Type(
-                String displayText
-        ) {
-
-            this.displayText = displayText;
-        }
-
-        public String getDisplayText() {
-            return displayText;
-        }
+    public int baseLuck() {
+        return baseLuck;
     }
 }

@@ -161,7 +161,7 @@ public final class Inventory {
     public HashMap<Item, Integer> getFiltered(Item.Type itemType) {
         return (HashMap<Item, Integer>)
                 (getAllItems().entrySet().stream()
-                .filter(entry -> entry.getKey().getItemType().equals(itemType))
+                .filter(entry -> entry.getKey().type().equals(itemType))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 }

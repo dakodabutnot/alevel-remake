@@ -4,9 +4,9 @@ import com.dakoda.alr.game.achievement.Moments;
 import com.dakoda.alr.game.achievement.Moments.Moment;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.Entity;
-import com.dakoda.alr.game.world.entity.entities.npc.NPC;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Quest implements GameObject {
 
@@ -14,6 +14,7 @@ public class Quest implements GameObject {
     private ArrayList<QuestRequirement> criteria = new ArrayList<>();
     private Moment requiringMoment = Moments.DEFAULT;
     private Moment achievingMoment = null;
+    private ArrayList<QuestRequirementSpecial> specialRequirement = new ArrayList<>();
 
     private Boolean canTurnIn;
     private Boolean isDone;
@@ -39,6 +40,11 @@ public class Quest implements GameObject {
 
     public Quest requiresMoment(Moment moment) {
         this.requiringMoment = moment;
+        return this;
+    }
+
+    public Quest requiresThat(QuestRequirementSpecial... questRequirementSpecial) {
+        specialRequirement.addAll(Arrays.asList(questRequirementSpecial));
         return this;
     }
 
@@ -90,6 +96,10 @@ public class Quest implements GameObject {
         return currencyReward;
     }
 
+    public ArrayList<QuestRequirementSpecial> getSpecialRequirements() {
+        return specialRequirement;
+    }
+
     public void finish() {
         this.isDone = Boolean.TRUE;
         this.achievingMoment.complete();
@@ -112,5 +122,17 @@ public class Quest implements GameObject {
             }
         }
         if (canFinish) canTurnIn = Boolean.TRUE;
+    }
+
+    private boolean hasSpecialRequirement() {
+        boolean doneAll = true;
+        for (QuestRequirementSpecial requirementSpecial : specialRequirement) {
+            if (!requirementSpecial.requirement()) doneAll = false;
+        }
+        return doneAll;
+    }
+
+    public boolean meetsQuestPrerequisites() {
+        return hasSpecialRequirement() && getRequiringMoment().isComplete();
     }
 }

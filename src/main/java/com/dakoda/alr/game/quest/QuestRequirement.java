@@ -1,6 +1,6 @@
 package com.dakoda.alr.game.quest;
 
-import com.dakoda.alr.game.world.entity.entities.hostile.Hostile;
+import com.dakoda.alr.game.world.entity.Entity.Hostile;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 
@@ -17,17 +17,18 @@ public interface QuestRequirement {
 
     QuestRequirement withDescription(String desc);
 
-    QuestRequirement withCriteria(Questable object, Integer req) throws InvalidParameterException;
+    QuestRequirement withCriteria(Questable object, Integer needs) throws InvalidParameterException;
 
     static QuestRequirement ofType(Type type) {
-        if (type == Type.GET) {
-            return new QuestRequirement_toGet();
-        } else if (type == Type.GO) {
-            return new QuestRequirement_toGo();
-        } else if (type == Type.KILL) {
-            return new QuestRequirement_toKill();
-        } else {
-            return null;
+        switch (type) {
+            case GET:
+                return new QuestRequirement_toGet();
+            case GO:
+                return new QuestRequirement_toGo();
+            case KILL:
+                return new QuestRequirement_toKill();
+            default:
+                return null;
         }
     }
 
@@ -45,11 +46,11 @@ public interface QuestRequirement {
             return this;
         }
 
-        public QuestRequirement_toGet withCriteria(Questable object, Integer req) throws InvalidParameterException {
+        public QuestRequirement_toGet withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Item)) {
                 throw new InvalidParameterException("Tried to parse a non-'Item' object to a quest requirement that consumes 'Item'.");
             } else {
-                this.criteria.put((Item) object, req);
+                this.criteria.put((Item) object, needs);
             }
             return this;
         }
@@ -89,7 +90,7 @@ public interface QuestRequirement {
             return this;
         }
 
-        public QuestRequirement_toGo withCriteria(Questable object, Integer req) throws InvalidParameterException {
+        public QuestRequirement_toGo withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Location)) {
                 throw new InvalidParameterException("Tried to parse a non-'Location' object to a quest requirement that consumes 'Location'.");
             } else {
@@ -117,11 +118,11 @@ public interface QuestRequirement {
             return this;
         }
 
-        public QuestRequirement_toKill withCriteria(Questable object, Integer req) throws InvalidParameterException {
+        public QuestRequirement_toKill withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Hostile)) {
                 throw new InvalidParameterException("Tried to parse a non-'Hostile' object to a quest requirement that consumes 'Hostile'.");
             } else {
-                this.criteria.put((Hostile) object, req);
+                this.criteria.put((Hostile) object, needs);
             }
             return this;
         }

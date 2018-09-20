@@ -3,13 +3,17 @@ package com.dakoda.alr.game;
 import com.dakoda.alr.game.exception.DuplicateContentIDException;
 import com.dakoda.alr.game.exception.InvalidIDRequestException;
 import com.dakoda.alr.game.exception.InvalidRegistrationRequestException;
+import com.dakoda.alr.game.exception.NullItemRequestException;
 import com.dakoda.alr.game.quest.Quest;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameContent {
 
@@ -34,8 +38,8 @@ public class GameContent {
                 if (entityMap.containsKey(id)) {
                     throw new DuplicateContentIDException(
                             "Two pieces of content (ENTITIES) were registered with the same ID \n"
-                                    + "\t-> {OBJECT: " + ((Entity) object).getName() + ", ID: " + id + "} -> " +
-                                    "{OBJECT: " + entityMap.get(id).getName() + ", ID: " + id + "}"
+                                    + "\t-> {OBJECT: " + ((Entity) object).name() + ", ID: " + id + "} -> " +
+                                    "{OBJECT: " + entityMap.get(id).name() + ", ID: " + id + "}"
                     );
                 } else {
                     entityMap.put(id, (Entity) object);
@@ -70,7 +74,7 @@ public class GameContent {
     }
 
     public static Item findItemByID(Integer id) {
-        if (itemMap.containsKey(id)) {
+        if (!itemMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
                     + "-> ID: " + id
@@ -80,8 +84,30 @@ public class GameContent {
         }
     }
 
+    public static Item findItemByName(String name) {
+        if (name == null) {
+            throw new NullItemRequestException("Request was made for a null piece of content.");
+        } else {
+            return itemMap.values()
+                    .stream()
+                    .filter(item -> item.name().equalsIgnoreCase(name))
+                    .findFirst().get();
+        }
+    }
+
+    public static Item fibn(String name) {
+        if (name == null) {
+            throw new NullItemRequestException("Request was made for a null piece of content.");
+        } else {
+            return itemMap.values()
+                    .stream()
+                    .filter(item -> item.name().equalsIgnoreCase(name))
+                    .findFirst().get();
+        }
+    }
+
     public static Entity findEntityByID(Integer id) {
-        if (entityMap.containsKey(id)) {
+        if (!entityMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
                             + "-> ID: " + id
@@ -91,8 +117,30 @@ public class GameContent {
         }
     }
 
+    public static Entity findEntityByName(String name) {
+        if (name == null) {
+            throw new NullItemRequestException("Request was made for a null piece of content.");
+        } else {
+            return entityMap.values()
+                    .stream()
+                    .filter(entity -> entity.name().equalsIgnoreCase(name))
+                    .findFirst().get();
+        }
+    }
+
+    public static Entity febn(String name) {
+        if (name == null) {
+            throw new NullItemRequestException("Request was made for a null piece of content.");
+        } else {
+            return entityMap.values()
+                    .stream()
+                    .filter(entity -> entity.name().equalsIgnoreCase(name))
+                    .findFirst().get();
+        }
+    }
+
     public static Location findLocationByID(Integer id) {
-        if (locationMap.containsKey(id)) {
+        if (!locationMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
                             + "-> ID: " + id
@@ -102,8 +150,30 @@ public class GameContent {
         }
     }
 
+    public static Location findLocationByName(String name) {
+        if (name == null) {
+            throw new NullItemRequestException("Request was made for a null piece of content.");
+        } else {
+            return locationMap.values()
+                    .stream()
+                    .filter(location -> location.getName().equalsIgnoreCase(name))
+                    .findFirst().get();
+        }
+    }
+
+    public static Location flbn(String name) {
+        if (name == null) {
+            throw new NullItemRequestException("Request was made for a null piece of content.");
+        } else {
+            return locationMap.values()
+                    .stream()
+                    .filter(location -> location.getName().equalsIgnoreCase(name))
+                    .findFirst().get();
+        }
+    }
+
     public static Quest findQuestByID(Integer id) {
-        if (questMap.containsKey(id)) {
+        if (!questMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
                             + "-> ID: " + id
