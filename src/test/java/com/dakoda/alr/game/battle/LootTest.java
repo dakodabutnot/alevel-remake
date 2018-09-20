@@ -1,6 +1,5 @@
 package com.dakoda.alr.game.battle;
 import com.dakoda.alr.game.world.item.Item;
-import com.dakoda.alr.game.world.item.Items;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
