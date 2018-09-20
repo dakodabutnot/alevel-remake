@@ -33,10 +33,6 @@ public class RegistrarQuest implements Registrar {
         );
     }
 
-    public HashMap<Integer, GameObject> getRegistered() {
-        return null;
-    }
-
     public void register(Integer id, GameObject gameObject) {
         GameContent.register(id, (Quest) gameObject);
     }

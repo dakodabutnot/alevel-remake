@@ -8,6 +8,4 @@ public interface Registrar {
 
     void init();
 
-    HashMap<Integer, GameObject> getRegistered();
-
 }
