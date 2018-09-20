@@ -6,8 +6,6 @@ import com.dakoda.alr.game.quest.Quest;
 import com.dakoda.alr.game.quest.QuestRequirement;
 import com.dakoda.alr.game.world.entity.entities.hostile.HostileZombie;
 
-import java.util.HashMap;
-
 import static com.dakoda.alr.game.quest.QuestRequirement.Type.GET;
 import static com.dakoda.alr.game.quest.QuestRequirement.Type.KILL;
 

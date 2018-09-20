@@ -3,8 +3,6 @@ package com.dakoda.alr.game.registrar;
 import com.dakoda.alr.game.GameContent;
 import com.dakoda.alr.game.world.entity.Entity;
 
-import java.util.HashMap;
-
 public class RegistrarEntity implements Registrar {
 
     public void init() {
