@@ -3,6 +3,7 @@ package com.dakoda.alr.game.quest;
 import com.dakoda.alr.game.achievement.Moments;
 import com.dakoda.alr.game.achievement.Moments.Moment;
 import com.dakoda.alr.game.registrar.GameObject;
+import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.entity.entities.npc.NPC;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Quest implements GameObject {
     private Integer experienceReward;
     private Integer currencyReward;
 
-    private NPC givenBy;
+    private Entity givenBy;
 
     public void turnIn() {
         finish();
@@ -46,7 +47,7 @@ public class Quest implements GameObject {
         return this;
     }
 
-    public Quest givenByNPC(NPC npc) {
+    public Quest givenByNPC(Entity npc) {
         this.givenBy = npc;
         return this;
     }
@@ -69,7 +70,7 @@ public class Quest implements GameObject {
         return description;
     }
 
-    public NPC getNPCWhoGives() {
+    public Entity getNPCWhoGives() {
         return givenBy;
     }
 

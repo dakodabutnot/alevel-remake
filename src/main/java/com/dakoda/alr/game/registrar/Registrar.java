@@ -9,8 +9,12 @@ import com.dakoda.alr.game.world.entity.entities.hostile.HostileZombie;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 
-import static com.dakoda.alr.game.quest.QuestRequirement.Type.GET;
-import static com.dakoda.alr.game.quest.QuestRequirement.Type.KILL;
+import static com.dakoda.alr.game.GameContent.findEntityByID;
+import static com.dakoda.alr.game.GameContent.findItemByID;
+import static com.dakoda.alr.game.GameContent.findLocationByID;
+import static com.dakoda.alr.game.GameContent.findQuestByID;
+
+import static com.dakoda.alr.game.quest.QuestRequirement.Type.*;
 
 public interface Registrar {
 
@@ -75,6 +79,7 @@ public interface Registrar {
                     .completesMoment(Moments.COMPLETED_ZOMBIE_QUEST)
                     .withExperienceReward(10)
                     .withCurrencyReward(5)
+                    .givenByNPC(findEntityByID(0))
             );
         }
 
