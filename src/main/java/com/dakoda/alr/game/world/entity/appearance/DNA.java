@@ -1,4 +1,7 @@
-package com.dakoda.alr.game.world.entity.dna;
+package com.dakoda.alr.game.world.entity.appearance;
+
+import com.dakoda.alr.game.world.entity.appearance.bio.Race;
+import com.dakoda.alr.game.world.entity.appearance.socio.Gender;
 
 public class DNA {
 

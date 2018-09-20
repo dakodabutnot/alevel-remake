@@ -1,5 +1,4 @@
-package com.dakoda.alr.game.world.entity;
-import com.dakoda.alr.game.character.Profession;
+package com.dakoda.alr.game.character;
 import com.dakoda.alr.game.exception.NullAttributesInstantiationException;
 
 import java.util.Arrays;

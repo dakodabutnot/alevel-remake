@@ -1,7 +1,7 @@
 package com.dakoda.alr.game.util;
 import com.dakoda.alr.game.world.entity.Entity;
 
-public final class BattleLogger {
+public interface BattleLogger {
 
     /**
      * Logs damage done to an entity.

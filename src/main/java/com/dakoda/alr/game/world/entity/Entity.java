@@ -1,5 +1,6 @@
 package com.dakoda.alr.game.world.entity;
-import com.dakoda.alr.game.world.entity.dna.DNA;
+import com.dakoda.alr.game.character.Attributes;
+import com.dakoda.alr.game.world.entity.appearance.DNA;
 import com.dakoda.alr.game.character.Profession;
 
 public abstract class Entity {
