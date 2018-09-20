@@ -5,7 +5,7 @@ import com.dakoda.alr.game.registrar.*;
 public class GameMaster {
 
     //Player
-    public static Player player = new Player();
+    public Player player = new Player();
     //Registrars
     private Registrar itemRegistrar = new RegistrarItem();
     private Registrar entityRegistrar = new RegistrarEntity();
