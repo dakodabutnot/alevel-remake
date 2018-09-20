@@ -1,7 +1,7 @@
 package com.dakoda.alr.game.quest;
 
-import com.dakoda.alr.game.mechanic.Moments;
-import com.dakoda.alr.game.mechanic.Moments.Moment;
+import com.dakoda.alr.game.achievement.Moments;
+import com.dakoda.alr.game.achievement.Moments.Moment;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.entities.npc.NPC;
 

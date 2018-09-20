@@ -1,4 +1,4 @@
-package com.dakoda.alr.game.mechanic;
+package com.dakoda.alr.game.achievement;
 
 public class Moments {
 

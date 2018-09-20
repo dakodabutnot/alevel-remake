@@ -1,7 +1,7 @@
 package com.dakoda.alr.game.registrar;
 
 import com.dakoda.alr.game.GameContent;
-import com.dakoda.alr.game.mechanic.Moments;
+import com.dakoda.alr.game.achievement.Moments;
 import com.dakoda.alr.game.quest.Quest;
 import com.dakoda.alr.game.quest.QuestRequirement;
 import com.dakoda.alr.game.world.entity.entities.hostile.HostileZombie;
