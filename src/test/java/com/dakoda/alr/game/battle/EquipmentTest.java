@@ -1,8 +1,6 @@
 package com.dakoda.alr.game.battle;
 import com.dakoda.alr.game.exception.InvalidEquipSlotArgumentException;
 import com.dakoda.alr.game.exception.NullEquipException;
-import com.dakoda.alr.game.world.item.Items;
-import com.dakoda.alr.game.world.item.attribute.ArmourEquipSlot;
 import com.dakoda.alr.game.world.item.attribute.WeaponMaterial;
 import com.dakoda.alr.game.world.item.attribute.WeaponType;
 import org.junit.Assert;

@@ -4,6 +4,8 @@ import com.dakoda.alr.game.mechanic.Currency;
 import com.dakoda.alr.game.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
 
+import static com.dakoda.alr.game.world.item.Item.Item_Armour.Weight.*;
+
 public interface Item extends Questable, GameObject {
 
     String name();
@@ -72,6 +74,98 @@ public interface Item extends Questable, GameObject {
 
         public Integer currencyValue() {
             return currencyValue;
+        }
+
+        public enum Slot {
+            NONE, HEAD, SHOULDER, BACK, BODY, LEGS, FEET, HANDS, TRINKET, RING, NECKLACE;
+        }
+
+        public static class Material {
+
+            private String displayText;
+            private Weight weight;
+
+            public static final Material NONE = new Material("", Weight.NONE);
+
+            private Material(String displayText, Weight weight) {
+                this.displayText = displayText;
+                this.weight = weight;
+            }
+
+            public String getDisplayText() {
+                return displayText;
+            }
+
+            public Weight getWeight() {
+                return weight;
+            }
+
+            enum Heavy {
+
+                IRON(new Material("Iron", HEAVY)),
+                STEEL(new Material("Steel", HEAVY)),
+                DARKSTEEL(new Material("Darksteel", HEAVY)),
+                TENACIUM(new Material("Tenacium", HEAVY)),
+                ;
+
+                private Material material;
+
+                Heavy(
+                        Material material
+                ) {
+                    this.material = material;
+                }
+
+                public Material getMaterial() {
+                    return material;
+                }
+            }
+
+            public enum Medium {
+
+                HIDE(new Material("Hide", MEDIUM)),
+                THIN_LEATHER(new Material("Thin Leather", MEDIUM)),
+                RUGGED_LEATHER(new Material("Rugged Leather", MEDIUM)),
+                HARDENED_LEATHER(new Material("Hardened Leather", MEDIUM)),
+                ;
+
+                private Material material;
+
+                Medium(
+                        Material material
+                ) {
+                    this.material = material;
+                }
+
+                public Material getMaterial() {
+                    return material;
+                }
+            }
+
+            public enum Light {
+
+                COTTON(new Material("Cotton", LIGHT)),
+                LINEN(new Material("Linen", LIGHT)),
+                SILK(new Material("Silk", LIGHT)),
+                GOSSAMER(new Material("Gossamer", LIGHT)),
+                ;
+
+                private Material material;
+
+                Light(
+                        Material material
+                ) {
+                    this.material = material;
+                }
+
+                public Material getMaterial() {
+                    return material;
+                }
+            }
+        }
+
+        public enum Weight {
+            NONE, LIGHT, MEDIUM, HEAVY;
         }
     }
 
