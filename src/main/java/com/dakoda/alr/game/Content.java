@@ -52,8 +52,8 @@ public class Content {
             if (questMap.containsKey(id)) {
                 throw new DuplicateContentIDException(
                         "Two pieces of content (QUESTS) were registered with the same ID \n"
-                                + "\t-> {OBJECT: " + ((Quest) object).description() + ", ID: " + id + "} -> " +
-                                "{OBJECT: " + questMap.get(id).description() + ", ID: " + id + "}"
+                                + "\t-> {OBJECT: " + ((Quest) object).getDescription() + ", ID: " + id + "} -> " +
+                                "{OBJECT: " + questMap.get(id).getDescription() + ", ID: " + id + "}"
                 );
             } else {
                 questMap.put(id, (Quest) object);
