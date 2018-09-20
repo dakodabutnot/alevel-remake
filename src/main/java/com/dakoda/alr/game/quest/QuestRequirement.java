@@ -13,11 +13,11 @@ public interface QuestRequirement {
 
     HashMap criteria();
 
+    Boolean checkFinished();
+
     QuestRequirement withDescription(String desc);
 
     QuestRequirement withCriteria(Questable object, Integer req) throws InvalidParameterException;
-
-    Boolean checkFinished();
 
     static QuestRequirement ofType(Type type) {
         if (type == Type.GET) {

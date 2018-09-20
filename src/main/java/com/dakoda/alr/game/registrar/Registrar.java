@@ -40,7 +40,11 @@ public interface Registrar {
 
         public void init() {
             //register Items here
-
+            register(0, Item
+                    .ofType(Item.Type.ARMOUR)
+                    .withName("Zombie Brain")
+                    .withCurrencyValue(1)
+            );
         }
 
         public void register(Integer id, GameObject gameObject) {
@@ -74,6 +78,7 @@ public interface Registrar {
                     .withRequirement(QuestRequirement
                             .ofType(GET)
                             .withDescription("Could you fetch the zombie's brain for me too? After you've killed it, of course.")
+                            .withCriteria(findItemByID(0), 1)
                     )
                     .requiresMoment(Moments.PLAYER_LEVEL_5)
                     .completesMoment(Moments.COMPLETED_ZOMBIE_QUEST)

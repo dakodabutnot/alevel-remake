@@ -5,8 +5,6 @@ import com.dakoda.alr.game.world.item.Items;
 import com.dakoda.alr.game.world.item.attribute.ArmourEquipSlot;
 import com.dakoda.alr.game.world.item.attribute.WeaponMaterial;
 import com.dakoda.alr.game.world.item.attribute.WeaponType;
-import com.dakoda.alr.game.world.item.type.ItemArmour;
-import com.dakoda.alr.game.world.item.type.ItemWeapon;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

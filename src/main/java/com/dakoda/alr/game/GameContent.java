@@ -24,8 +24,8 @@ public class GameContent {
                 if (itemMap.containsKey(id)) {
                     throw new DuplicateContentIDException(
                             "Two pieces of content (ITEMS) were registered with the same ID \n"
-                                    + "\t-> {OBJECT: " + ((Item) object).getName() + ", ID: " + id + "} -> " +
-                                    "{OBJECT: " + itemMap.get(id).getName() + ", ID: " + id + "}"
+                                    + "\t-> {OBJECT: " + ((Item) object).name() + ", ID: " + id + "} -> " +
+                                    "{OBJECT: " + itemMap.get(id).name() + ", ID: " + id + "}"
                     );
                 } else {
                     itemMap.put(id, (Item) object);
