@@ -4,6 +4,7 @@ import com.dakoda.alr.game.character.Inventory;
 import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.game.character.Progression;
 import com.dakoda.alr.game.quest.Quest;
+import com.dakoda.alr.game.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
@@ -11,7 +12,7 @@ import com.dakoda.alr.game.world.location.Location;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface Entity extends GameObject {
+public interface Entity extends GameObject, Questable {
 
     String name();
 

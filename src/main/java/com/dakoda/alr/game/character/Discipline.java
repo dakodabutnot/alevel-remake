@@ -56,53 +56,53 @@ public class Discipline {
         // SPECIALISED DEVELOPMENT --------------------------------for: -----
         TACTICIAN("Tactician",
                 new Discipline("Tactician", true),
-                Profession.Type.DUELIST
+                Profession.DUELIST
                 ),         // stratagem
         SENTINEL("Sentinel",
                 new Discipline("Sentinel", true),
-                Profession.Type.PALADIN
+                Profession.PALADIN
                 ),           // peacekeeping
         HISTORIAN("Historian",
                  new Discipline("Historian", true),
-                Profession.Type.ANTIQUER
+                Profession.ANTIQUER
                 ),         // legend
         HERALD("Herald",
                 new Discipline("Herald", true),
-                Profession.Type.PERFORATOR
+                Profession.PERFORATOR
                 ),               // justice
         // -
         BOTANIST("Botanist",
                 new Discipline("Botanist", true),
-                Profession.Type.ARCHER
+                Profession.ARCHER
                 ),           // nature
         SHADOW("Shadow",
                 new Discipline("Shadow", true),
-                Profession.Type.ASSASSIN
+                Profession.ASSASSIN
                 ),               // stealth
         GLAMOURIST("Glamourist",
                 new Discipline("Glamourist", true),
-                Profession.Type.NAGUAL
+                Profession.NAGUAL
                 ),       // glamour
         PIONEER("Pioneer",
                 new Discipline("Pioneer", true),
-                Profession.Type.HUNTER
+                Profession.HUNTER
                 ),             // invention
         // -
         THANATOLOGIST("Thanatologist",
                 new Discipline("Thanatologist", true),
-                Profession.Type.SHAMAN
+                Profession.SHAMAN
                 ), // death
         THEOLOGIAN("Theologian",
                 new Discipline("Theologian", true),
-                Profession.Type.PRIEST
+                Profession.PRIEST
                 ),       // God
         ORACLE("Oracle",
                 new Discipline("Oracle", true),
-                Profession.Type.CHRONOL
+                Profession.CHRONOL
                 ),               // prophecy
         RADIOL("Radiol",
                 new Discipline("Radiol", true),
-                Profession.Type.BARD
+                Profession.BARD
                 ),               // music
         // ------------------------------------------------------------------
 
@@ -121,12 +121,12 @@ public class Discipline {
 
         private String displayText;
         private Discipline discipline;
-        private Profession.Type professionRequired;
+        private Profession professionRequired;
 
         Disciplines(
                 String displayText,
                 Discipline discipline,
-                Profession.Type professionRequired
+                Profession professionRequired
         ) {
             this.displayText = displayText;
             this.discipline = discipline;
@@ -146,7 +146,7 @@ public class Discipline {
             return discipline;
         }
 
-        public Profession.Type getProfessionRequired() {
+        public Profession getProfessionRequired() {
             return professionRequired;
         }
     }
@@ -184,9 +184,12 @@ public class Discipline {
         return specialised;
     }
 
-    public static Discipline.Disciplines getMatchingSpecialisedDiscipline(Profession.Type profession) {
-        Disciplines fetch = Arrays.stream(Disciplines.values()).filter(entry -> entry.getProfessionRequired() == profession).findFirst().orElse(null);
+    public static Discipline.Disciplines getMatchingSpecialisedDiscipline(Profession profession) {
+        Disciplines fetch = Arrays.stream(Disciplines.values())
+                .filter(entry -> entry.getProfessionRequired() == profession)
+                .findFirst().orElse(null);
         if (fetch != null) return fetch;
-        throw new IncompleteProfessionDefinitionException("A profession that you have defined in Profession.Type does not have its own specialised discipline. Make one.");
+        throw new IncompleteProfessionDefinitionException
+                ("A profession that you have defined in Profession.Type does not have its own specialised discipline. Make one.");
     }
 }

@@ -7,7 +7,7 @@ import com.dakoda.alr.game.world.location.Location;
 import java.security.InvalidParameterException;
 import java.util.HashMap;
 
-public interface QuestRequirement {
+public interface QuestObjective {
 
     String description();
 
@@ -15,18 +15,18 @@ public interface QuestRequirement {
 
     Boolean checkFinished();
 
-    QuestRequirement withDescription(String desc);
+    QuestObjective withDescription(String desc);
 
-    QuestRequirement withCriteria(Questable object, Integer needs) throws InvalidParameterException;
+    QuestObjective withCriteria(Questable object, Integer needs) throws InvalidParameterException;
 
-    static QuestRequirement ofType(Type type) {
+    static QuestObjective ofType(Type type) {
         switch (type) {
             case GET:
-                return new QuestRequirement_toGet();
+                return new QuestObjective_toGet();
             case GO:
-                return new QuestRequirement_toGo();
+                return new QuestObjective_toGo();
             case KILL:
-                return new QuestRequirement_toKill();
+                return new QuestObjective_toKill();
             default:
                 return null;
         }
@@ -36,17 +36,17 @@ public interface QuestRequirement {
         GET, GO, KILL;
     }
 
-    class QuestRequirement_toGet implements QuestRequirement {
+    class QuestObjective_toGet implements QuestObjective {
 
         String description = "";
         HashMap<Item, Integer> criteria = new HashMap<>();
 
-        public QuestRequirement_toGet withDescription(String desc) {
+        public QuestObjective_toGet withDescription(String desc) {
             this.description = desc;
             return this;
         }
 
-        public QuestRequirement_toGet withCriteria(Questable object, Integer needs) throws InvalidParameterException {
+        public QuestObjective_toGet withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Item)) {
                 throw new InvalidParameterException("Tried to parse a non-'Item' object to a quest requirement that consumes 'Item'.");
             } else {
@@ -72,7 +72,7 @@ public interface QuestRequirement {
         }
     }
 
-    class QuestRequirement_toGo implements QuestRequirement {
+    class QuestObjective_toGo implements QuestObjective {
 
         String description = "";
         HashMap<Location, Boolean> criteria = new HashMap<>();
@@ -85,12 +85,12 @@ public interface QuestRequirement {
             return criteria;
         }
 
-        public QuestRequirement_toGo withDescription(String desc) {
+        public QuestObjective_toGo withDescription(String desc) {
             this.description = desc;
             return this;
         }
 
-        public QuestRequirement_toGo withCriteria(Questable object, Integer needs) throws InvalidParameterException {
+        public QuestObjective_toGo withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Location)) {
                 throw new InvalidParameterException("Tried to parse a non-'Location' object to a quest requirement that consumes 'Location'.");
             } else {
@@ -108,17 +108,17 @@ public interface QuestRequirement {
         }
     }
 
-    class QuestRequirement_toKill implements QuestRequirement {
+    class QuestObjective_toKill implements QuestObjective {
 
         String description = "";
         HashMap<Hostile, Integer> criteria = new HashMap<>();
 
-        public QuestRequirement_toKill withDescription(String desc) {
+        public QuestObjective_toKill withDescription(String desc) {
             this.description = desc;
             return this;
         }
 
-        public QuestRequirement_toKill withCriteria(Questable object, Integer needs) throws InvalidParameterException {
+        public QuestObjective_toKill withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Hostile)) {
                 throw new InvalidParameterException("Tried to parse a non-'Hostile' object to a quest requirement that consumes 'Hostile'.");
             } else {

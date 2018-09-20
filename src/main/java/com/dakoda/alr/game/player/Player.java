@@ -4,6 +4,7 @@ import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.game.character.Progression;
 import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.entity.Making;
+import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 
 public final class Player implements Entity {
@@ -54,5 +55,38 @@ public final class Player implements Entity {
     @Override
     public Player atLocation(Location location) {
         return this;
+    }
+
+    // Prerequisite lovelies ----------------------------------------
+    public boolean reqProfessionIs(Profession profession) {
+        return progression.profession().equals(profession);
+    }
+
+    public boolean reqHasItem(Item item) {
+        return inventory().hasItem(item);
+    }
+
+    public boolean reqIsLevel(Integer level) {
+        return progression().currentLevel() >= level;
+    }
+
+    public boolean reqCourage(Integer value) {
+        return progression().courage() >= value;
+    }
+
+    public boolean reqWisdom(Integer value) {
+        return progression().wisdom() >= value;
+    }
+
+    public boolean reqDexterity(Integer value) {
+        return progression().dexterity() >= value;
+    }
+
+    public boolean reqCharisma(Integer value) {
+        return progression().charisma() >= value;
+    }
+
+    public boolean reqLuck(Integer value) {
+        return progression().luck() >= value;
     }
 }

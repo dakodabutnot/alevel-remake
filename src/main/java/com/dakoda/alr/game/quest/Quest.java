@@ -1,7 +1,5 @@
 package com.dakoda.alr.game.quest;
 
-import com.dakoda.alr.game.achievement.Moments;
-import com.dakoda.alr.game.achievement.Moments.Moment;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.Entity;
 
@@ -11,10 +9,8 @@ import java.util.Arrays;
 public class Quest implements GameObject {
 
     private String description = "";
-    private ArrayList<QuestRequirement> criteria = new ArrayList<>();
-    private Moment requiringMoment = Moments.DEFAULT;
-    private Moment achievingMoment = null;
-    private ArrayList<QuestRequirementSpecial> specialRequirement = new ArrayList<>();
+    private ArrayList<QuestObjective> criteria = new ArrayList<>();
+    private ArrayList<Prerequisite> prerequisites = new ArrayList<>();
 
     private Boolean canTurnIn;
     private Boolean isDone;
@@ -28,7 +24,7 @@ public class Quest implements GameObject {
         finish();
     }
 
-    public Quest withRequirement(QuestRequirement requirement) {
+    public Quest withObjective(QuestObjective requirement) {
         criteria.add(requirement);
         return this;
     }
@@ -38,18 +34,8 @@ public class Quest implements GameObject {
         return this;
     }
 
-    public Quest requiresMoment(Moment moment) {
-        this.requiringMoment = moment;
-        return this;
-    }
-
-    public Quest requiresThat(QuestRequirementSpecial... questRequirementSpecial) {
-        specialRequirement.addAll(Arrays.asList(questRequirementSpecial));
-        return this;
-    }
-
-    public Quest completesMoment(Moment moment) {
-        this.achievingMoment = moment;
+    public Quest requiresThat(Prerequisite... prerequisite) {
+        prerequisites.addAll(Arrays.asList(prerequisite));
         return this;
     }
 
@@ -68,7 +54,7 @@ public class Quest implements GameObject {
         return this;
     }
 
-    public ArrayList<QuestRequirement> criteria() {
+    public ArrayList<QuestObjective> criteria() {
         return criteria;
     }
 
@@ -80,14 +66,6 @@ public class Quest implements GameObject {
         return givenBy;
     }
 
-    public Moment getRequiringMoment() {
-        return requiringMoment;
-    }
-
-    public Moment getAchievingMoment() {
-        return achievingMoment;
-    }
-
     public Integer getExperienceReward() {
         return experienceReward;
     }
@@ -96,13 +74,12 @@ public class Quest implements GameObject {
         return currencyReward;
     }
 
-    public ArrayList<QuestRequirementSpecial> getSpecialRequirements() {
-        return specialRequirement;
+    public ArrayList<Prerequisite> getPrerequisites() {
+        return prerequisites;
     }
 
     public void finish() {
         this.isDone = Boolean.TRUE;
-        this.achievingMoment.complete();
     }
 
     public Boolean isFinished() {
@@ -115,7 +92,7 @@ public class Quest implements GameObject {
 
     public void validateFinishability() {
         Boolean canFinish = Boolean.TRUE;
-        for (QuestRequirement criterion : criteria) {
+        for (QuestObjective criterion : criteria) {
             if (!criterion.checkFinished()) {
                 canFinish = Boolean.FALSE;
                 break;
@@ -124,15 +101,15 @@ public class Quest implements GameObject {
         if (canFinish) canTurnIn = Boolean.TRUE;
     }
 
-    private boolean hasSpecialRequirement() {
+    private boolean hasFulfilledPrerequisites() {
         boolean doneAll = true;
-        for (QuestRequirementSpecial requirementSpecial : specialRequirement) {
-            if (!requirementSpecial.requirement()) doneAll = false;
+        for (Prerequisite prerequisite : prerequisites) {
+            if (!prerequisite.requirement()) doneAll = false;
         }
         return doneAll;
     }
 
     public boolean meetsQuestPrerequisites() {
-        return hasSpecialRequirement() && getRequiringMoment().isComplete();
+        return hasFulfilledPrerequisites();
     }
 }

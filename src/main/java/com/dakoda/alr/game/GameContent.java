@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("OptionalGetWithoutIsPresent")
 public class GameContent {
 
     private static HashMap<Integer, Item> itemMap = new HashMap<>();

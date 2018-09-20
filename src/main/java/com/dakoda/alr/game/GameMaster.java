@@ -1,5 +1,6 @@
 package com.dakoda.alr.game;
 import com.dakoda.alr.game.player.Player;
+import com.dakoda.alr.game.quest.Quest;
 import com.dakoda.alr.game.registrar.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,10 @@ public class GameMaster {
     public Player player = new Player();
     //Registrars
     private ArrayList<Registrar> contentRegistrars = new ArrayList<>();
+    //Quest History
+    private ArrayList<Quest> currentQuests = new ArrayList<>();
+    private ArrayList<Quest> completedQuests = new ArrayList<>();
+
     {
         contentRegistrars.add(new RegistrarItem());
         contentRegistrars.add(new RegistrarEntity());
@@ -23,5 +28,22 @@ public class GameMaster {
         for (Registrar registrar : contentRegistrars) {
             registrar.init();
         }
+    }
+
+    public void moveQuestToComplete(Quest quest) {
+        currentQuests.remove(quest);
+        completedQuests.add(quest);
+    }
+
+    public boolean hasCompletedQuest(Quest quest) {
+        return completedQuests.contains(quest);
+    }
+
+    public ArrayList<Quest> currentQuests() {
+        return currentQuests;
+    }
+
+    public ArrayList<Quest> completedQuests() {
+        return completedQuests;
     }
 }

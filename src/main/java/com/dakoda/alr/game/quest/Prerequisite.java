@@ -1,6 +1,6 @@
 package com.dakoda.alr.game.quest;
 
-public interface QuestRequirementSpecial {
+public interface Prerequisite {
 
     boolean requirement();
 }

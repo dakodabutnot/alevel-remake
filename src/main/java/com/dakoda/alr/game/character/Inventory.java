@@ -164,4 +164,9 @@ public final class Inventory {
                 .filter(entry -> entry.getKey().type().equals(itemType))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
+
+    public boolean hasItem(Item item) {
+        removeRedundantEntries();
+        return items.containsKey(item);
+    }
 }
