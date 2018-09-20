@@ -1,6 +1,6 @@
 package com.dakoda.alr.game.util;
 import com.dakoda.alr.game.world.entity.Entity;
-import com.dakoda.alr.game.world.entity.Hostile;
+import com.dakoda.alr.game.world.entity.entities.hostile.Hostile;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

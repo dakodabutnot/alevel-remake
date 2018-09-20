@@ -1,4 +1,5 @@
 package com.dakoda.alr.game.util;
+import com.dakoda.alr.game.mechanic.Currency;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

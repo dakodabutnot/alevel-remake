@@ -3,8 +3,7 @@ import com.dakoda.alr.game.exception.InvalidEquipSlotArgumentException;
 import com.dakoda.alr.game.exception.NullEquipException;
 import com.dakoda.alr.game.world.item.Items;
 import com.dakoda.alr.game.world.item.attribute.ArmourEquipSlot;
-import com.dakoda.alr.game.world.item.type.ItemArmour;
-import com.dakoda.alr.game.world.item.type.ItemWeapon;
+
 import java.util.EnumMap;
 
 public class Equipment {

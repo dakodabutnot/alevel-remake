@@ -1,5 +1,4 @@
 package com.dakoda.alr.game.battle;
-import com.dakoda.alr.game.world.item.type.ItemWeapon;
 
 public class WeaponHands {
 
