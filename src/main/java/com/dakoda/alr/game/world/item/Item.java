@@ -1,8 +1,9 @@
 package com.dakoda.alr.game.world.item;
 import com.dakoda.alr.game.quest.Questable;
 import com.dakoda.alr.game.mechanic.Currency;
+import com.dakoda.alr.game.registrar.GameObject;
 
-public abstract class Item implements Questable {
+public abstract class Item implements Questable, GameObject {
 
     private String name;
     private Item.Type itemType;

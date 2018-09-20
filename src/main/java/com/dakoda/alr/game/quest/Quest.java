@@ -2,11 +2,12 @@ package com.dakoda.alr.game.quest;
 
 import com.dakoda.alr.game.mechanic.Moments;
 import com.dakoda.alr.game.mechanic.Moments.Moment;
+import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.entities.npc.NPC;
 
 import java.util.ArrayList;
 
-public class Quest {
+public class Quest implements GameObject {
 
     private String description = "";
     private ArrayList<QuestRequirement> criteria = new ArrayList<>();
@@ -15,6 +16,9 @@ public class Quest {
 
     private Boolean canTurnIn;
     private Boolean isDone;
+
+    private Integer experienceReward;
+    private Integer currencyReward;
 
     private NPC givenBy;
 
@@ -47,6 +51,16 @@ public class Quest {
         return this;
     }
 
+    public Quest withExperienceReward(Integer exp) {
+        this.experienceReward = exp;
+        return this;
+    }
+
+    public Quest withCurrencyReward(Integer currency) {
+        this.currencyReward = currency;
+        return this;
+    }
+
     public ArrayList<QuestRequirement> criteria() {
         return criteria;
     }
@@ -65,6 +79,14 @@ public class Quest {
 
     public Moment getAchievingMoment() {
         return achievingMoment;
+    }
+
+    public Integer getExperienceReward() {
+        return experienceReward;
+    }
+
+    public Integer getCurrencyReward() {
+        return currencyReward;
     }
 
     public void finish() {

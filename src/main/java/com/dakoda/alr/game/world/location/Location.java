@@ -1,11 +1,12 @@
 package com.dakoda.alr.game.world.location;
 import com.dakoda.alr.game.exception.InvalidLocationDefinitionException;
 import com.dakoda.alr.game.quest.Questable;
+import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.entities.hostile.Hostile;
 import com.dakoda.alr.game.world.entity.entities.npc.NPC;
 import java.util.ArrayList;
 
-public final class Location implements Questable {
+public final class Location implements Questable, GameObject {
 
     private String name;
     private boolean restable;
@@ -62,7 +63,7 @@ public final class Location implements Questable {
         return encounterable;
     }
 
-    public class LocationBuilder {
+    public static class LocationBuilder {
 
         private String name;
         private boolean restable;
