@@ -1,8 +1,8 @@
 package com.dakoda.alr.game.world.location;
 
-import com.dakoda.alr.game.Content;
+import com.dakoda.alr.registrar.Content;
 import com.dakoda.alr.game.world.quest.Questable;
-import com.dakoda.alr.game.registrar.GameObject;
+import com.dakoda.alr.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.entity.Entity.Hostile;
 import com.dakoda.alr.game.world.entity.Entity.NPC;

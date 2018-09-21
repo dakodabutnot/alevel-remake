@@ -1,7 +1,6 @@
-package com.dakoda.alr.game.registrar;
+package com.dakoda.alr.registrar;
 
 import com.dakoda.alr.TextRPG;
-import com.dakoda.alr.game.Content;
 import com.dakoda.alr.game.battle.Loot;
 import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.world.entity.Entity;
@@ -9,7 +8,7 @@ import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 import com.dakoda.alr.game.world.quest.QuestObjective;
 
-import static com.dakoda.alr.game.Content.findItemByName;
+import static com.dakoda.alr.registrar.Content.findItemByName;
 
 @SuppressWarnings("ConstantConditions")
 public interface Registrar {

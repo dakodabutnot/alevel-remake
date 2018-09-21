@@ -1,10 +1,10 @@
 package com.dakoda.alr.game.world.item;
 
 import com.dakoda.alr.game.mechanic.Currency;
-import com.dakoda.alr.game.registrar.Prerequisite;
+import com.dakoda.alr.registrar.Prerequisite;
 import com.dakoda.alr.game.world.character.Progression.Profession;
 import com.dakoda.alr.game.world.quest.Questable;
-import com.dakoda.alr.game.registrar.GameObject;
+import com.dakoda.alr.registrar.GameObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;

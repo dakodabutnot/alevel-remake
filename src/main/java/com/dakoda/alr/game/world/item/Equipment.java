@@ -1,9 +1,8 @@
 package com.dakoda.alr.game.world.item;
 
-import com.dakoda.alr.game.Content;
+import com.dakoda.alr.registrar.Content;
 import com.dakoda.alr.game.exception.InvalidEquipSlotArgumentException;
 import com.dakoda.alr.game.exception.NullEquipException;
-import com.dakoda.alr.game.world.item.Item;
 
 import java.util.EnumMap;
 

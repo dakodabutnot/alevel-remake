@@ -7,11 +7,12 @@ import com.dakoda.alr.game.world.item.Inventory;
 import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.registrar.*;
 import com.dakoda.alr.game.world.location.Location;
+import com.dakoda.alr.registrar.Registrar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static com.dakoda.alr.game.registrar.Registrar.*;
+import static com.dakoda.alr.registrar.Registrar.*;
 
 public final class GameMaster {
 

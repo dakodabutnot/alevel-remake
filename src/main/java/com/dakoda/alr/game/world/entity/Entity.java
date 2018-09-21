@@ -6,7 +6,7 @@ import com.dakoda.alr.game.world.character.Progression.Profession;
 import com.dakoda.alr.game.world.character.Progression;
 import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.world.quest.Questable;
-import com.dakoda.alr.game.registrar.GameObject;
+import com.dakoda.alr.registrar.GameObject;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 
