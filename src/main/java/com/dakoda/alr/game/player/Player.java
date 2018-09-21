@@ -1,4 +1,5 @@
 package com.dakoda.alr.game.player;
+import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.game.character.Inventory;
 import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.game.character.Progression;
@@ -14,8 +15,28 @@ public final class Player implements Entity {
     private Progression progression;
     private Inventory inv;
 
-    public Player() {
+    public Player withName(String name) {
+        this.name = name;
+        return this;
+    }
 
+    public Player withMaking(Making making) {
+        this.making = making;
+        return this;
+    }
+
+
+    public Player withProfession(Profession profession) {
+        this.progression = new Progression(profession);
+        return this;
+    }
+
+    public Player atLocation(Location location) {
+        return this;
+    }
+
+    public Location location() {
+        return TextRPG.master.currentLocation();
     }
 
     public Inventory inventory() {
@@ -32,29 +53,6 @@ public final class Player implements Entity {
 
     public Progression progression() {
         return progression;
-    }
-
-    @Override
-    public Player withName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    @Override
-    public Player withMaking(Making making) {
-        this.making = making;
-        return this;
-    }
-
-    @Override
-    public Player withProfession(Profession profession) {
-        this.progression = new Progression(profession);
-        return this;
-    }
-
-    @Override
-    public Player atLocation(Location location) {
-        return this;
     }
 
     // Prerequisite lovelies ----------------------------------------

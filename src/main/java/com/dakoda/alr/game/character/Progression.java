@@ -12,8 +12,19 @@ public class Progression {
     private int luck;
 
     public Progression(Profession profession) {
+        //defaults level 1
         this.profession = profession;
         assignBaseStats();
+    }
+
+    public Progression(Profession profession, Integer level) {
+        this.profession = profession;
+        assignBaseStats();
+        scale(level);
+    }
+
+    private void scale(Integer level) {
+        // TODO: 21/09/2018 scale based on level
     }
 
     private void assignBaseStats() {

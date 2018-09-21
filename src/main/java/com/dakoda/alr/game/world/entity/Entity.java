@@ -12,13 +12,18 @@ import com.dakoda.alr.game.world.location.Location;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@SuppressWarnings("UnusedReturnValue")
 public interface Entity extends GameObject, Questable {
 
     String name();
 
     Making making();
 
+    Type type();
+
     Progression progression();
+
+    Location location();
 
     Entity withName(String name);
 
@@ -28,19 +33,6 @@ public interface Entity extends GameObject, Questable {
 
     Entity atLocation(Location location);
 
-    static Entity ofType(Type type) {
-        switch (type) {
-            case NPC:
-                return new NPC();
-            case HOSTILE:
-                return new Hostile();
-            case MERCHANT:
-                return new Merchant();
-            default:
-                return null;
-        }
-    }
-
     enum Type {
         NPC, HOSTILE, MERCHANT;
     }
@@ -49,6 +41,7 @@ public interface Entity extends GameObject, Questable {
 
         String name;
         Making making;
+        private Entity.Type type = Type.NPC;
         Progression progression;
         ArrayList<Quest> quests = new ArrayList<>();
         Location location;
@@ -57,12 +50,20 @@ public interface Entity extends GameObject, Questable {
             return name;
         }
 
+        public Type type() {
+            return type;
+        }
+
         public Making making() {
             return making;
         }
 
         public Progression progression() {
             return progression;
+        }
+
+        public Location location() {
+            return location;
         }
 
         public void registerQuest(Quest quest) {
@@ -86,7 +87,7 @@ public interface Entity extends GameObject, Questable {
 
         public NPC atLocation(Location location) {
             this.location = location;
-            // TODO: 20/09/2018 -> location.addEntity
+            location.withNPC(this);
             return this;
         }
     }
@@ -94,10 +95,14 @@ public interface Entity extends GameObject, Questable {
     class Hostile implements Entity {
 
         private String name;
+        private Entity.Type type = Type.HOSTILE;
         private Making making;
         private Progression progression;
-        private Inventory inventory;
         Location location;
+
+        public Type type() {
+            return type;
+        }
 
         public String name() {
             return name;
@@ -112,7 +117,11 @@ public interface Entity extends GameObject, Questable {
         }
 
         public Inventory inventory() {
-            return inventory;
+            return null;
+        }
+
+        public Location location() {
+            return null;
         }
 
         public Hostile withName(String name) {
@@ -124,31 +133,20 @@ public interface Entity extends GameObject, Questable {
             this.making = making;
             return this;
         }
-        
-        public Hostile withWeapon(Item.Weapon weapon) {
-            // TODO: 20/09/2018 do Equipment, add to Inventory
-            return this;
-        }
 
         public Hostile withProfession(Profession profession) {
             this.progression = new Progression(profession);
             return this;
         }
 
-        public Hostile withInventory(Inventory inventory) {
-            this.inventory = inventory;
-            return this;
-        }
-
         public Hostile atLocation(Location location) {
-            this.location = location;
-            // TODO: 20/09/2018 -> location.addEntity
-            return null;
+            return this;
         }
     }
 
     class Merchant extends NPC {
 
+        private Entity.Type type = Type.MERCHANT;
         private HashMap<Item, Integer> goods = new HashMap<>();
 
         public HashMap<Item, Integer> goods() {
@@ -158,6 +156,10 @@ public interface Entity extends GameObject, Questable {
         public Merchant withGood(Item item, Integer value) {
             goods.put(item, value);
             return this;
+        }
+
+        public Location location() {
+            return location;
         }
 
         @Override
@@ -181,6 +183,7 @@ public interface Entity extends GameObject, Questable {
         @Override
         public Merchant atLocation(Location location) {
             this.location = location;
+            location.withNPC(this);
             return this;
         }
     }

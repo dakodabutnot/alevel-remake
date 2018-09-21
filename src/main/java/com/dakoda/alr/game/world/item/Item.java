@@ -35,21 +35,6 @@ public interface Item extends Questable, GameObject {
 
     boolean meetsPrerequisite();
 
-    static Item ofType(Type type) {
-        switch (type) {
-            case GENERIC:
-                return (((Generic) new Generic()));
-            case ARMOUR:
-                return new Armour();
-            case WEAPON:
-                return new Weapon();
-            case CONSUMABLE:
-                return new Consumable();
-            default:
-                return null;
-        }
-    }
-
     enum Type {
         GENERIC, ARMOUR, WEAPON, CONSUMABLE
     }

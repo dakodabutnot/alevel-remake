@@ -7,10 +7,6 @@ import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 
-import static com.dakoda.alr.TextRPG.master;
-import static com.dakoda.alr.game.world.item.Item.Type.*;
-import static com.dakoda.alr.game.world.location.Location.Type.SETTLEMENT;
-
 @SuppressWarnings("ConstantConditions")
 public interface Registrar {
 
@@ -19,6 +15,7 @@ public interface Registrar {
     Registrar init();
 
     public GameObject findContentByID(Integer id);
+
     public GameObject findContentByName(String name);
 
     class RegistrarEntity implements Registrar {
@@ -28,7 +25,9 @@ public interface Registrar {
             //NPCs
 
             //Hostiles
-
+            register(0, new Entity
+                    .Merchant()
+            );
             //Merchants
 
             return this;
@@ -51,7 +50,7 @@ public interface Registrar {
 
         public RegistrarItem init() {
             //register Items here
-            register(0, ((Item.Consumable) Item.ofType(CONSUMABLE))
+            register(0, new Item.Consumable()
                     .withName("Ambrosia")
                     .withCurrencyValue(1_000)
                     .withUsagePrerequisite(
@@ -60,7 +59,7 @@ public interface Registrar {
                     .withRestorationStat(Item.Consumable.Stat.HEALTH)
                     .withRestorationValue(500)
             );
-            register(1, ((Item.Generic) Item.ofType(GENERIC))
+            register(1, new Item.Consumable()
                     .withName("Zombie Brain")
                     .withCurrencyValue(1)
             );
@@ -84,8 +83,7 @@ public interface Registrar {
 
         public RegistrarLocation init() {
             //register Locations here
-            register(0,
-                    Location.ofType(SETTLEMENT)
+            register(0, new Location.Settlement()
                     .withName("Xinces")
             );
             return this;

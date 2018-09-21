@@ -27,26 +27,11 @@ public interface Location extends Questable, GameObject {
     HashSet<NPC> NPCs();
     HashSet<Location> linkedLocations();
 
-    static Location ofType(Type type) {
-        switch (type) {
-            case FIELD:
-                return new Location_Field();
-            case SETTLEMENT:
-                return new Location_Settlement();
-            case ESTATE:
-                return new Location_Estate();
-            case CAMP:
-                return new Location_Camp();
-            default:
-                return null;
-        }
-    }
-
     enum Type {
         FIELD, SETTLEMENT, ESTATE, CAMP
     }
 
-    class Location_Field implements Location {
+    class Field implements Location {
 
         private String name = "";
         private Boolean restable = false;
@@ -57,27 +42,27 @@ public interface Location extends Questable, GameObject {
         private HashSet<NPC> NPCs = null;
         private HashSet<Location> linkedLocations = null;
 
-        public Location_Field withName(String name) {
+        public Field withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Location_Field withLevel(Integer level) {
+        public Field withLevel(Integer level) {
             this.level = level;
             return this;
         }
 
-        public Location_Field withHostileEncounter(Hostile hostile) {
+        public Field withHostileEncounter(Hostile hostile) {
             if (hostiles == null) hostiles = new HashSet<>();
             this.hostiles.add(hostile);
             return this;
         }
 
-        public Location_Field withNPC(NPC npc) {
+        public Field withNPC(NPC npc) {
             return this;
         }
 
-        public Location_Field linkedTo(Location location) {
+        public Field linkedTo(Location location) {
             if (linkedLocations == null) linkedLocations = new HashSet<>();
             this.linkedLocations.add(location);
             location.linkedTo(this);
@@ -119,7 +104,7 @@ public interface Location extends Questable, GameObject {
         @Override
         public boolean equals(Object obj) {
             try {
-                Location_Field locObj = (Location_Field) obj;
+                Field locObj = (Field) obj;
                 return locObj.name().equals(name())
                         && locObj.type().equals(type());
             } catch (Exception e) {
@@ -128,7 +113,7 @@ public interface Location extends Questable, GameObject {
         }
     }
 
-    class Location_Settlement implements Location {
+    class Settlement implements Location {
 
         private String name = "";
         private Boolean restable = false;
@@ -139,27 +124,27 @@ public interface Location extends Questable, GameObject {
         private HashSet<NPC> NPCs = null;
         private HashSet<Location> linkedLocations = null;
 
-        public Location_Settlement withName(String name) {
+        public Settlement withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Location_Settlement withLevel(Integer level) {
+        public Settlement withLevel(Integer level) {
             return this;
         }
 
-        public Location_Settlement withHostileEncounter(Hostile hostile) {
+        public Settlement withHostileEncounter(Hostile hostile) {
             return this;
         }
 
-        public Location_Settlement withNPC(NPC npc) {
+        public Settlement withNPC(NPC npc) {
             if (NPCs == null) NPCs = new HashSet<>();
             this.NPCs.add(npc);
             npc.atLocation(this);
             return this;
         }
 
-        public Location_Settlement linkedTo(Location location) {
+        public Settlement linkedTo(Location location) {
             if (linkedLocations == null) linkedLocations = new HashSet<>();
             this.linkedLocations.add(location);
             location.linkedTo(this);
@@ -201,7 +186,7 @@ public interface Location extends Questable, GameObject {
         @Override
         public boolean equals(Object obj) {
             try {
-                Location_Settlement locObj = (Location_Settlement) obj;
+                Settlement locObj = (Settlement) obj;
                 return locObj.name().equals(name())
                         && locObj.type().equals(type());
             } catch (Exception e) {
@@ -210,7 +195,7 @@ public interface Location extends Questable, GameObject {
         }
     }
 
-    class Location_Estate implements Location {
+    class Estate implements Location {
 
         private String name = "";
         private Boolean restable = false;
@@ -221,32 +206,32 @@ public interface Location extends Questable, GameObject {
         private HashSet<NPC> NPCs = null;
         private HashSet<Location> linkedLocations = null;
 
-        public Location_Estate withName(String name) {
+        public Estate withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Location_Estate withLevel(Integer level) {
+        public Estate withLevel(Integer level) {
             return this;
         }
 
-        public Location_Estate withHostileEncounter(Hostile hostile) {
+        public Estate withHostileEncounter(Hostile hostile) {
             return this;
         }
 
-        public Location_Estate asInn() {
+        public Estate asInn() {
             restable = true;
             return this;
         }
 
-        public Location_Estate withNPC(NPC npc) {
+        public Estate withNPC(NPC npc) {
             if (NPCs == null) NPCs = new HashSet<>();
             this.NPCs.add(npc);
             npc.atLocation(this);
             return this;
         }
 
-        public Location_Estate linkedTo(Location location) {
+        public Estate linkedTo(Location location) {
             if (linkedLocations == null) linkedLocations = new HashSet<>();
             this.linkedLocations.add(location);
             location.linkedTo(this);
@@ -288,7 +273,7 @@ public interface Location extends Questable, GameObject {
         @Override
         public boolean equals(Object obj) {
             try {
-                Location_Estate locObj = (Location_Estate) obj;
+                Estate locObj = (Estate) obj;
                 return locObj.name().equals(name())
                         && locObj.type().equals(type());
             } catch (Exception e) {
@@ -297,7 +282,7 @@ public interface Location extends Questable, GameObject {
         }
     }
 
-    class Location_Camp implements Location {
+    class Camp implements Location {
 
         private String name = "";
         private Boolean restable = true;
@@ -308,30 +293,30 @@ public interface Location extends Questable, GameObject {
         private HashSet<NPC> NPCs = null;
         private HashSet<Location> linkedLocations = null;
 
-        public Location_Camp withName(String name) {
+        public Camp withName(String name) {
             this.name = name;
             return this;
         }
 
-        public Location_Camp withLevel(Integer level) {
+        public Camp withLevel(Integer level) {
             this.level = level;
             return this;
         }
 
-        public Location_Camp withHostileEncounter(Hostile hostile) {
+        public Camp withHostileEncounter(Hostile hostile) {
             if (hostiles == null) hostiles = new HashSet<>();
             this.hostiles.add(hostile);
             return this;
         }
 
-        public Location_Camp withNPC(NPC npc) {
+        public Camp withNPC(NPC npc) {
             if (NPCs == null) NPCs = new HashSet<>();
             this.NPCs.add(npc);
             npc.atLocation(this);
             return this;
         }
 
-        public Location_Camp linkedTo(Location location) {
+        public Camp linkedTo(Location location) {
             if (linkedLocations == null) linkedLocations = new HashSet<>();
             this.linkedLocations.add(location);
             location.linkedTo(this);
@@ -373,7 +358,7 @@ public interface Location extends Questable, GameObject {
         @Override
         public boolean equals(Object obj) {
             try {
-                Location_Estate locObj = (Location_Estate) obj;
+                Estate locObj = (Estate) obj;
                 return locObj.name().equals(name())
                         && locObj.type().equals(type());
             } catch (Exception e) {
