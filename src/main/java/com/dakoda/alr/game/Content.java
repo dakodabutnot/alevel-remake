@@ -4,7 +4,7 @@ import com.dakoda.alr.game.exception.DuplicateContentIDException;
 import com.dakoda.alr.game.exception.InvalidIDRequestException;
 import com.dakoda.alr.game.exception.InvalidRegistrationRequestException;
 import com.dakoda.alr.game.exception.NullItemRequestException;
-import com.dakoda.alr.game.quest.Quest;
+import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.item.Item;
@@ -13,7 +13,7 @@ import com.dakoda.alr.game.world.location.Location;
 import java.util.HashMap;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
-public class GameContent {
+public class Content {
 
     private static HashMap<Integer, Item> itemMap = new HashMap<>();
     private static HashMap<Integer, Entity> entityMap = new HashMap<>();
@@ -56,8 +56,8 @@ public class GameContent {
                 if (questMap.containsKey(id)) {
                     throw new DuplicateContentIDException(
                             "Two pieces of content (QUESTS) were registered with the same ID \n"
-                                    + "\t-> {OBJECT: " + ((Quest) object).getDescription() + ", ID: " + id + "} -> " +
-                                    "{OBJECT: " + questMap.get(id).getDescription() + ", ID: " + id + "}"
+                                    + "\t-> {OBJECT: " + object.toString() + ", ID: " + id + "} -> " +
+                                    "{OBJECT: " + questMap.get(id).toString() + ", ID: " + id + "}"
                     );
                 } else {
                     questMap.put(id, (Quest) object);
@@ -65,7 +65,7 @@ public class GameContent {
             } else {
                 throw new InvalidRegistrationRequestException("A GameObject that somehow isn't registerable tried to be registered.");
             }
-            System.out.println("#REG | Registered object " + object + " with an ID of " + id);
+            System.out.println("#REG " + ((GameObject) object).objectType() + " | Registered " + ((GameObject) object).name() + " ID " + id);
         } else {
             throw new InvalidRegistrationRequestException("An object that isn't a GameObject tried to register.");
         }

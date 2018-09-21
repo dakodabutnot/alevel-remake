@@ -1,4 +1,4 @@
-package com.dakoda.alr.game.quest;
+package com.dakoda.alr.game.world.quest;
 
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.registrar.Prerequisite;
@@ -23,6 +23,10 @@ public class Quest implements GameObject {
 
     public void turnIn() {
         finish();
+    }
+
+    public GameObject.Type objectType() {
+        return GameObject.Type.QUEST;
     }
 
     public Quest withObjective(QuestObjective requirement) {
@@ -112,5 +116,9 @@ public class Quest implements GameObject {
 
     public boolean meetsQuestPrerequisites() {
         return hasFulfilledPrerequisites();
+    }
+
+    public String name() {
+        return this.toString();
     }
 }

@@ -1,4 +1,4 @@
-package com.dakoda.alr.game.character;
+package com.dakoda.alr.game.world.item;
 import com.dakoda.alr.game.exception.InvalidCurrencyChangeException;
 import com.dakoda.alr.game.exception.InvalidInventoryMutationException;
 import com.dakoda.alr.game.exception.NullInventoryMutationException;
@@ -10,7 +10,32 @@ import java.util.stream.Collectors;
 public final class Inventory {
 
     private HashMap<Item, Integer> items = new HashMap<>();
-    private long currency;
+    private Long currency;
+    private Equipment equipment;
+
+    public Equipment equipment() {
+        return equipment;
+    }
+
+    public Inventory withEquipment(Equipment equipment) {
+        this.equipment = equipment;
+        return this;
+    }
+
+    public Inventory withItem(Item item) {
+        addItem(item);
+        return this;
+    }
+
+    public Inventory withItem(Item item, Integer amount) {
+        addItem(item, amount);
+        return this;
+    }
+
+    public Inventory withCurrencyValue(Long value) {
+        this.currency = value;
+        return this;
+    }
 
     /**
      * Increases the inventory's currency value by the given value.
@@ -19,7 +44,7 @@ public final class Inventory {
      *
      * @param add The amount to be added.
      */
-    public void addCurrency(long add) {
+    public void addCurrency(Long add) {
         if (checkValidCurrencyChange(Math.abs(add))) {
             currency += Math.abs(add);
         }
@@ -33,7 +58,7 @@ public final class Inventory {
      *
      * @param sub The amount to be subtracted.
      */
-    public void subCurrency(long sub) {
+    public void subCurrency(Long sub) {
         if (checkValidCurrencyChange(-(Math.abs(sub)))) {
             currency -= Math.abs(sub);
         }
@@ -46,12 +71,12 @@ public final class Inventory {
      *
      * A change cannot be made if the change were to cause the currency value to fall below zero,
      * and a change cannot be made if the change were to cause the currency value to rise above the maximum
-     * stored value of a long.
+     * stored value of a Long.
      *
      * @param change The change to be made.
      * @return Boolean determining whether or not the change can be made.
      */
-    public boolean checkValidCurrencyChange(long change) {
+    public boolean checkValidCurrencyChange(Long change) {
         return currency + change > 0 && currency + change < Long.MAX_VALUE;
     }
 

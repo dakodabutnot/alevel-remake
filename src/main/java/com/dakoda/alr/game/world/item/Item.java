@@ -1,16 +1,17 @@
 package com.dakoda.alr.game.world.item;
 
-import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.game.mechanic.Currency;
 import com.dakoda.alr.game.registrar.Prerequisite;
-import com.dakoda.alr.game.quest.Questable;
+import com.dakoda.alr.game.world.character.Progression;
+import com.dakoda.alr.game.world.character.Progression.Profession;
+import com.dakoda.alr.game.world.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static com.dakoda.alr.game.character.Profession.*;
+import static com.dakoda.alr.game.world.character.Progression.Profession.*;
 import static com.dakoda.alr.game.world.item.Item.Armour.Weight.*;
 
 public interface Item extends Questable, GameObject {
@@ -45,6 +46,22 @@ public interface Item extends Questable, GameObject {
         Item.Type type = Item.Type.ARMOUR;
         Integer currencyValue = 0;
         Prerequisite prerequisite = null;
+        Slot slot;
+        Material material;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.ITEM;
+        }
+
+        public Armour equippableOn(Slot slot) {
+            this.slot = slot;
+            return this;
+        }
+
+        public Armour withMaterial(Material material) {
+            this.material = material;
+            return this;
+        }
 
         public Armour withName(String name) {
             this.name = name;
@@ -68,6 +85,18 @@ public interface Item extends Questable, GameObject {
             return prerequisite;
         }
 
+        public Slot slot() {
+            return this.slot;
+        }
+
+        public Material material() {
+            return this.material ;
+        }
+
+        public Weight weight() {
+            return this.material().weight;
+        }
+
         public String name() {
             return name;
         }
@@ -89,7 +118,7 @@ public interface Item extends Questable, GameObject {
         }
 
         public enum Slot {
-            NONE, HEAD, SHOULDER, BACK, BODY, LEGS, FEET, HANDS, TRINKET, RING, NECKLACE
+            ANY, HEAD, SHOULDER, BACK, BODY, LEGS, FEET, HANDS, TRINKET, RING, NECKLACE
         }
 
         public static class Material {
@@ -187,9 +216,19 @@ public interface Item extends Questable, GameObject {
         Item.Type type = Item.Type.WEAPON;
         Integer currencyValue = 0;
         Prerequisite prerequisite = null;
+        Weapon.Type weaponType;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.ITEM;
+        }
 
         public Weapon withName(String name) {
             this.name = name;
+            return this;
+        }
+
+        public Weapon asWeaponType(Weapon.Type weaponType) {
+            this.weaponType = weaponType;
             return this;
         }
 
@@ -201,6 +240,18 @@ public interface Item extends Questable, GameObject {
         public Weapon withUsagePrerequisite(Prerequisite prerequisite) {
             this.prerequisite = prerequisite;
             return this;
+        }
+
+        public boolean doubleHanded() {
+            return weaponType.isDoubleHanded();
+        }
+
+        public boolean ranged() {
+            return weaponType.isRanged();
+        }
+
+        public ArrayList<Profession> applicableProfessions() {
+            return weaponType.getApplicableProfessions();
         }
 
         public boolean meetsPrerequisite() {
@@ -231,7 +282,7 @@ public interface Item extends Questable, GameObject {
             return prerequisite;
         }
 
-        enum Type {
+        public enum Type {
 
             EMPTY("", false, false, null),
                     // MELEE ----------------------------------------------------------
@@ -344,7 +395,7 @@ public interface Item extends Questable, GameObject {
             }
         }
 
-        enum Material {
+        public enum Material {
 
             NONE, IRON, WOOD
         }
@@ -358,6 +409,10 @@ public interface Item extends Questable, GameObject {
         Consumable.Stat restorationStat;
         Integer restorationValue;
         Prerequisite prerequisite = null;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.ITEM;
+        }
 
         public Consumable withName(String name) {
             this.name = name;
@@ -420,8 +475,12 @@ public interface Item extends Questable, GameObject {
     class Generic implements Item {
 
         String name;
-        Type type = Type.GENERIC;
+        Item.Type type = Item.Type.GENERIC;
         Integer currencyValue = 0;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.ITEM;
+        }
 
         public Generic withName(String name) {
             this.name = name;
@@ -445,7 +504,7 @@ public interface Item extends Questable, GameObject {
             return name;
         }
 
-        public Type type() {
+        public Item.Type type() {
             return type;
         }
 

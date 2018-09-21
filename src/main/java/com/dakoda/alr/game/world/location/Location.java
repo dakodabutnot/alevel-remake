@@ -1,6 +1,8 @@
 package com.dakoda.alr.game.world.location;
-import com.dakoda.alr.game.quest.Questable;
+import com.dakoda.alr.game.Content;
+import com.dakoda.alr.game.world.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
+import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.entity.Entity.Hostile;
 import com.dakoda.alr.game.world.entity.Entity.NPC;
 import java.util.HashSet;
@@ -37,10 +39,14 @@ public interface Location extends Questable, GameObject {
         private Boolean restable = false;
         private Boolean encounterable = true;
         private Integer level = 1;
-        private Type type = FIELD;
+        private Location.Type type = FIELD;
         private HashSet<Hostile> hostiles = null;
         private HashSet<NPC> NPCs = null;
         private HashSet<Location> linkedLocations = null;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.LOCATION;
+        }
 
         public Field withName(String name) {
             this.name = name;
@@ -55,6 +61,14 @@ public interface Location extends Questable, GameObject {
         public Field withHostileEncounter(Hostile hostile) {
             if (hostiles == null) hostiles = new HashSet<>();
             this.hostiles.add(hostile);
+            return this;
+        }
+
+        public Field withHostileEncounter(String hostileName) {
+            if (hostiles == null) hostiles = new HashSet<>();
+            if (Content.findEntityByName(hostileName).type().equals(Entity.Type.HOSTILE)) {
+                this.hostiles.add((Hostile) Content.findEntityByName(hostileName));
+            }
             return this;
         }
 
@@ -85,7 +99,7 @@ public interface Location extends Questable, GameObject {
             return level;
         }
 
-        public Type type() {
+        public Location.Type type() {
             return type;
         }
 
@@ -119,10 +133,14 @@ public interface Location extends Questable, GameObject {
         private Boolean restable = false;
         private Boolean encounterable = false;
         private Integer level = -1;
-        private Type type = SETTLEMENT;
+        private Location.Type type = SETTLEMENT;
         private HashSet<Hostile> hostiles = null;
         private HashSet<NPC> NPCs = null;
         private HashSet<Location> linkedLocations = null;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.LOCATION;
+        }
 
         public Settlement withName(String name) {
             this.name = name;
@@ -167,7 +185,7 @@ public interface Location extends Questable, GameObject {
             return level;
         }
 
-        public Type type() {
+        public Location.Type type() {
             return type;
         }
 
@@ -201,10 +219,14 @@ public interface Location extends Questable, GameObject {
         private Boolean restable = false;
         private Boolean encounterable = false;
         private Integer level = -1;
-        private Type type = ESTATE;
+        private Location.Type type = ESTATE;
         private HashSet<Hostile> hostiles = null;
         private HashSet<NPC> NPCs = null;
         private HashSet<Location> linkedLocations = null;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.LOCATION;
+        }
 
         public Estate withName(String name) {
             this.name = name;
@@ -254,7 +276,7 @@ public interface Location extends Questable, GameObject {
             return level;
         }
 
-        public Type type() {
+        public Location.Type type() {
             return type;
         }
 
@@ -288,10 +310,14 @@ public interface Location extends Questable, GameObject {
         private Boolean restable = true;
         private Boolean encounterable = true;
         private Integer level = -1;
-        private Type type = ESTATE;
+        private Location.Type type = ESTATE;
         private HashSet<Hostile> hostiles = null;
         private HashSet<NPC> NPCs = null;
         private HashSet<Location> linkedLocations = null;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.LOCATION;
+        }
 
         public Camp withName(String name) {
             this.name = name;
@@ -339,7 +365,7 @@ public interface Location extends Questable, GameObject {
             return level;
         }
 
-        public Type type() {
+        public Location.Type type() {
             return type;
         }
 

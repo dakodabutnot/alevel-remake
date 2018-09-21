@@ -1,11 +1,15 @@
 package com.dakoda.alr.game.registrar;
 
 import com.dakoda.alr.TextRPG;
-import com.dakoda.alr.game.GameContent;
-import com.dakoda.alr.game.quest.Quest;
+import com.dakoda.alr.game.Content;
+import com.dakoda.alr.game.battle.Loot;
+import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
+import com.dakoda.alr.game.world.quest.QuestObjective;
+
+import static com.dakoda.alr.game.Content.findItemByName;
 
 @SuppressWarnings("ConstantConditions")
 public interface Registrar {
@@ -26,7 +30,10 @@ public interface Registrar {
 
             //Hostiles
             register(0, new Entity
-                    .Merchant()
+                    .Hostile()
+                    .withName("Zombie")
+                    .withLoot(new Loot()
+                            .withDrop(findItemByName("Zombie Brain"), 1))
             );
             //Merchants
 
@@ -34,32 +41,34 @@ public interface Registrar {
         }
 
         public void register(Integer id, GameObject gameObject) {
-            GameContent.register(id, gameObject);
+            Content.register(id, gameObject);
         }
 
         public Entity findContentByName(String name) {
-            return GameContent.findEntityByName(name);
+            return Content.findEntityByName(name);
         }
 
         public Entity findContentByID(Integer id) {
-            return GameContent.findEntityByID(id);
+            return Content.findEntityByID(id);
         }
     }
 
     class RegistrarItem implements Registrar {
 
         public RegistrarItem init() {
-            //register Items here
-            register(0, new Item.Consumable()
-                    .withName("Ambrosia")
-                    .withCurrencyValue(1_000)
-                    .withUsagePrerequisite(
-                            () -> TextRPG.master.player.reqIsLevel(5)
-                    )
-                    .withRestorationStat(Item.Consumable.Stat.HEALTH)
-                    .withRestorationValue(500)
+            // IMPORTANT --
+            register(0, new Item.Weapon()
+                    .withName("DEFAULT_WEP")
+                    .asWeaponType(Item.Weapon.Type.EMPTY)
             );
-            register(1, new Item.Consumable()
+            register(1, new Item.Armour()
+                    .withName("DEFAULT_ARM")
+                    .equippableOn(Item.Armour.Slot.ANY)
+                    .withMaterial(Item.Armour.Material.NONE)
+            );
+            // -------------------------------------------
+            //register Items here
+            register(2, new Item.Generic()
                     .withName("Zombie Brain")
                     .withCurrencyValue(1)
             );
@@ -67,15 +76,15 @@ public interface Registrar {
         }
 
         public void register(Integer id, GameObject gameObject) {
-            GameContent.register(id, gameObject);
+            Content.register(id, gameObject);
         }
 
         public Item findContentByName(String name) {
-            return GameContent.findItemByName(name);
+            return findItemByName(name);
         }
 
         public Item findContentByID(Integer id) {
-            return GameContent.findItemByID(id);
+            return Content.findItemByID(id);
         }
     }
 
@@ -86,19 +95,32 @@ public interface Registrar {
             register(0, new Location.Settlement()
                     .withName("Xinces")
             );
+            register(1, new Location.Field()
+                    .withName("Candour Fields")
+                    .withHostileEncounter(findHostileByName("Zombie"))
+                    .withLevel(1)
+            );
             return this;
         }
 
         public void register(Integer id, GameObject gameObject) {
-            GameContent.register(id, gameObject);
+            Content.register(id, gameObject);
         }
 
         public Location findContentByName(String name) {
-            return GameContent.findLocationByName(name);
+            return Content.findLocationByName(name);
         }
 
         public Location findContentByID(Integer id) {
-            return GameContent.findLocationByID(id);
+            return Content.findLocationByID(id);
+        }
+
+        public Entity.Hostile findHostileByName(String name) {
+            try {
+                return (Entity.Hostile) Content.findEntityByName(name);
+            } catch (Exception e) {
+                return null;
+            }
         }
     }
 
@@ -106,20 +128,42 @@ public interface Registrar {
 
         public RegistrarQuest init() {
             //register Quests here
-
+            register(0, new Quest()
+                    .withDescription("A zombie is terrorising the village!")
+                    .withObjective(new QuestObjective.toKill()
+                            .withDescription("Kill the zombie.")
+                            .withCriteria(findHostileByName("Zombie"), 1))
+                    .withObjective(new QuestObjective.toGet()
+                            .withDescription("Fetch the zombie's brain as proof.")
+                            .withCriteria(findItemByName("zombie brain"), 1)
+                    )
+                    .withCurrencyReward(5)
+                    .withExperienceReward(10)
+                    .requiresThat(
+                            () -> TextRPG.master.player.reqIsLevel(2)
+                    )
+            );
             return this;
         }
 
         public void register(Integer id, GameObject gameObject) {
-            GameContent.register(id, gameObject);
+            Content.register(id, gameObject);
         }
 
         public Quest findContentByID(Integer id) {
-            return GameContent.findQuestByID(id);
+            return Content.findQuestByID(id);
         }
 
         public Quest findContentByName(String name) {
-            return GameContent.findQuestByID(0);
+            return Content.findQuestByID(0);
+        }
+
+        public Entity.Hostile findHostileByName(String name) {
+            try {
+                return (Entity.Hostile) Content.findEntityByName(name);
+            } catch (Exception e) {
+                return null;
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.dakoda.alr.game.quest;
+package com.dakoda.alr.game.world.quest;
 
 import com.dakoda.alr.game.world.entity.Entity.Hostile;
 import com.dakoda.alr.game.world.item.Item;
@@ -6,6 +6,8 @@ import com.dakoda.alr.game.world.location.Location;
 
 import java.security.InvalidParameterException;
 import java.util.HashMap;
+
+import static com.dakoda.alr.game.world.quest.QuestObjective.Type.*;
 
 public interface QuestObjective {
 
@@ -15,38 +17,32 @@ public interface QuestObjective {
 
     Boolean checkFinished();
 
+    Type type();
+
     QuestObjective withDescription(String desc);
 
     QuestObjective withCriteria(Questable object, Integer needs) throws InvalidParameterException;
-
-    static QuestObjective ofType(Type type) {
-        switch (type) {
-            case GET:
-                return new QuestObjective_toGet();
-            case GO:
-                return new QuestObjective_toGo();
-            case KILL:
-                return new QuestObjective_toKill();
-            default:
-                return null;
-        }
-    }
 
     enum Type {
         GET, GO, KILL;
     }
 
-    class QuestObjective_toGet implements QuestObjective {
+    class toGet implements QuestObjective {
 
         String description = "";
         HashMap<Item, Integer> criteria = new HashMap<>();
+        QuestObjective.Type type = GET;
 
-        public QuestObjective_toGet withDescription(String desc) {
+        public toGet withDescription(String desc) {
             this.description = desc;
             return this;
         }
 
-        public QuestObjective_toGet withCriteria(Questable object, Integer needs) throws InvalidParameterException {
+        public Type type() {
+            return this.type;
+        }
+
+        public toGet withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Item)) {
                 throw new InvalidParameterException("Tried to parse a non-'Item' object to a quest requirement that consumes 'Item'.");
             } else {
@@ -72,10 +68,11 @@ public interface QuestObjective {
         }
     }
 
-    class QuestObjective_toGo implements QuestObjective {
+    class toGo implements QuestObjective {
 
         String description = "";
         HashMap<Location, Boolean> criteria = new HashMap<>();
+        QuestObjective.Type type = GO;
 
         public String description() {
             return description;
@@ -85,12 +82,12 @@ public interface QuestObjective {
             return criteria;
         }
 
-        public QuestObjective_toGo withDescription(String desc) {
+        public toGo withDescription(String desc) {
             this.description = desc;
             return this;
         }
 
-        public QuestObjective_toGo withCriteria(Questable object, Integer needs) throws InvalidParameterException {
+        public toGo withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Location)) {
                 throw new InvalidParameterException("Tried to parse a non-'Location' object to a quest requirement that consumes 'Location'.");
             } else {
@@ -106,19 +103,24 @@ public interface QuestObjective {
             }
             return done;
         }
+
+        public Type type() {
+            return type;
+        }
     }
 
-    class QuestObjective_toKill implements QuestObjective {
+    class toKill implements QuestObjective {
 
         String description = "";
         HashMap<Hostile, Integer> criteria = new HashMap<>();
+        QuestObjective.Type type = KILL;
 
-        public QuestObjective_toKill withDescription(String desc) {
+        public toKill withDescription(String desc) {
             this.description = desc;
             return this;
         }
 
-        public QuestObjective_toKill withCriteria(Questable object, Integer needs) throws InvalidParameterException {
+        public toKill withCriteria(Questable object, Integer needs) throws InvalidParameterException {
             if (!(object instanceof Hostile)) {
                 throw new InvalidParameterException("Tried to parse a non-'Hostile' object to a quest requirement that consumes 'Hostile'.");
             } else {
@@ -133,6 +135,10 @@ public interface QuestObjective {
                 sum += value;
             }
             return sum == 0;
+        }
+
+        public Type type() {
+            return type;
         }
 
         public String description() {

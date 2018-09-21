@@ -1,6 +1,9 @@
 package com.dakoda.alr.game;
 import com.dakoda.alr.game.player.Player;
-import com.dakoda.alr.game.quest.Quest;
+import com.dakoda.alr.game.world.character.Progression;
+import com.dakoda.alr.game.world.entity.Making;
+import com.dakoda.alr.game.world.item.Inventory;
+import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.registrar.*;
 import com.dakoda.alr.game.world.location.Location;
 
@@ -22,13 +25,43 @@ public final class GameMaster {
     private Location currentLocation = null;
 
     static {
+        System.out.println("////");
         Registrar[] reg = {
                 new RegistrarItem().init(),
                 new RegistrarEntity().init(),
                 new RegistrarLocation().init(),
                 new RegistrarQuest().init(),
         }; contentRegistrars.addAll(Arrays.asList(reg));
-        System.out.println("#COMPLETED_REG | Registered all content.");
+        System.out.println("////");
+        System.out.println("#WORLD | Registered all world content. -> we did it!");
+    } {
+        playerInit("Dakota",
+                new Making(),
+                Progression.Profession.BARD,
+                new Inventory()
+                        .withCurrencyValue(10L)
+        );
+    }
+
+    public void playerInit(
+            String name, Making making, Progression.Profession profession, Inventory inventory
+    ) {
+        System.out.print("#PLAYER | building... -> ");
+        player.withName(name)
+                .withMaking(making)
+                .withProfession(profession)
+                .withInitialInventory(inventory);
+        System.out.println("DONE!");
+    }
+
+    public void addQuestIfAble(Quest quest) {
+        if (quest.meetsQuestPrerequisites()) {
+            addQuestOverridingAbility(quest);
+        }
+    }
+
+    private void addQuestOverridingAbility(Quest quest) {
+        currentQuests.add(quest);
     }
 
     public void moveQuestToComplete(Quest quest) {

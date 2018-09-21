@@ -1,10 +1,11 @@
 package com.dakoda.alr.game.world.entity;
 
-import com.dakoda.alr.game.character.Inventory;
-import com.dakoda.alr.game.character.Profession;
-import com.dakoda.alr.game.character.Progression;
-import com.dakoda.alr.game.quest.Quest;
-import com.dakoda.alr.game.quest.Questable;
+import com.dakoda.alr.game.battle.Loot;
+import com.dakoda.alr.game.world.item.Inventory;
+import com.dakoda.alr.game.world.character.Progression.Profession;
+import com.dakoda.alr.game.world.character.Progression;
+import com.dakoda.alr.game.world.quest.Quest;
+import com.dakoda.alr.game.world.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
@@ -34,23 +35,27 @@ public interface Entity extends GameObject, Questable {
     Entity atLocation(Location location);
 
     enum Type {
-        NPC, HOSTILE, MERCHANT;
+        NPC, HOSTILE, MERCHANT, PLAYER
     }
 
     class NPC implements Entity {
 
         String name;
         Making making;
-        private Entity.Type type = Type.NPC;
+        private Entity.Type type = Entity.Type.NPC;
         Progression progression;
         ArrayList<Quest> quests = new ArrayList<>();
         Location location;
+
+        public GameObject.Type objectType() {
+            return GameObject.Type.ENTITY;
+        }
 
         public String name() {
             return name;
         }
 
-        public Type type() {
+        public Entity.Type type() {
             return type;
         }
 
@@ -95,12 +100,21 @@ public interface Entity extends GameObject, Questable {
     class Hostile implements Entity {
 
         private String name;
-        private Entity.Type type = Type.HOSTILE;
+        private Entity.Type type = Entity.Type.HOSTILE;
         private Making making;
         private Progression progression;
-        Location location;
+        private Location location;
+        private Loot loot;
 
-        public Type type() {
+        public GameObject.Type objectType() {
+            return GameObject.Type.ENTITY;
+        }
+
+        public Loot loot() {
+            return loot;
+        }
+
+        public Entity.Type type() {
             return type;
         }
 
@@ -129,6 +143,12 @@ public interface Entity extends GameObject, Questable {
             return this;
         }
 
+        public Hostile withLoot(Loot loot) {
+            this.loot = loot;
+            return this;
+        }
+
+
         public Hostile withMaking(Making making) {
             this.making = making;
             return this;
@@ -146,7 +166,7 @@ public interface Entity extends GameObject, Questable {
 
     class Merchant extends NPC {
 
-        private Entity.Type type = Type.MERCHANT;
+        private Entity.Type type = Entity.Type.MERCHANT;
         private HashMap<Item, Integer> goods = new HashMap<>();
 
         public HashMap<Item, Integer> goods() {

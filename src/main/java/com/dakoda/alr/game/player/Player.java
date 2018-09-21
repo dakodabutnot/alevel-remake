@@ -1,8 +1,8 @@
 package com.dakoda.alr.game.player;
 import com.dakoda.alr.TextRPG;
-import com.dakoda.alr.game.character.Inventory;
-import com.dakoda.alr.game.character.Profession;
-import com.dakoda.alr.game.character.Progression;
+import com.dakoda.alr.game.registrar.GameObject;
+import com.dakoda.alr.game.world.item.Inventory;
+import com.dakoda.alr.game.world.character.Progression;
 import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.entity.Making;
 import com.dakoda.alr.game.world.item.Item;
@@ -13,7 +13,11 @@ public final class Player implements Entity {
     private String name;
     private Making making;
     private Progression progression;
-    private Inventory inv;
+    private Inventory inventory;
+
+    public GameObject.Type objectType() {
+        return GameObject.Type.ENTITY;
+    }
 
     public Player withName(String name) {
         this.name = name;
@@ -25,9 +29,18 @@ public final class Player implements Entity {
         return this;
     }
 
-
-    public Player withProfession(Profession profession) {
+    public Player withProfession(Progression.Profession profession) {
         this.progression = new Progression(profession);
+        return this;
+    }
+
+    public Player withProfession(Progression.Profession profession, Integer level) {
+        this.progression = new Progression(profession, level);
+        return this;
+    }
+
+    public Player withInitialInventory(Inventory initialInventory) {
+        this.inventory = initialInventory;
         return this;
     }
 
@@ -40,7 +53,7 @@ public final class Player implements Entity {
     }
 
     public Inventory inventory() {
-        return inv;
+        return inventory;
     }
 
     public String name() {
@@ -51,12 +64,16 @@ public final class Player implements Entity {
         return making;
     }
 
+    public Type type() {
+        return Type.PLAYER;
+    }
+
     public Progression progression() {
         return progression;
     }
 
     // Prerequisite lovelies ----------------------------------------
-    public boolean reqProfessionIs(Profession profession) {
+    public boolean reqProfessionIs(Progression.Profession profession) {
         return progression.profession().equals(profession);
     }
 

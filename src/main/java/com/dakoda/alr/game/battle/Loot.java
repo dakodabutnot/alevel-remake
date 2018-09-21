@@ -8,23 +8,12 @@ public class Loot {
 
     private HashMap<Item, Integer> drops = new HashMap<>();
 
-    public HashMap<Item, Integer> getDrops() {
+    public HashMap<Item, Integer> drops() {
         return drops;
     }
 
-    public static final class Builder {
-
-        HashMap<Item, Integer> drops = new HashMap<>();
-
-        public Builder drop(Item item, Integer maximum) {
-            this.drops.put(item, maximum);
-            return this;
-        }
-
-        public Loot build() {
-            Loot loot = new Loot();
-            loot.drops = this.drops;
-            return loot;
-        }
+    public Loot withDrop(Item item, Integer max) {
+        this.drops.put(item, max);
+        return this;
     }
 }

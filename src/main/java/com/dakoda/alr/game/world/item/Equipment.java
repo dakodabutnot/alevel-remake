@@ -1,22 +1,26 @@
-package com.dakoda.alr.game.battle;
+package com.dakoda.alr.game.world.item;
+import com.dakoda.alr.game.Content;
 import com.dakoda.alr.game.exception.InvalidEquipSlotArgumentException;
 import com.dakoda.alr.game.exception.NullEquipException;
+import com.dakoda.alr.game.world.item.Item;
 
 import java.util.EnumMap;
 
 public class Equipment {
 
-    private EnumMap<ArmourEquipSlot, ItemArmour> equippedArmour = new EnumMap<>(ArmourEquipSlot.class);
-    private WeaponHands equippedWeapons = new WeaponHands();
+    private final Item.Weapon EMPTY_WEP = (Item.Weapon) Content.findItemByID(0);
+    private final Item.Armour EMPTY_ARM = (Item.Armour) Content.findItemByID(1);
+    private EnumMap<Item.Armour.Slot, Item.Armour> equippedArmour = new EnumMap<>(Item.Armour.Slot.class);
+    private EquippedWeapons equippedWeapons = new EquippedWeapons();
 
     {
-        equippedWeapons.left(Items.Weapon.EMPTY.get());
-        equippedWeapons.right(Items.Weapon.EMPTY.get());
+        equippedWeapons.left(EMPTY_WEP);
+        equippedWeapons.right(EMPTY_WEP);
     }
 
     public Equipment() {
-        for (ArmourEquipSlot slot : ArmourEquipSlot.values()) {
-            equippedArmour.put(slot, Items.Armour.EMPTY.get());
+        for (Item.Armour.Slot slot : Item.Armour.Slot.values()) {
+            equippedArmour.put(slot, EMPTY_ARM);
         }
     }
 
@@ -25,15 +29,15 @@ public class Equipment {
      * If an armour piece already exists here, it will be 'overwritten'.
      * @param armour The armour to be equipped.
      */
-    public void equipArmour(ItemArmour armour) {
+    public void equipArmour(Item.Armour armour) {
         if (armour != null) {
-            this.equippedArmour.put(armour.getArmourEquipSlot(), armour);
+            this.equippedArmour.put(armour.slot(), armour);
         } else {
             throw new NullEquipException("An attempt was made to equip a null armour.");
         }
     }
 
-    public void equipArmour(ArmourEquipSlot slot, ItemArmour armour) {
+    public void equipArmour(Item.Armour.Slot slot, Item.Armour armour) {
         if (armour != null) {
             if (slot != null) {
                 this.equippedArmour.put(slot, armour);
@@ -53,15 +57,15 @@ public class Equipment {
      * the original weapon will be unequipped.
      * @param slot The slot that the weapon should be equipped to.
      */
-    public void equipWeapon(Integer slot, ItemWeapon weapon) {
+    public void equipWeapon(Integer slot, Item.Weapon weapon) {
         if (slot >= 0 && slot <= 1) {
             if (weapon != null) {
-                if (weapon.isDoubleHanded()) {
+                if (weapon.doubleHanded()) {
                     equipWeapon(weapon);
                 } else {
-                    if (equippedWeapons.slot(slot).isDoubleHanded()) {
+                    if (equippedWeapons.slot(slot).doubleHanded()) {
                         equippedWeapons.slot(slot, weapon);
-                        equippedWeapons.slot(1 - slot, Items.Weapon.EMPTY.get());
+                        equippedWeapons.slot(1 - slot, EMPTY_WEP);
                     } else {
                         equippedWeapons.slot(slot, weapon);
                     }
@@ -80,20 +84,20 @@ public class Equipment {
      * Double-handed weapons will be unequipped in full.
      * @param weapon
      */
-    public void equipWeapon(ItemWeapon weapon) {
+    public void equipWeapon(Item.Weapon weapon) {
         if (weapon != null) {
-            if (weapon.isDoubleHanded()) {
+            if (weapon.doubleHanded()) {
                 this.equippedWeapons.left(weapon);
                 this.equippedWeapons.right(weapon);
             } else {
-                if (this.equippedWeapons.left() == Items.Weapon.EMPTY.get()) {
+                if (this.equippedWeapons.left() == EMPTY_WEP) {
                     this.equippedWeapons.left(weapon);
-                } else if (this.equippedWeapons.right() == Items.Weapon.EMPTY.get()) {
+                } else if (this.equippedWeapons.right() == EMPTY_WEP) {
                     this.equippedWeapons.right(weapon);
                 } else {
-                    if (this.equippedWeapons.left().isDoubleHanded()) {
+                    if (this.equippedWeapons.left().doubleHanded()) {
                         this.equippedWeapons.left(weapon);
-                        this.equippedWeapons.right(Items.Weapon.EMPTY.get());
+                        this.equippedWeapons.right(EMPTY_WEP);
                     } else {
                         this.equippedWeapons.left(weapon);
                     }
@@ -104,27 +108,65 @@ public class Equipment {
         }
     }
 
-    public EnumMap<ArmourEquipSlot, ItemArmour> getArmour() {
+    public EnumMap<Item.Armour.Slot, Item.Armour> getArmour() {
         return equippedArmour;
     }
 
-    public WeaponHands getWeapons() {
+    public EquippedWeapons getWeapons() {
         return equippedWeapons;
     }
 
-    public void unequipArmour(ArmourEquipSlot slot) {
-        this.equipArmour(slot, Items.Armour.EMPTY.get());
+    public void unequipArmour(Item.Armour.Slot slot) {
+        this.equipArmour(slot, EMPTY_ARM);
     }
 
-    public void unequipArmour(ItemArmour armour) {
+    public void unequipArmour(Item.Armour armour) {
         if (equippedArmour.containsValue(armour)) {
-            this.equipArmour(armour.getArmourEquipSlot(), Items.Armour.EMPTY.get());
+            this.equipArmour(armour.slot(), EMPTY_ARM);
         } else {
             throw new InvalidEquipSlotArgumentException("An attempt was made to unequip an armour that isn't even equipped.");
         }
     }
 
     public void unequipWeapon(Integer slot) {
-        this.equipWeapon(slot, Items.Weapon.EMPTY.get());
+        this.equipWeapon(slot, EMPTY_WEP);
+    }
+
+    class EquippedWeapons {
+
+        private Item.Weapon left;
+        private Item.Weapon right;
+
+        public Item.Weapon left() {
+            return left;
+        }
+
+        public Item.Weapon right() {
+            return right;
+        }
+
+        public void left(Item.Weapon left) {
+            this.left = left;
+        }
+
+        public void right(Item.Weapon right) {
+            this.right = right;
+        }
+
+        public Item.Weapon slot(int slot) {
+            if (slot == 0) {
+                return left();
+            } else {
+                return right();
+            }
+        }
+
+        public void slot(int slot, Item.Weapon weapon) {
+            if (slot == 0) {
+                left(weapon);
+            } else {
+                right(weapon);
+            }
+        }
     }
 }
