@@ -1,4 +1,4 @@
-package com.dakoda.alr.game.util;
+package com.dakoda.alr.game.battle;
 import com.dakoda.alr.game.world.entity.Entity;
 
 public interface BattleLogger {
