@@ -5,7 +5,6 @@ import com.dakoda.alr.game.world.character.Progression;
 import com.dakoda.alr.game.world.entity.Making;
 import com.dakoda.alr.game.world.item.Inventory;
 import com.dakoda.alr.game.world.quest.Quest;
-import com.dakoda.alr.game.registrar.*;
 import com.dakoda.alr.game.world.location.Location;
 import com.dakoda.alr.registrar.Registrar;
 
@@ -39,6 +38,7 @@ public final class GameMaster {
         System.out.println("#WORLD | Registered all world content. -> we did it!");
     }
 
+    //TEMPORARY PLAYER INIT
     {
         playerInit("Dakota",
                 new Making(),
