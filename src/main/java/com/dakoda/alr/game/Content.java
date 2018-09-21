@@ -75,7 +75,7 @@ public class Content {
         if (!itemMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
-                    + "-> ID: " + id
+                            + "-> ID: " + id
             );
         } else {
             return itemMap.get(id);

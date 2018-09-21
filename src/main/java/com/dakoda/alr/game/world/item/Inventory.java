@@ -1,8 +1,9 @@
 package com.dakoda.alr.game.world.item;
+
 import com.dakoda.alr.game.exception.InvalidCurrencyChangeException;
 import com.dakoda.alr.game.exception.InvalidInventoryMutationException;
 import com.dakoda.alr.game.exception.NullInventoryMutationException;
-import com.dakoda.alr.game.world.item.Item;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -48,7 +49,8 @@ public final class Inventory {
         if (checkValidCurrencyChange(Math.abs(add))) {
             currency += Math.abs(add);
         }
-        if (add < 0) throw new InvalidCurrencyChangeException("!!WARNING: An attempt was made to add a negative amount of currency to the player. The absolute value of the number was evaluated instead.");
+        if (add < 0)
+            throw new InvalidCurrencyChangeException("!!WARNING: An attempt was made to add a negative amount of currency to the player. The absolute value of the number was evaluated instead.");
     }
 
     /**
@@ -62,13 +64,14 @@ public final class Inventory {
         if (checkValidCurrencyChange(-(Math.abs(sub)))) {
             currency -= Math.abs(sub);
         }
-        if (sub < 0) throw new InvalidCurrencyChangeException("!!WARNING: An attempt was made to subtract a negative amount of currency from the player. The absolute value of the number was evaluated instead.");
+        if (sub < 0)
+            throw new InvalidCurrencyChangeException("!!WARNING: An attempt was made to subtract a negative amount of currency from the player. The absolute value of the number was evaluated instead.");
     }
 
     /**
      * Checks to see if a currency value change can be made, taking into consideration
      * the current value of currency.
-     *
+     * <p>
      * A change cannot be made if the change were to cause the currency value to fall below zero,
      * and a change cannot be made if the change were to cause the currency value to rise above the maximum
      * stored value of a Long.
@@ -86,19 +89,19 @@ public final class Inventory {
 
     /**
      * Adds an item to the inventory, or multiple depending on the value of amount.
-     *
+     * <p>
      * A negative amount here will throw an exception.
      * An amount of zero here will throw an exception.
-     *
+     * <p>
      * If the item already exists in the Inventory, the items will stack onto that.
      *
-     * @param item The item to be added.
+     * @param item   The item to be added.
      * @param amount The amount of the item to be added.
      */
     public void addItem(Item item, int amount) {
         if (amount < 0) {
             throw new InvalidInventoryMutationException("You're trying to add a NEGATIVE amount of items to an inventory. Try 'removeItem' instead.");
-        } else if (amount < 1){
+        } else if (amount < 1) {
             throw new InvalidInventoryMutationException("You're trying to add ZERO of an item to an inventory.");
         } else {
             if (items.containsKey(item)) {
@@ -129,19 +132,19 @@ public final class Inventory {
 
     /**
      * Removes an item from the inventory.
-     *
+     * <p>
      * A negative amount here will throw an exception.
      * An amount of zero here will throw an exception.
-     *
+     * <p>
      * If the item doesn't exist, an exception will be thrown.
      *
-     * @param item The item to be removed.
+     * @param item   The item to be removed.
      * @param amount
      */
     public void removeItem(Item item, int amount) {
         if (amount < 0) {
             throw new InvalidInventoryMutationException("You're trying to remove a NEGATIVE amount of items from an inventory. Try 'addItem' instead.");
-        } else if (amount < 1){
+        } else if (amount < 1) {
             throw new InvalidInventoryMutationException("You're trying to remove ZERO of an item from an inventory.");
         } else {
             if (items.containsKey(item)) {
@@ -176,7 +179,7 @@ public final class Inventory {
 
     /**
      * Filters items in the inventory by Item.Type
-     *
+     * <p>
      * Uses a stream to filter items that match the given Item.Type and collects them
      * in a new HashMap.
      *
@@ -186,8 +189,8 @@ public final class Inventory {
     public HashMap<Item, Integer> getFiltered(Item.Type itemType) {
         return (HashMap<Item, Integer>)
                 (getAllItems().entrySet().stream()
-                .filter(entry -> entry.getKey().type().equals(itemType))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+                        .filter(entry -> entry.getKey().type().equals(itemType))
+                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 
     public boolean hasItem(Item item) {

@@ -1,4 +1,5 @@
 package com.dakoda.alr.game.world.item;
+
 import com.dakoda.alr.game.Content;
 import com.dakoda.alr.game.exception.InvalidEquipSlotArgumentException;
 import com.dakoda.alr.game.exception.NullEquipException;
@@ -27,6 +28,7 @@ public class Equipment {
     /**
      * Equips a piece of armour to the respective armour slot.
      * If an armour piece already exists here, it will be 'overwritten'.
+     *
      * @param armour The armour to be equipped.
      */
     public void equipArmour(Item.Armour armour) {
@@ -55,6 +57,7 @@ public class Equipment {
      * the double-handed weapon will be unequipped.
      * If a single-handed weapon is already equipped, and you want to equip in the slot it is in, then
      * the original weapon will be unequipped.
+     *
      * @param slot The slot that the weapon should be equipped to.
      */
     public void equipWeapon(Integer slot, Item.Weapon weapon) {
@@ -82,6 +85,7 @@ public class Equipment {
      * Equips a weapon.
      * Finds a free slot and equips a weapon. If there is no free slot, then the left-hand is prioritised.
      * Double-handed weapons will be unequipped in full.
+     *
      * @param weapon
      */
     public void equipWeapon(Item.Weapon weapon) {

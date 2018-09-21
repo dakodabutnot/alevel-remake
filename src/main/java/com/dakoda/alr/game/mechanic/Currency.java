@@ -5,6 +5,7 @@ public interface Currency {
     /**
      * Divides a given number into the minimum amount of monetary units. Dependent on the Unit enum within the same class.
      * Stylised based on this current context using StringBuilder.
+     *
      * @param amount number to convert
      * @return A string explaining the monetary makeup of the number as defined in the Unit enum.
      */
@@ -55,6 +56,7 @@ public interface Currency {
 
     /**
      * Inverts (reverses) a given array.
+     *
      * @param array The Unit[] array to be inverted (reversed).
      * @return The reversed Unit[] array.
      */

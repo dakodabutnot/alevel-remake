@@ -2,7 +2,6 @@ package com.dakoda.alr.game.world.item;
 
 import com.dakoda.alr.game.mechanic.Currency;
 import com.dakoda.alr.game.registrar.Prerequisite;
-import com.dakoda.alr.game.world.character.Progression;
 import com.dakoda.alr.game.world.character.Progression.Profession;
 import com.dakoda.alr.game.world.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
@@ -67,6 +66,7 @@ public interface Item extends Questable, GameObject {
             this.name = name;
             return this;
         }
+
         public Armour withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
@@ -90,7 +90,7 @@ public interface Item extends Questable, GameObject {
         }
 
         public Material material() {
-            return this.material ;
+            return this.material;
         }
 
         public Weight weight() {
@@ -285,79 +285,79 @@ public interface Item extends Questable, GameObject {
         public enum Type {
 
             EMPTY("", false, false, null),
-                    // MELEE ----------------------------------------------------------
-                    SWORD("Sword",
-                            false,
-                            false,
-                            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, ANTIQUER, ASSASSIN, PERFORATOR, NAGUAL, ARCHER, BARD))
-                    ),
-                    GREATSWORD("Greatsword",
-                            true,
-                            false,
-                            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, ANTIQUER))
-                    ),
-                    DAGGER("Dagger",
-                            false,
-                            false,
-                            new ArrayList<>(Arrays.asList(ASSASSIN, NAGUAL, ARCHER, HUNTER, DUELIST, PERFORATOR))
-                    ),
-                    AXE("Axe",
-                            false,
-                            false,
-                            new ArrayList<>(Arrays.asList(DUELIST, PALADIN, CHRONOL, HUNTER))
-                    ),
-                    GREATAXE("Greataxe",
-                            true,
-                            false,
-                            new ArrayList<>(Arrays.asList(ANTIQUER, DUELIST, PALADIN))
-                    ),
-                    MACE("Mace",
-                            false,
-                            false,
-                            new ArrayList<>(Arrays.asList(HUNTER, PERFORATOR, NAGUAL))
-                    ),
-                    PIKE("Pike",
-                            true,
-                            false,
-                            new ArrayList<>(Arrays.asList(PERFORATOR, ANTIQUER, BARD))
-                    ),
+            // MELEE ----------------------------------------------------------
+            SWORD("Sword",
+                    false,
+                    false,
+                    new ArrayList<>(Arrays.asList(DUELIST, PALADIN, ANTIQUER, ASSASSIN, PERFORATOR, NAGUAL, ARCHER, BARD))
+            ),
+            GREATSWORD("Greatsword",
+                    true,
+                    false,
+                    new ArrayList<>(Arrays.asList(DUELIST, PALADIN, ANTIQUER))
+            ),
+            DAGGER("Dagger",
+                    false,
+                    false,
+                    new ArrayList<>(Arrays.asList(ASSASSIN, NAGUAL, ARCHER, HUNTER, DUELIST, PERFORATOR))
+            ),
+            AXE("Axe",
+                    false,
+                    false,
+                    new ArrayList<>(Arrays.asList(DUELIST, PALADIN, CHRONOL, HUNTER))
+            ),
+            GREATAXE("Greataxe",
+                    true,
+                    false,
+                    new ArrayList<>(Arrays.asList(ANTIQUER, DUELIST, PALADIN))
+            ),
+            MACE("Mace",
+                    false,
+                    false,
+                    new ArrayList<>(Arrays.asList(HUNTER, PERFORATOR, NAGUAL))
+            ),
+            PIKE("Pike",
+                    true,
+                    false,
+                    new ArrayList<>(Arrays.asList(PERFORATOR, ANTIQUER, BARD))
+            ),
 
-                    // RANGED ----------------------------------------------------------
-                    LONGBOW("Longbow",
-                            true,
-                            true,
-                            new ArrayList<>(Arrays.asList(ARCHER, ASSASSIN, NAGUAL, HUNTER))
-                    ),
-                    CROSSBOW("Crossbow",
-                            false,
-                            true,
-                            new ArrayList<>(Arrays.asList(ARCHER, HUNTER, NAGUAL))
-                    ),
-                    WAND("Wand",
-                            false,
-                            true,
-                            new ArrayList<>(Arrays.asList(ARCHER, PRIEST, CHRONOL, SHAMAN))
-                    ),
-                    STAFF("Staff",
-                            true,
-                            true,
-                            new ArrayList<>(Arrays.asList(ARCHER, PRIEST, CHRONOL, SHAMAN, ASSASSIN, PERFORATOR))
-                    ),
-                    TOME("Tome",
-                            true,
-                            true,
-                            new ArrayList<>(Arrays.asList(PRIEST, SHAMAN, CHRONOL, NAGUAL, ANTIQUER, PALADIN))
-                    ),
-                    INSTRUMENT("Instrument",
-                            true,
-                            true,
-                            new ArrayList<>(Collections.singletonList(BARD))
-                    ),
-                    HALLOW("Hallow",
-                            false,
-                            true,
-                            new ArrayList<>(Arrays.asList(BARD, PRIEST, SHAMAN, CHRONOL, NAGUAL, ASSASSIN))
-                    ),
+            // RANGED ----------------------------------------------------------
+            LONGBOW("Longbow",
+                    true,
+                    true,
+                    new ArrayList<>(Arrays.asList(ARCHER, ASSASSIN, NAGUAL, HUNTER))
+            ),
+            CROSSBOW("Crossbow",
+                    false,
+                    true,
+                    new ArrayList<>(Arrays.asList(ARCHER, HUNTER, NAGUAL))
+            ),
+            WAND("Wand",
+                    false,
+                    true,
+                    new ArrayList<>(Arrays.asList(ARCHER, PRIEST, CHRONOL, SHAMAN))
+            ),
+            STAFF("Staff",
+                    true,
+                    true,
+                    new ArrayList<>(Arrays.asList(ARCHER, PRIEST, CHRONOL, SHAMAN, ASSASSIN, PERFORATOR))
+            ),
+            TOME("Tome",
+                    true,
+                    true,
+                    new ArrayList<>(Arrays.asList(PRIEST, SHAMAN, CHRONOL, NAGUAL, ANTIQUER, PALADIN))
+            ),
+            INSTRUMENT("Instrument",
+                    true,
+                    true,
+                    new ArrayList<>(Collections.singletonList(BARD))
+            ),
+            HALLOW("Hallow",
+                    false,
+                    true,
+                    new ArrayList<>(Arrays.asList(BARD, PRIEST, SHAMAN, CHRONOL, NAGUAL, ASSASSIN))
+            ),
 
             ;
 
@@ -366,12 +366,12 @@ public interface Item extends Questable, GameObject {
             private boolean isRanged;
             private ArrayList<Profession> usedBy;
 
-            Type (
+            Type(
                     String displayText,
-            boolean isDoubleHanded,
-            boolean isRanged,
-            ArrayList<Profession> usedBy
-    ) {
+                    boolean isDoubleHanded,
+                    boolean isRanged,
+                    ArrayList<Profession> usedBy
+            ) {
                 this.displayText = displayText;
                 this.isDoubleHanded = isDoubleHanded;
                 this.isRanged = isRanged;

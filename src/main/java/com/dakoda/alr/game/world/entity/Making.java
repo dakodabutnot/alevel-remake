@@ -65,7 +65,7 @@ public class Making {
 
         private final Color colour;
 
-        EyeColour (
+        EyeColour(
                 int red,
                 int green,
                 int blue
@@ -88,7 +88,7 @@ public class Making {
 
         private final Color colour;
 
-        HairColour (
+        HairColour(
                 int red,
                 int green,
                 int blue
@@ -110,7 +110,7 @@ public class Making {
 
         private final Color colour;
 
-        SkinColour (
+        SkinColour(
                 int red,
                 int green,
                 int blue
@@ -137,7 +137,7 @@ public class Making {
 
         private final Color colour;
 
-        FurColour (
+        FurColour(
                 int red,
                 int green,
                 int blue

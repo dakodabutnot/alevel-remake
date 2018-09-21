@@ -1,4 +1,5 @@
 package com.dakoda.alr.game;
+
 import com.dakoda.alr.game.player.Player;
 import com.dakoda.alr.game.world.character.Progression;
 import com.dakoda.alr.game.world.entity.Making;
@@ -31,10 +32,13 @@ public final class GameMaster {
                 new RegistrarEntity().init(),
                 new RegistrarLocation().init(),
                 new RegistrarQuest().init(),
-        }; contentRegistrars.addAll(Arrays.asList(reg));
+        };
+        contentRegistrars.addAll(Arrays.asList(reg));
         System.out.println("////");
         System.out.println("#WORLD | Registered all world content. -> we did it!");
-    } {
+    }
+
+    {
         playerInit("Dakota",
                 new Making(),
                 Progression.Profession.BARD,

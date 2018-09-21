@@ -1,10 +1,12 @@
 package com.dakoda.alr.game.world.location;
+
 import com.dakoda.alr.game.Content;
 import com.dakoda.alr.game.world.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.entity.Entity.Hostile;
 import com.dakoda.alr.game.world.entity.Entity.NPC;
+
 import java.util.HashSet;
 
 import static com.dakoda.alr.game.world.location.Location.Type.ESTATE;
@@ -15,18 +17,29 @@ import static com.dakoda.alr.game.world.location.Location.Type.SETTLEMENT;
 public interface Location extends Questable, GameObject {
 
     Location withName(String name);
+
     Location withLevel(Integer level);
+
     Location withHostileEncounter(Hostile hostile);
+
     Location withNPC(NPC npc);
+
     Location linkedTo(Location location);
 
     String name();
+
     Boolean restable();
+
     Boolean encounterable();
+
     Integer level();
+
     Type type();
+
     HashSet<Hostile> hostiles();
+
     HashSet<NPC> NPCs();
+
     HashSet<Location> linkedLocations();
 
     enum Type {

@@ -1,4 +1,5 @@
 package com.dakoda.alr.game.player;
+
 import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.game.registrar.GameObject;
 import com.dakoda.alr.game.world.item.Inventory;
