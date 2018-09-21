@@ -1,6 +1,6 @@
-package com.dakoda.alr.game.world.character;
+package com.dakoda.alr.game.world.entity;
 
-import static com.dakoda.alr.game.world.character.Progression.Profession.*;
+import static com.dakoda.alr.game.world.entity.Progression.Profession.*;
 
 public class Progression {
 

@@ -1,7 +1,6 @@
 package com.dakoda.alr.game;
 
-import com.dakoda.alr.game.player.Player;
-import com.dakoda.alr.game.world.character.Progression;
+import com.dakoda.alr.game.world.entity.Progression;
 import com.dakoda.alr.game.world.entity.Making;
 import com.dakoda.alr.game.world.item.Inventory;
 import com.dakoda.alr.game.world.quest.Quest;

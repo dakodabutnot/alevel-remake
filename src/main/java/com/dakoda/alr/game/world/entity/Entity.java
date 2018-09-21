@@ -2,8 +2,7 @@ package com.dakoda.alr.game.world.entity;
 
 import com.dakoda.alr.game.battle.Loot;
 import com.dakoda.alr.game.world.item.Inventory;
-import com.dakoda.alr.game.world.character.Progression.Profession;
-import com.dakoda.alr.game.world.character.Progression;
+import com.dakoda.alr.game.world.entity.Progression.Profession;
 import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.world.quest.Questable;
 import com.dakoda.alr.registrar.GameObject;
