@@ -1,154 +1,384 @@
 package com.dakoda.alr.game.world.location;
-import com.dakoda.alr.game.exception.InvalidLocationDefinitionException;
 import com.dakoda.alr.game.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
-import com.dakoda.alr.game.world.entity.entities.hostile.Hostile;
-import com.dakoda.alr.game.world.entity.entities.npc.NPC;
-import java.util.ArrayList;
+import com.dakoda.alr.game.world.entity.Entity.Hostile;
+import com.dakoda.alr.game.world.entity.Entity.NPC;
+import java.util.HashSet;
 
-public final class Location implements Questable, GameObject {
+import static com.dakoda.alr.game.world.location.Location.Type.ESTATE;
+import static com.dakoda.alr.game.world.location.Location.Type.FIELD;
+import static com.dakoda.alr.game.world.location.Location.Type.SETTLEMENT;
 
-    private String name;
-    private boolean restable;
-    private boolean encounterable;
-    private int levelScale;
-    private LocationType locationType;
-    private ArrayList<Hostile> hostileArrayList;
-    private ArrayList<NPC> npcArrayList;
-    private ArrayList<Location> subLocationArrayList;
-    private ArrayList<Location> linkedLocationArrayList;
+@SuppressWarnings("UnusedReturnValue")
+public interface Location extends Questable, GameObject {
 
-    public static void link(Location loc1, Location loc2) {
-        loc1.addLinkedLocation(loc2);
-        loc2.addLinkedLocation(loc1);
-    }
+    Location withName(String name);
+    Location withLevel(Integer level);
+    Location withHostileEncounter(Hostile hostile);
+    Location withNPC(NPC npc);
+    Location linkedTo(Location location);
 
-    private void addLinkedLocation(Location locationToLink) {
-        linkedLocationArrayList.add(locationToLink);
-    }
+    String name();
+    Boolean restable();
+    Boolean encounterable();
+    Integer level();
+    Type type();
+    HashSet<Hostile> hostiles();
+    HashSet<NPC> NPCs();
+    HashSet<Location> linkedLocations();
 
-    public ArrayList<Location> getLinkedLocations() {
-        return linkedLocationArrayList;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public boolean isRestable() {
-        return restable;
-    }
-
-    public int getLevelScale() {
-        return levelScale;
-    }
-
-    public LocationType getLocationType() {
-        return locationType;
-    }
-
-    public ArrayList<Hostile> getHostiles() {
-        return hostileArrayList;
-    }
-
-    public ArrayList<NPC> getNPCs() {
-        return npcArrayList;
-    }
-
-    public ArrayList<Location> getSubLocations() {
-        return subLocationArrayList;
-    }
-
-    public boolean isEncounterable() {
-        return encounterable;
-    }
-
-    public static class LocationBuilder {
-
-        private String name;
-        private boolean restable;
-        private boolean encounterable;
-        private int levelScale;
-        private LocationType locationType;
-        private ArrayList<Hostile> hostileArrayList;
-        private ArrayList<NPC> npcArrayList;
-        private ArrayList<Location> subLocationArrayList;
-
-        private void initHostileList() {
-            hostileArrayList = new ArrayList<>();
+    static Location ofType(Type type) {
+        switch (type) {
+            case FIELD:
+                return new Location_Field();
+            case SETTLEMENT:
+                return new Location_Settlement();
+            case ESTATE:
+                return new Location_Estate();
+            case CAMP:
+                return new Location_Camp();
+            default:
+                return null;
         }
+    }
 
-        private void initNPCList() {
-            npcArrayList = new ArrayList<>();
-        }
+    enum Type {
+        FIELD, SETTLEMENT, ESTATE, CAMP
+    }
 
-        private void initSubLocList() {
-            subLocationArrayList = new ArrayList<>();
-        }
+    class Location_Field implements Location {
 
-        public LocationBuilder setName(String name) {
+        private String name = "";
+        private Boolean restable = false;
+        private Boolean encounterable = true;
+        private Integer level = 1;
+        private Type type = FIELD;
+        private HashSet<Hostile> hostiles = null;
+        private HashSet<NPC> NPCs = null;
+        private HashSet<Location> linkedLocations = null;
+
+        public Location_Field withName(String name) {
             this.name = name;
             return this;
         }
 
-        private void setIsRestable(boolean restable) {
-            this.restable = restable;
-        }
-
-        private void setIsEncounterable(boolean encounterable) {
-            this.encounterable = encounterable;
-        }
-
-        public LocationBuilder setLevelScale(int levelScale) {
-            this.levelScale = levelScale;
+        public Location_Field withLevel(Integer level) {
+            this.level = level;
             return this;
         }
 
-        public LocationBuilder setLocationType(LocationType locationType) {
-            this.locationType = locationType;
-            setIsRestable(locationType.isRestable());
-            setIsEncounterable(locationType.isEncounterable());
+        public Location_Field withHostileEncounter(Hostile hostile) {
+            if (hostiles == null) hostiles = new HashSet<>();
+            this.hostiles.add(hostile);
             return this;
         }
 
-        public LocationBuilder addHostileEncounter(Hostile hostile) {
-            if (hostileArrayList == null) { initHostileList(); }
-            this.hostileArrayList.add(hostile);
+        public Location_Field withNPC(NPC npc) {
             return this;
         }
 
-        public LocationBuilder addNPC(NPC npc) {
-            if (npc == null) { initNPCList(); }
-            this.npcArrayList.add(npc);
+        public Location_Field linkedTo(Location location) {
+            if (linkedLocations == null) linkedLocations = new HashSet<>();
+            this.linkedLocations.add(location);
+            location.linkedTo(this);
             return this;
         }
 
-        public LocationBuilder addSubLocation(Location location) {
-            if (subLocationArrayList == null) { initSubLocList(); }
-            this.subLocationArrayList.add(location);
-            return this;
+        public String name() {
+            return name;
         }
 
-        public Location build() {
-            Location location = new Location();
-            location.name = this.name;
-            location.restable = this.restable;
-            location.encounterable = this.encounterable;
-            location.locationType = locationType;
-            location.levelScale = this.levelScale;
-            location.hostileArrayList = this.hostileArrayList;
-            location.npcArrayList = this.npcArrayList;
-            location.subLocationArrayList = this.subLocationArrayList;
-            location.linkedLocationArrayList = new ArrayList<>();
-            if (checkValidImplementation(location)) {
-                return location;
-            } else {
-                throw new InvalidLocationDefinitionException("You defined an impossible location.");
+        public Boolean restable() {
+            return restable;
+        }
+
+        public Boolean encounterable() {
+            return encounterable;
+        }
+
+        public Integer level() {
+            return level;
+        }
+
+        public Type type() {
+            return type;
+        }
+
+        public HashSet<Hostile> hostiles() {
+            return hostiles;
+        }
+
+        public HashSet<NPC> NPCs() {
+            return NPCs;
+        }
+
+        public HashSet<Location> linkedLocations() {
+            return linkedLocations;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            try {
+                Location_Field locObj = (Location_Field) obj;
+                return locObj.name().equals(name())
+                        && locObj.type().equals(type());
+            } catch (Exception e) {
+                return false;
             }
         }
+    }
 
-        private boolean checkValidImplementation(Location location) {
-            return location.encounterable == (location.hostileArrayList != null);
+    class Location_Settlement implements Location {
+
+        private String name = "";
+        private Boolean restable = false;
+        private Boolean encounterable = false;
+        private Integer level = -1;
+        private Type type = SETTLEMENT;
+        private HashSet<Hostile> hostiles = null;
+        private HashSet<NPC> NPCs = null;
+        private HashSet<Location> linkedLocations = null;
+
+        public Location_Settlement withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Location_Settlement withLevel(Integer level) {
+            return this;
+        }
+
+        public Location_Settlement withHostileEncounter(Hostile hostile) {
+            return this;
+        }
+
+        public Location_Settlement withNPC(NPC npc) {
+            if (NPCs == null) NPCs = new HashSet<>();
+            this.NPCs.add(npc);
+            npc.atLocation(this);
+            return this;
+        }
+
+        public Location_Settlement linkedTo(Location location) {
+            if (linkedLocations == null) linkedLocations = new HashSet<>();
+            this.linkedLocations.add(location);
+            location.linkedTo(this);
+            return this;
+        }
+
+        public String name() {
+            return name;
+        }
+
+        public Boolean restable() {
+            return restable;
+        }
+
+        public Boolean encounterable() {
+            return encounterable;
+        }
+
+        public Integer level() {
+            return level;
+        }
+
+        public Type type() {
+            return type;
+        }
+
+        public HashSet<Hostile> hostiles() {
+            return hostiles;
+        }
+
+        public HashSet<NPC> NPCs() {
+            return NPCs;
+        }
+
+        public HashSet<Location> linkedLocations() {
+            return linkedLocations;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            try {
+                Location_Settlement locObj = (Location_Settlement) obj;
+                return locObj.name().equals(name())
+                        && locObj.type().equals(type());
+            } catch (Exception e) {
+                return false;
+            }
+        }
+    }
+
+    class Location_Estate implements Location {
+
+        private String name = "";
+        private Boolean restable = false;
+        private Boolean encounterable = false;
+        private Integer level = -1;
+        private Type type = ESTATE;
+        private HashSet<Hostile> hostiles = null;
+        private HashSet<NPC> NPCs = null;
+        private HashSet<Location> linkedLocations = null;
+
+        public Location_Estate withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Location_Estate withLevel(Integer level) {
+            return this;
+        }
+
+        public Location_Estate withHostileEncounter(Hostile hostile) {
+            return this;
+        }
+
+        public Location_Estate asInn() {
+            restable = true;
+            return this;
+        }
+
+        public Location_Estate withNPC(NPC npc) {
+            if (NPCs == null) NPCs = new HashSet<>();
+            this.NPCs.add(npc);
+            npc.atLocation(this);
+            return this;
+        }
+
+        public Location_Estate linkedTo(Location location) {
+            if (linkedLocations == null) linkedLocations = new HashSet<>();
+            this.linkedLocations.add(location);
+            location.linkedTo(this);
+            return this;
+        }
+
+        public String name() {
+            return name;
+        }
+
+        public Boolean restable() {
+            return restable;
+        }
+
+        public Boolean encounterable() {
+            return encounterable;
+        }
+
+        public Integer level() {
+            return level;
+        }
+
+        public Type type() {
+            return type;
+        }
+
+        public HashSet<Hostile> hostiles() {
+            return hostiles;
+        }
+
+        public HashSet<NPC> NPCs() {
+            return NPCs;
+        }
+
+        public HashSet<Location> linkedLocations() {
+            return linkedLocations;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            try {
+                Location_Estate locObj = (Location_Estate) obj;
+                return locObj.name().equals(name())
+                        && locObj.type().equals(type());
+            } catch (Exception e) {
+                return false;
+            }
+        }
+    }
+
+    class Location_Camp implements Location {
+
+        private String name = "";
+        private Boolean restable = true;
+        private Boolean encounterable = true;
+        private Integer level = -1;
+        private Type type = ESTATE;
+        private HashSet<Hostile> hostiles = null;
+        private HashSet<NPC> NPCs = null;
+        private HashSet<Location> linkedLocations = null;
+
+        public Location_Camp withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Location_Camp withLevel(Integer level) {
+            this.level = level;
+            return this;
+        }
+
+        public Location_Camp withHostileEncounter(Hostile hostile) {
+            if (hostiles == null) hostiles = new HashSet<>();
+            this.hostiles.add(hostile);
+            return this;
+        }
+
+        public Location_Camp withNPC(NPC npc) {
+            if (NPCs == null) NPCs = new HashSet<>();
+            this.NPCs.add(npc);
+            npc.atLocation(this);
+            return this;
+        }
+
+        public Location_Camp linkedTo(Location location) {
+            if (linkedLocations == null) linkedLocations = new HashSet<>();
+            this.linkedLocations.add(location);
+            location.linkedTo(this);
+            return this;
+        }
+
+        public String name() {
+            return name;
+        }
+
+        public Boolean restable() {
+            return restable;
+        }
+
+        public Boolean encounterable() {
+            return encounterable;
+        }
+
+        public Integer level() {
+            return level;
+        }
+
+        public Type type() {
+            return type;
+        }
+
+        public HashSet<Hostile> hostiles() {
+            return hostiles;
+        }
+
+        public HashSet<NPC> NPCs() {
+            return NPCs;
+        }
+
+        public HashSet<Location> linkedLocations() {
+            return linkedLocations;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            try {
+                Location_Estate locObj = (Location_Estate) obj;
+                return locObj.name().equals(name())
+                        && locObj.type().equals(type());
+            } catch (Exception e) {
+                return false;
+            }
         }
     }
 }

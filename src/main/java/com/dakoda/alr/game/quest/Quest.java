@@ -1,6 +1,7 @@
 package com.dakoda.alr.game.quest;
 
 import com.dakoda.alr.game.registrar.GameObject;
+import com.dakoda.alr.game.registrar.Prerequisite;
 import com.dakoda.alr.game.world.entity.Entity;
 
 import java.util.ArrayList;

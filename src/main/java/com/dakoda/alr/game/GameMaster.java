@@ -1,13 +1,15 @@
 package com.dakoda.alr.game;
+import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.game.player.Player;
 import com.dakoda.alr.game.quest.Quest;
 import com.dakoda.alr.game.registrar.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static com.dakoda.alr.game.registrar.Registrar.*;
 
-public class GameMaster {
+public final class GameMaster {
 
     //Player
     public Player player = new Player();
@@ -18,16 +20,12 @@ public class GameMaster {
     private ArrayList<Quest> completedQuests = new ArrayList<>();
 
     {
-        contentRegistrars.add(new RegistrarItem());
-        contentRegistrars.add(new RegistrarEntity());
-        contentRegistrars.add(new RegistrarLocation());
-        contentRegistrars.add(new RegistrarQuest());
-    }
-
-    public void init() {
-        for (Registrar registrar : contentRegistrars) {
-            registrar.init();
-        }
+        Registrar[] reg = {
+                new RegistrarItem().init(),
+                new RegistrarEntity().init(),
+                new RegistrarLocation().init(),
+                new RegistrarQuest().init(),
+        }; contentRegistrars.addAll(Arrays.asList(reg));
     }
 
     public void moveQuestToComplete(Quest quest) {
@@ -45,5 +43,24 @@ public class GameMaster {
 
     public ArrayList<Quest> completedQuests() {
         return completedQuests;
+    }
+
+    public Registrar registrar(Content registrar) {
+        switch (registrar) {
+            case ITEM:
+                return contentRegistrars.get(0);
+            case ENTITY:
+                return contentRegistrars.get(1);
+            case LOCATION:
+                return contentRegistrars.get(2);
+            case QUEST:
+                return contentRegistrars.get(3);
+            default:
+                return null;
+        }
+    }
+
+    public enum Content {
+        ITEM, ENTITY, LOCATION, QUEST
     }
 }

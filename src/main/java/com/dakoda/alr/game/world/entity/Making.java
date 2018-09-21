@@ -125,7 +125,7 @@ public class Making {
 
     public enum FurColour {
 
-        WHITE(237, 223, 201),,
+        WHITE(237, 223, 201),
         BROWN(76, 51, 45),
         BLONDE(226, 220, 158),
         BLACK(43, 42, 41),

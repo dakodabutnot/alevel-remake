@@ -10,10 +10,7 @@ import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @SuppressWarnings("OptionalGetWithoutIsPresent")
 public class GameContent {
@@ -49,8 +46,8 @@ public class GameContent {
                 if (locationMap.containsKey(id)) {
                     throw new DuplicateContentIDException(
                             "Two pieces of content (LOCATIONS) were registered with the same ID \n"
-                                    + "\t-> {OBJECT: " + ((Location) object).getName() + ", ID: " + id + "} -> " +
-                                    "{OBJECT: " + locationMap.get(id).getName() + ", ID: " + id + "}"
+                                    + "\t-> {OBJECT: " + ((Location) object).name() + ", ID: " + id + "} -> " +
+                                    "{OBJECT: " + locationMap.get(id).name() + ", ID: " + id + "}"
                     );
                 } else {
                     locationMap.put(id, (Location) object);
@@ -157,7 +154,7 @@ public class GameContent {
         } else {
             return locationMap.values()
                     .stream()
-                    .filter(location -> location.getName().equalsIgnoreCase(name))
+                    .filter(location -> location.name().equalsIgnoreCase(name))
                     .findFirst().get();
         }
     }
@@ -168,7 +165,7 @@ public class GameContent {
         } else {
             return locationMap.values()
                     .stream()
-                    .filter(location -> location.getName().equalsIgnoreCase(name))
+                    .filter(location -> location.name().equalsIgnoreCase(name))
                     .findFirst().get();
         }
     }

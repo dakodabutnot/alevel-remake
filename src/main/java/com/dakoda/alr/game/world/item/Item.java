@@ -2,6 +2,7 @@ package com.dakoda.alr.game.world.item;
 
 import com.dakoda.alr.game.character.Profession;
 import com.dakoda.alr.game.mechanic.Currency;
+import com.dakoda.alr.game.registrar.Prerequisite;
 import com.dakoda.alr.game.quest.Questable;
 import com.dakoda.alr.game.registrar.GameObject;
 
@@ -24,14 +25,20 @@ public interface Item extends Questable, GameObject {
 
     Integer currencyValue();
 
+    Prerequisite prerequisite();
+
     Item withName(String name);
 
     Item withCurrencyValue(Integer currencyValue);
 
+    Item withUsagePrerequisite(Prerequisite prerequisite);
+
+    boolean meetsPrerequisite();
+
     static Item ofType(Type type) {
         switch (type) {
             case GENERIC:
-                return new Generic();
+                return (((Generic) new Generic()));
             case ARMOUR:
                 return new Armour();
             case WEAPON:
@@ -52,6 +59,7 @@ public interface Item extends Questable, GameObject {
         String name;
         Item.Type type = Item.Type.ARMOUR;
         Integer currencyValue = 0;
+        Prerequisite prerequisite = null;
 
         public Armour withName(String name) {
             this.name = name;
@@ -60,6 +68,19 @@ public interface Item extends Questable, GameObject {
         public Armour withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
+        }
+
+        public Armour withUsagePrerequisite(Prerequisite prerequisite) {
+            this.prerequisite = prerequisite;
+            return this;
+        }
+
+        public boolean meetsPrerequisite() {
+            return prerequisite().requirement();
+        }
+
+        public Prerequisite prerequisite() {
+            return prerequisite;
         }
 
         public String name() {
@@ -180,6 +201,7 @@ public interface Item extends Questable, GameObject {
         String name;
         Item.Type type = Item.Type.WEAPON;
         Integer currencyValue = 0;
+        Prerequisite prerequisite = null;
 
         public Weapon withName(String name) {
             this.name = name;
@@ -189,6 +211,15 @@ public interface Item extends Questable, GameObject {
         public Weapon withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
+        }
+
+        public Weapon withUsagePrerequisite(Prerequisite prerequisite) {
+            this.prerequisite = prerequisite;
+            return this;
+        }
+
+        public boolean meetsPrerequisite() {
+            return prerequisite().requirement();
         }
 
         public String name() {
@@ -209,6 +240,10 @@ public interface Item extends Questable, GameObject {
 
         public Integer currencyValue() {
             return currencyValue;
+        }
+
+        public Prerequisite prerequisite() {
+            return prerequisite;
         }
 
         enum Type {
@@ -337,6 +372,7 @@ public interface Item extends Questable, GameObject {
         Integer currencyValue = 0;
         Consumable.Stat restorationStat;
         Integer restorationValue;
+        Prerequisite prerequisite = null;
 
         public Consumable withName(String name) {
             this.name = name;
@@ -346,6 +382,15 @@ public interface Item extends Questable, GameObject {
         public Consumable withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
+        }
+
+        public Consumable withUsagePrerequisite(Prerequisite prerequisite) {
+            this.prerequisite = prerequisite;
+            return this;
+        }
+
+        public boolean meetsPrerequisite() {
+            return prerequisite().requirement();
         }
 
         public Consumable withRestorationStat(Consumable.Stat restorationStat) {
@@ -378,6 +423,10 @@ public interface Item extends Questable, GameObject {
             return currencyValue;
         }
 
+        public Prerequisite prerequisite() {
+            return prerequisite;
+        }
+
         public enum Stat {
             HEALTH, ENERGY, MANA;
         }
@@ -386,7 +435,7 @@ public interface Item extends Questable, GameObject {
     class Generic implements Item {
 
         String name;
-        Type type = Type.WEAPON;
+        Type type = Type.GENERIC;
         Integer currencyValue = 0;
 
         public Generic withName(String name) {
@@ -397,6 +446,14 @@ public interface Item extends Questable, GameObject {
         public Generic withCurrencyValue(Integer currencyValue) {
             this.currencyValue = currencyValue;
             return this;
+        }
+
+        public Generic withUsagePrerequisite(Prerequisite prerequisite) {
+            return null;
+        }
+
+        public boolean meetsPrerequisite() {
+            return false;
         }
 
         public String name() {
@@ -417,6 +474,10 @@ public interface Item extends Questable, GameObject {
 
         public Integer currencyValue() {
             return currencyValue;
+        }
+
+        public Prerequisite prerequisite() {
+            return null;
         }
     }
 }

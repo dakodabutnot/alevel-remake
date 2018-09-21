@@ -11,7 +11,7 @@ public interface BattleLogger {
      * @return String representing damage done to an entity by another.
      */
     static String logDamage(Entity damager, Entity damagee, long amount) {
-        return damager.getName() + " dealt " + amount + " damage to " + damagee.getName();
+        return damager.name() + " dealt " + amount + " damage to " + damagee.name();
     }
 
     /**
@@ -21,7 +21,7 @@ public interface BattleLogger {
      * @return String representing damage done to an entity.
      */
     static String logDamage(Entity entity, long amount) {
-        return entity.getName() + " took " + amount + " damage";
+        return entity.name() + " took " + amount + " damage";
     }
 
     /**
@@ -32,7 +32,7 @@ public interface BattleLogger {
      * @return String representing healing done to an entity.
      */
     static String logHeal(Entity entity, long amount, String healStat) {
-        return entity.getName() + " healed themselves for " + amount + " " + healStat.toLowerCase();
+        return entity.name() + " healed themselves for " + amount + " " + healStat.toLowerCase();
     }
 
     /**
@@ -44,7 +44,7 @@ public interface BattleLogger {
      * @return String representing healing done to an entity by another.
      */
     static String logHeal(Entity healer, Entity healee, long amount, String healStat) {
-        return healer.getName() + " healed " + healee.getName() + " for " + amount + " " + healStat.toLowerCase();
+        return healer.name() + " healed " + healee.name() + " for " + amount + " " + healStat.toLowerCase();
     }
 
     /**
@@ -53,7 +53,7 @@ public interface BattleLogger {
      * @return String representing an entity being poisoned.
      */
     static String logStatusPoison(Entity entity) {
-        return entity.getName() + " has been inflicted with poison!";
+        return entity.name() + " has been inflicted with poison!";
     }
 
     /**
@@ -63,7 +63,7 @@ public interface BattleLogger {
      * @return String representing an entity being poisoned by another.
      */
     static String logStatusPoison(Entity entity, Entity dealer) {
-        return entity.getName() + " has been inflicted with poison by " + dealer.getName() + "!";
+        return entity.name() + " has been inflicted with poison by " + dealer.name() + "!";
     }
 
     /**
@@ -72,7 +72,7 @@ public interface BattleLogger {
      * @return String representing an entity being set on fire.
      */
     static String logStatusFire(Entity entity) {
-        return entity.getName() + " has been set on fire!";
+        return entity.name() + " has been set on fire!";
     }
 
     /**
@@ -82,7 +82,7 @@ public interface BattleLogger {
      * @return String representing an entity being set on fire by another.
      */
     static String logStatusFire(Entity entity, Entity dealer) {
-        return entity.getName() + " has been set on fire by " + dealer.getName() + "!";
+        return entity.name() + " has been set on fire by " + dealer.name() + "!";
     }
 
     /**
@@ -91,7 +91,7 @@ public interface BattleLogger {
      * @return String representing an entity falling asleep.
      */
     static String logStatusSleep(Entity entity) {
-        return entity.getName() + " has fallen into a deep sleep...";
+        return entity.name() + " has fallen into a deep sleep...";
     }
 
     /**
@@ -101,7 +101,7 @@ public interface BattleLogger {
      * @return String representing an entity being put to sleep by another.
      */
     static String logStatusSleep(Entity entity, Entity dealer) {
-        return entity.getName() + " has been forced into a deep sleep by " + dealer.getName();
+        return entity.name() + " has been forced into a deep sleep by " + dealer.name();
     }
 
     /**
@@ -110,7 +110,7 @@ public interface BattleLogger {
      * @return String representing an entity being frozen.
      */
     static String logStatusFreeze(Entity entity) {
-        return entity.getName() + " has been frozen!";
+        return entity.name() + " has been frozen!";
     }
 
     /**
@@ -120,7 +120,7 @@ public interface BattleLogger {
      * @return String representing an entity being frozen by another.
      */
     static String logStatusFreeze(Entity entity, Entity dealer) {
-        return entity.getName() + " has been frozen by " + dealer.getName();
+        return entity.name() + " has been frozen by " + dealer.name();
     }
 
     /**
@@ -129,7 +129,7 @@ public interface BattleLogger {
      * @return String representing an entity being muted.
      */
     static String logStatusMute(Entity entity) {
-        return entity.getName() + " has been rendered mute; they can no longer use abilities!";
+        return entity.name() + " has been rendered mute; they can no longer use abilities!";
     }
 
     /**
@@ -139,7 +139,7 @@ public interface BattleLogger {
      * @return String representing an entity being muted by another.
      */
     static String logStatusMute(Entity entity, Entity dealer) {
-        return entity.getName() + " has been rendered mute by " + dealer.getName() + "; they can no longer use abilities!";
+        return entity.name() + " has been rendered mute by " + dealer.name() + "; they can no longer use abilities!";
     }
 
     /**
@@ -148,7 +148,7 @@ public interface BattleLogger {
      * @return String representing an entity having all status conditions removed.
      */
     static String logStatusClear(Entity entity) {
-        return entity.getName() + " has been relieved of all status conditions";
+        return entity.name() + " has been relieved of all status conditions";
     }
 
     /**
@@ -158,7 +158,7 @@ public interface BattleLogger {
      * @return String representing an entity having all status conditions removed by another.
      */
     static String logStatusClear(Entity entity, Entity dealer) {
-        return dealer.getName() + " has relieved " + entity.getName() + " of all status conditions";
+        return dealer.name() + " has relieved " + entity.name() + " of all status conditions";
     }
 
     /**
@@ -167,6 +167,6 @@ public interface BattleLogger {
      * @return String representing an entity dying by any cause.
      */
     static String logDeath(Entity entity) {
-        return entity.getName() + " has died!";
+        return entity.name() + " has died!";
     }
 }

@@ -1,4 +1,4 @@
-package com.dakoda.alr.game.quest;
+package com.dakoda.alr.game.registrar;
 
 public interface Prerequisite {
 
