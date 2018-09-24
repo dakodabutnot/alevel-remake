@@ -1,0 +1,33 @@
+{
+  "type": "QUEST",
+  "quest": {
+    "description": "A zombie is terrorising the village!",
+    "objectives": [
+      {
+        "type": "KILL",
+        "description": "Kill the zombie! You can find him in the fields outside the village.",
+        "criteria": {
+          "object": "Zombie",
+          "required": 1
+        }
+      },
+      {
+        "type": "GET",
+        "description": "Bring back the zombie's brain as proof of your slaying.",
+        "criteria": {
+          "object": "Zombie Brain",
+          "required": 1
+        }
+      }
+    ],
+    "reward": {
+      "currency": 20,
+      "experience": 10
+    },
+    "prerequisite": [
+      {
+        "requires": "() -> TextRPG.master.player.reqIsLevel(2)"
+      }
+    ]
+  }
+}

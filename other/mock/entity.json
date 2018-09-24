@@ -1,0 +1,7 @@
+{
+  "type": "ENTITY",
+  "entity": {
+    "type": "HOSTILE",
+    "name": "Zombie"
+  }
+}

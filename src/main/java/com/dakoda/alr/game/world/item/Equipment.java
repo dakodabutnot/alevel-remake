@@ -1,6 +1,8 @@
 package com.dakoda.alr.game.world.item;
 
-import com.dakoda.alr.registrar.Content;
+import com.dakoda.alr.game.world.item.type.ItemArmour;
+import com.dakoda.alr.game.world.item.type.ItemWeapon;
+import com.dakoda.alr.content.ContentMaster;
 import com.dakoda.alr.game.exception.InvalidEquipSlotArgumentException;
 import com.dakoda.alr.game.exception.NullEquipException;
 
@@ -8,9 +10,9 @@ import java.util.EnumMap;
 
 public class Equipment {
 
-    private final Item.Weapon EMPTY_WEP = (Item.Weapon) Content.findItemByID(0);
-    private final Item.Armour EMPTY_ARM = (Item.Armour) Content.findItemByID(1);
-    private EnumMap<Item.Armour.Slot, Item.Armour> equippedArmour = new EnumMap<>(Item.Armour.Slot.class);
+    private final ItemWeapon EMPTY_WEP = (ItemWeapon) ContentMaster.findItemByID(0);
+    private final ItemArmour EMPTY_ARM = (ItemArmour) ContentMaster.findItemByID(1);
+    private EnumMap<ItemArmour.Slot, ItemArmour> equippedArmour = new EnumMap<>(ItemArmour.Slot.class);
     private EquippedWeapons equippedWeapons = new EquippedWeapons();
 
     {
@@ -19,7 +21,7 @@ public class Equipment {
     }
 
     public Equipment() {
-        for (Item.Armour.Slot slot : Item.Armour.Slot.values()) {
+        for (ItemArmour.Slot slot : ItemArmour.Slot.values()) {
             equippedArmour.put(slot, EMPTY_ARM);
         }
     }
@@ -30,7 +32,7 @@ public class Equipment {
      *
      * @param armour The armour to be equipped.
      */
-    public void equipArmour(Item.Armour armour) {
+    public void equipArmour(ItemArmour armour) {
         if (armour != null) {
             this.equippedArmour.put(armour.slot(), armour);
         } else {
@@ -38,7 +40,7 @@ public class Equipment {
         }
     }
 
-    public void equipArmour(Item.Armour.Slot slot, Item.Armour armour) {
+    public void equipArmour(ItemArmour.Slot slot, ItemArmour armour) {
         if (armour != null) {
             if (slot != null) {
                 this.equippedArmour.put(slot, armour);
@@ -59,7 +61,7 @@ public class Equipment {
      *
      * @param slot The slot that the weapon should be equipped to.
      */
-    public void equipWeapon(Integer slot, Item.Weapon weapon) {
+    public void equipWeapon(Integer slot, ItemWeapon weapon) {
         if (slot >= 0 && slot <= 1) {
             if (weapon != null) {
                 if (weapon.doubleHanded()) {
@@ -87,7 +89,7 @@ public class Equipment {
      *
      * @param weapon
      */
-    public void equipWeapon(Item.Weapon weapon) {
+    public void equipWeapon(ItemWeapon weapon) {
         if (weapon != null) {
             if (weapon.doubleHanded()) {
                 this.equippedWeapons.left(weapon);
@@ -111,7 +113,7 @@ public class Equipment {
         }
     }
 
-    public EnumMap<Item.Armour.Slot, Item.Armour> getArmour() {
+    public EnumMap<ItemArmour.Slot, ItemArmour> getArmour() {
         return equippedArmour;
     }
 
@@ -119,11 +121,11 @@ public class Equipment {
         return equippedWeapons;
     }
 
-    public void unequipArmour(Item.Armour.Slot slot) {
+    public void unequipArmour(ItemArmour.Slot slot) {
         this.equipArmour(slot, EMPTY_ARM);
     }
 
-    public void unequipArmour(Item.Armour armour) {
+    public void unequipArmour(ItemArmour armour) {
         if (equippedArmour.containsValue(armour)) {
             this.equipArmour(armour.slot(), EMPTY_ARM);
         } else {
@@ -137,26 +139,26 @@ public class Equipment {
 
     class EquippedWeapons {
 
-        private Item.Weapon left;
-        private Item.Weapon right;
+        private ItemWeapon left;
+        private ItemWeapon right;
 
-        public Item.Weapon left() {
+        public ItemWeapon left() {
             return left;
         }
 
-        public Item.Weapon right() {
+        public ItemWeapon right() {
             return right;
         }
 
-        public void left(Item.Weapon left) {
+        public void left(ItemWeapon left) {
             this.left = left;
         }
 
-        public void right(Item.Weapon right) {
+        public void right(ItemWeapon right) {
             this.right = right;
         }
 
-        public Item.Weapon slot(int slot) {
+        public ItemWeapon slot(int slot) {
             if (slot == 0) {
                 return left();
             } else {
@@ -164,7 +166,7 @@ public class Equipment {
             }
         }
 
-        public void slot(int slot, Item.Weapon weapon) {
+        public void slot(int slot, ItemWeapon weapon) {
             if (slot == 0) {
                 left(weapon);
             } else {

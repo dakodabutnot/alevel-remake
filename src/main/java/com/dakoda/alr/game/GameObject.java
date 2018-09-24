@@ -1,4 +1,4 @@
-package com.dakoda.alr.registrar;
+package com.dakoda.alr.game;
 
 public interface GameObject {
 
@@ -7,7 +7,7 @@ public interface GameObject {
     Type objectType();
 
     enum Type {
-        ITEM, ENTITY, LOCATION, QUEST
+        ITEM, ENTITY, LOCATION, QUEST, RECIPE
     }
 
 }

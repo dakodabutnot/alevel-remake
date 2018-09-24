@@ -83,10 +83,12 @@ public class Progression {
         PALADIN(8, 2, 3, 1, 1),
         ANTIQUER(7, 2, 4, 1, 1),
         PERFORATOR(9, 2, 1, 2, 1),
+
         ARCHER(3, 6, 2, 2, 2),
         ASSASSIN(4, 7, 1, 1, 2),
         NAGUAL(5, 6, 1, 1, 2),
         HUNTER(1, 8, 2, 2, 2),
+
         SHAMAN(3, 2, 7, 2, 1),
         PRIEST(2, 3, 7, 1, 2),
         CHRONOL(2, 2, 8, 2, 1),

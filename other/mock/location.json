@@ -1,0 +1,13 @@
+{
+  "type": "LOCATION",
+  "location": {
+    "type": "FIELD",
+    "name": "Candour Fields",
+    "level": 2,
+    "encounters": [
+      {
+        "name": "Zombie"
+      }
+    ]
+  }
+}
