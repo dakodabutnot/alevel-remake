@@ -1,4 +1,4 @@
-package com.dakoda.alr.content.registrars;
+package com.dakoda.alr.content;
 
 import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.game.GameObject;
@@ -13,19 +13,27 @@ public abstract class ContentRegistrar {
         TextRPG.master.content.register(id, object);
     }
 
+    protected abstract Integer ID();
+
     class Content_Default extends ContentRegistrar {
+
+        private Integer ID = 0;
 
         public void init() {
             //default registrations
-            register(0, new Item_Weapon()
+            register(ID(), new Item_Weapon()
                     .withName("DEFAULT_WEP")
                     .asWeaponType(Item_Weapon.Type.EMPTY)
             );
-            register(1, new Item_Armour()
+            register(ID(), new Item_Armour()
                     .withName("DEFAULT_ARM")
                     .equippableOn(Item_Armour.Slot.ANY)
                     .withMaterial(Item_Armour.Material.NONE)
             );
+        }
+
+        protected Integer ID() {
+            return ID++;
         }
     }
 }

@@ -29,4 +29,20 @@ public interface ContentFinder {
         return TextRPG.master.content.findQuestByID(id);
     }
 
+    static Integer findIDByItem(Item item) {
+        return TextRPG.master.content.findIDByItem(item);
+    }
+
+    static Integer findIDByEntity(Entity entity) {
+        return TextRPG.master.content.findIDByEntity(entity);
+    }
+
+    static Integer findIDByLocation(Location location) {
+        return TextRPG.master.content.findIDByLocation(location);
+    }
+
+    static Integer findIDByQuest(Quest quest) {
+        return TextRPG.master.content.findIDByQuest(quest);
+    }
+
 }

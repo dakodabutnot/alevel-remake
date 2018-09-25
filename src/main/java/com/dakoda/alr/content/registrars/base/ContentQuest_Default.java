@@ -2,7 +2,7 @@ package com.dakoda.alr.content.registrars.base;
 
 import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.content.ContentFinder;
-import com.dakoda.alr.content.registrars.ContentRegistrar;
+import com.dakoda.alr.content.ContentRegistrar;
 import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.world.quest.objectives.*;
 

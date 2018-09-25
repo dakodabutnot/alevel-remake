@@ -11,6 +11,7 @@ import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.world.recipe.Recipe;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ContentMaster {
 
@@ -20,7 +21,7 @@ public class ContentMaster {
     private HashMap<Integer, Quest> questMap = new HashMap<>();
     private HashMap<Integer, Recipe> recipeMap = new HashMap<>();
 
-    public void register(Integer id, Object object) {
+    void register(Integer id, Object object) {
         if ((object instanceof GameObject)) {
             if (object instanceof Item) {
                 if (itemMap.containsKey(id)) {
@@ -81,7 +82,7 @@ public class ContentMaster {
         }
     }
 
-    public Item findItemByID(Integer id) {
+    Item findItemByID(Integer id) {
         if (!itemMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
@@ -92,7 +93,7 @@ public class ContentMaster {
         }
     }
 
-    public Entity findEntityByID(Integer id) {
+    Entity findEntityByID(Integer id) {
         if (!entityMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
@@ -103,7 +104,7 @@ public class ContentMaster {
         }
     }
 
-    public Location findLocationByID(Integer id) {
+    Location findLocationByID(Integer id) {
         if (!locationMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
@@ -114,7 +115,7 @@ public class ContentMaster {
         }
     }
 
-    public Quest findQuestByID(Integer id) {
+    Quest findQuestByID(Integer id) {
         if (!questMap.containsKey(id)) {
             throw new InvalidIDRequestException(
                     "Request was made for a piece of content that doesn't exist at that ID \n"
@@ -122,6 +123,70 @@ public class ContentMaster {
             );
         } else {
             return questMap.get(id);
+        }
+    }
+
+    Integer findIDByItem(Item item) {
+        if (!itemMap.containsValue(item)) {
+            throw new InvalidIDRequestException(
+                    "Request was made for the ID of a piece of content that doesn't exist \n"
+                            + "-> OBJECT: " + item.toString()
+            );
+        } else {
+            for (Map.Entry<Integer, Item> entry : itemMap.entrySet()) {
+                if (entry.getValue().equals(item)) {
+                    return entry.getKey();
+                }
+            }
+            return null;
+        }
+    }
+
+    Integer findIDByEntity(Entity entity) {
+        if (!entityMap.containsValue(entity)) {
+            throw new InvalidIDRequestException(
+                    "Request was made for the ID of a piece of content that doesn't exist \n"
+                            + "-> OBJECT: " + entity.toString()
+            );
+        } else {
+            for (Map.Entry<Integer, Entity> entry : entityMap.entrySet()) {
+                if (entry.getValue().equals(entity)) {
+                    return entry.getKey();
+                }
+            }
+            return null;
+        }
+    }
+
+    Integer findIDByLocation(Location location) {
+        if (!locationMap.containsValue(location)) {
+            throw new InvalidIDRequestException(
+                    "Request was made for the ID of a piece of content that doesn't exist \n"
+                            + "-> OBJECT: " + location.toString()
+            );
+        } else {
+            for (Map.Entry<Integer, Location> entry : locationMap.entrySet()) {
+                if (entry.getValue().equals(location)) {
+                    return entry.getKey();
+                }
+            }
+            return null;
+        }
+    }
+
+    Integer findIDByQuest(Quest quest) {
+        if (!questMap.containsValue(quest)) {
+            throw new InvalidIDRequestException(
+                    "Request was made for the ID of a piece of content that doesn't exist \n"
+                            + "-> OBJECT: " + quest.toString()
+            );
+        } else {
+            for (Map.Entry<Integer, Quest> entry : questMap.entrySet()) {
+                if (entry.getValue().equals(quest)) {
+                    return entry.getKey();
+                }
+            }
+            return null;
         }
     }
 }

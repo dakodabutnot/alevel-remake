@@ -1,7 +1,7 @@
 package com.dakoda.alr.game;
 
 import com.dakoda.alr.content.ContentMaster;
-import com.dakoda.alr.content.registrars.ContentRegistrar;
+import com.dakoda.alr.content.ContentRegistrar;
 import com.dakoda.alr.game.world.entity.Progression;
 import com.dakoda.alr.game.world.entity.Making;
 import com.dakoda.alr.game.world.item.Inventory;
