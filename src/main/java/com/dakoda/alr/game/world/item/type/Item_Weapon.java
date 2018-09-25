@@ -12,7 +12,7 @@ import java.util.Collections;
 
 import static com.dakoda.alr.game.world.entity.Progression.Profession.*;
 
-public class ItemWeapon implements Item {
+public class Item_Weapon implements Item {
 
     private String name;
     private Item.Type type = Item.Type.WEAPON;
@@ -24,22 +24,22 @@ public class ItemWeapon implements Item {
         return GameObject.Type.ITEM;
     }
 
-    public ItemWeapon withName(String name) {
+    public Item_Weapon withName(String name) {
         this.name = name;
         return this;
     }
 
-    public ItemWeapon asWeaponType(Type weaponType) {
+    public Item_Weapon asWeaponType(Type weaponType) {
         this.weaponType = weaponType;
         return this;
     }
 
-    public ItemWeapon withCurrencyValue(Integer currencyValue) {
+    public Item_Weapon withCurrencyValue(Integer currencyValue) {
         this.currencyValue = currencyValue;
         return this;
     }
 
-    public ItemWeapon withUsagePrerequisite(Prerequisite prerequisite) {
+    public Item_Weapon withUsagePrerequisite(Prerequisite prerequisite) {
         this.prerequisite = prerequisite;
         return this;
     }

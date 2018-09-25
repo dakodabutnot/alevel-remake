@@ -5,42 +5,42 @@ import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.GameObject;
 import com.dakoda.alr.game.mechanic.Prerequisite;
 
-import static com.dakoda.alr.game.world.item.type.ItemArmour.Weight.*;
+import static com.dakoda.alr.game.world.item.type.Item_Armour.Weight.*;
 
-public class ItemArmour implements Item {
+public class Item_Armour implements Item {
 
     private String name;
     private Item.Type type = Item.Type.ARMOUR;
     private Integer currencyValue = 0;
     private Prerequisite prerequisite = null;
-    private ItemArmour.Slot slot;
-    private ItemArmour.Material material;
+    private Item_Armour.Slot slot;
+    private Item_Armour.Material material;
 
     public GameObject.Type objectType() {
         return GameObject.Type.ITEM;
     }
 
-    public ItemArmour equippableOn(ItemArmour.Slot slot) {
+    public Item_Armour equippableOn(Item_Armour.Slot slot) {
         this.slot = slot;
         return this;
     }
 
-    public ItemArmour withMaterial(ItemArmour.Material material) {
+    public Item_Armour withMaterial(Item_Armour.Material material) {
         this.material = material;
         return this;
     }
 
-    public ItemArmour withName(String name) {
+    public Item_Armour withName(String name) {
         this.name = name;
         return this;
     }
 
-    public ItemArmour withCurrencyValue(Integer currencyValue) {
+    public Item_Armour withCurrencyValue(Integer currencyValue) {
         this.currencyValue = currencyValue;
         return this;
     }
 
-    public ItemArmour withUsagePrerequisite(Prerequisite prerequisite) {
+    public Item_Armour withUsagePrerequisite(Prerequisite prerequisite) {
         this.prerequisite = prerequisite;
         return this;
     }
@@ -53,15 +53,15 @@ public class ItemArmour implements Item {
         return prerequisite;
     }
 
-    public ItemArmour.Slot slot() {
+    public Item_Armour.Slot slot() {
         return this.slot;
     }
 
-    public ItemArmour.Material material() {
+    public Item_Armour.Material material() {
         return this.material;
     }
 
-    public ItemArmour.Weight weight() {
+    public Item_Armour.Weight weight() {
         return this.material().weight;
     }
 
@@ -92,11 +92,11 @@ public class ItemArmour implements Item {
     public static class Material {
 
         private String displayText;
-        private ItemArmour.Weight weight;
+        private Item_Armour.Weight weight;
 
-        public static final ItemArmour.Material NONE = new ItemArmour.Material("", ItemArmour.Weight.NONE);
+        public static final Item_Armour.Material NONE = new Item_Armour.Material("", Item_Armour.Weight.NONE);
 
-        private Material(String displayText, ItemArmour.Weight weight) {
+        private Material(String displayText, Item_Armour.Weight weight) {
             this.displayText = displayText;
             this.weight = weight;
         }
@@ -105,69 +105,69 @@ public class ItemArmour implements Item {
             return displayText;
         }
 
-        public ItemArmour.Weight getWeight() {
+        public Item_Armour.Weight getWeight() {
             return weight;
         }
 
         enum Heavy {
 
-            IRON(new ItemArmour.Material("Iron", HEAVY)),
-            STEEL(new ItemArmour.Material("Steel", HEAVY)),
-            DARKSTEEL(new ItemArmour.Material("Darksteel", HEAVY)),
-            TENACIUM(new ItemArmour.Material("Tenacium", HEAVY)),
+            IRON(new Item_Armour.Material("Iron", HEAVY)),
+            STEEL(new Item_Armour.Material("Steel", HEAVY)),
+            DARKSTEEL(new Item_Armour.Material("Darksteel", HEAVY)),
+            TENACIUM(new Item_Armour.Material("Tenacium", HEAVY)),
             ;
 
-            private ItemArmour.Material material;
+            private Item_Armour.Material material;
 
             Heavy(
-                    ItemArmour.Material material
+                    Item_Armour.Material material
             ) {
                 this.material = material;
             }
 
-            public ItemArmour.Material getMaterial() {
+            public Item_Armour.Material getMaterial() {
                 return material;
             }
         }
 
         public enum Medium {
 
-            HIDE(new ItemArmour.Material("Hide", MEDIUM)),
-            THIN_LEATHER(new ItemArmour.Material("Thin Leather", MEDIUM)),
-            RUGGED_LEATHER(new ItemArmour.Material("Rugged Leather", MEDIUM)),
-            HARDENED_LEATHER(new ItemArmour.Material("Hardened Leather", MEDIUM)),
+            HIDE(new Item_Armour.Material("Hide", MEDIUM)),
+            THIN_LEATHER(new Item_Armour.Material("Thin Leather", MEDIUM)),
+            RUGGED_LEATHER(new Item_Armour.Material("Rugged Leather", MEDIUM)),
+            HARDENED_LEATHER(new Item_Armour.Material("Hardened Leather", MEDIUM)),
             ;
 
-            private ItemArmour.Material material;
+            private Item_Armour.Material material;
 
             Medium(
-                    ItemArmour.Material material
+                    Item_Armour.Material material
             ) {
                 this.material = material;
             }
 
-            public ItemArmour.Material getMaterial() {
+            public Item_Armour.Material getMaterial() {
                 return material;
             }
         }
 
         public enum Light {
 
-            COTTON(new ItemArmour.Material("Cotton", LIGHT)),
-            LINEN(new ItemArmour.Material("Linen", LIGHT)),
-            SILK(new ItemArmour.Material("Silk", LIGHT)),
-            GOSSAMER(new ItemArmour.Material("Gossamer", LIGHT)),
+            COTTON(new Item_Armour.Material("Cotton", LIGHT)),
+            LINEN(new Item_Armour.Material("Linen", LIGHT)),
+            SILK(new Item_Armour.Material("Silk", LIGHT)),
+            GOSSAMER(new Item_Armour.Material("Gossamer", LIGHT)),
             ;
 
-            private ItemArmour.Material material;
+            private Item_Armour.Material material;
 
             Light(
-                    ItemArmour.Material material
+                    Item_Armour.Material material
             ) {
                 this.material = material;
             }
 
-            public ItemArmour.Material getMaterial() {
+            public Item_Armour.Material getMaterial() {
                 return material;
             }
         }

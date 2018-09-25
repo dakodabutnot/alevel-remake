@@ -6,7 +6,7 @@ import com.dakoda.alr.game.GameObject;
 import com.dakoda.alr.game.mechanic.Prerequisite;
 
 
-public class ItemConsumable implements Item {
+public class Item_Consumable implements Item {
 
     private String name;
     private Type type = Type.CONSUMABLE;
@@ -19,17 +19,17 @@ public class ItemConsumable implements Item {
         return GameObject.Type.ITEM;
     }
 
-    public ItemConsumable withName(String name) {
+    public Item_Consumable withName(String name) {
         this.name = name;
         return this;
     }
 
-    public ItemConsumable withCurrencyValue(Integer currencyValue) {
+    public Item_Consumable withCurrencyValue(Integer currencyValue) {
         this.currencyValue = currencyValue;
         return this;
     }
 
-    public ItemConsumable withUsagePrerequisite(Prerequisite prerequisite) {
+    public Item_Consumable withUsagePrerequisite(Prerequisite prerequisite) {
         this.prerequisite = prerequisite;
         return this;
     }
@@ -38,12 +38,12 @@ public class ItemConsumable implements Item {
         return prerequisite().requirement();
     }
 
-    public ItemConsumable withRestorationStat(Stat restorationStat) {
+    public Item_Consumable withRestorationStat(Stat restorationStat) {
         this.restorationStat = restorationStat;
         return this;
     }
 
-    public ItemConsumable withRestorationValue(Integer restorationValue) {
+    public Item_Consumable withRestorationValue(Integer restorationValue) {
         this.restorationValue = restorationValue;
         return this;
     }

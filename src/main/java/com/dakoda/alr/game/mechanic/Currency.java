@@ -32,7 +32,7 @@ public interface Currency {
      * Defines preset names for each monetary value. The first element must have a value of 1.
      * The values of those thereafter define the worth of each element in relation to the first element.
      */
-    public enum Unit {
+    enum Unit {
 
         COPPER(1),
         SILVER(50),

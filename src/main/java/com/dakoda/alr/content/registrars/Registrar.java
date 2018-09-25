@@ -1,11 +1,9 @@
 package com.dakoda.alr.content.registrars;
 
 import com.dakoda.alr.TextRPG;
-import com.dakoda.alr.content.ContentMaster;
-import com.dakoda.alr.game.GameMaster;
 import com.dakoda.alr.game.GameObject;
-import com.dakoda.alr.game.world.item.type.ItemArmour;
-import com.dakoda.alr.game.world.item.type.ItemWeapon;
+import com.dakoda.alr.game.world.item.type.Item_Armour;
+import com.dakoda.alr.game.world.item.type.Item_Weapon;
 
 public abstract class Registrar {
 
@@ -19,14 +17,14 @@ public abstract class Registrar {
 
         public void init() {
             //default registrations
-            register(0, new ItemWeapon()
+            register(0, new Item_Weapon()
                     .withName("DEFAULT_WEP")
-                    .asWeaponType(ItemWeapon.Type.EMPTY)
+                    .asWeaponType(Item_Weapon.Type.EMPTY)
             );
-            register(1, new ItemArmour()
+            register(1, new Item_Armour()
                     .withName("DEFAULT_ARM")
-                    .equippableOn(ItemArmour.Slot.ANY)
-                    .withMaterial(ItemArmour.Material.NONE)
+                    .equippableOn(Item_Armour.Slot.ANY)
+                    .withMaterial(Item_Armour.Material.NONE)
             );
         }
     }

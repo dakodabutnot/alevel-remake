@@ -5,7 +5,7 @@ import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.GameObject;
 import com.dakoda.alr.game.mechanic.Prerequisite;
 
-public class ItemGeneric implements Item {
+public class Item_Generic implements Item {
 
     private String name;
     private Type type = Type.GENERIC;
@@ -15,17 +15,17 @@ public class ItemGeneric implements Item {
         return GameObject.Type.ITEM;
     }
 
-    public ItemGeneric withName(String name) {
+    public Item_Generic withName(String name) {
         this.name = name;
         return this;
     }
 
-    public ItemGeneric withCurrencyValue(Integer currencyValue) {
+    public Item_Generic withCurrencyValue(Integer currencyValue) {
         this.currencyValue = currencyValue;
         return this;
     }
 
-    public ItemGeneric withUsagePrerequisite(Prerequisite prerequisite) {
+    public Item_Generic withUsagePrerequisite(Prerequisite prerequisite) {
         return null;
     }
 
