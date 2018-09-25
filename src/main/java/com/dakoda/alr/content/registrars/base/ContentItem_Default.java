@@ -1,9 +1,9 @@
 package com.dakoda.alr.content.registrars.base;
 
-import com.dakoda.alr.content.registrars.Registrar;
+import com.dakoda.alr.content.registrars.ContentRegistrar;
 import com.dakoda.alr.game.world.item.type.Item_Generic;
 
-public class ContentItem_Default extends Registrar {
+public class ContentItem_Default extends ContentRegistrar {
 
     public void init() {
         //register Items here

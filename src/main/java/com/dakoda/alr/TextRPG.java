@@ -1,6 +1,7 @@
 package com.dakoda.alr;
 
 import com.dakoda.alr.client.cli.CLIMain;
+import com.dakoda.alr.content.ContentFinder;
 import com.dakoda.alr.content.ContentMaster;
 import com.dakoda.alr.content.registrars.base.ContentEntity_Default;
 import com.dakoda.alr.content.registrars.base.ContentItem_Default;
@@ -18,6 +19,7 @@ public class TextRPG {
     public static void main(String[] args) {
         content();
         CLIMain.run();
+
     }
 
     public static void content() {

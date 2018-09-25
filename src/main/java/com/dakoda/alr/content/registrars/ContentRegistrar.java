@@ -5,7 +5,7 @@ import com.dakoda.alr.game.GameObject;
 import com.dakoda.alr.game.world.item.type.Item_Armour;
 import com.dakoda.alr.game.world.item.type.Item_Weapon;
 
-public abstract class Registrar {
+public abstract class ContentRegistrar {
 
     public abstract void init();
 
@@ -13,7 +13,7 @@ public abstract class Registrar {
         TextRPG.master.content.register(id, object);
     }
 
-    class Registrar_Default extends Registrar {
+    class Content_Default extends ContentRegistrar {
 
         public void init() {
             //default registrations

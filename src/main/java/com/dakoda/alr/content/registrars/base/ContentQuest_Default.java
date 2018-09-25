@@ -2,11 +2,11 @@ package com.dakoda.alr.content.registrars.base;
 
 import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.content.ContentFinder;
-import com.dakoda.alr.content.registrars.Registrar;
+import com.dakoda.alr.content.registrars.ContentRegistrar;
 import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.world.quest.objectives.*;
 
-public class ContentQuest_Default extends Registrar {
+public class ContentQuest_Default extends ContentRegistrar {
 
     public void init() {
         //register Quests here
