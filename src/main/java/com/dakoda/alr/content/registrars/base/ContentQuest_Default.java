@@ -4,9 +4,15 @@ import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.content.ContentFinder;
 import com.dakoda.alr.content.ContentRegistrar;
 import com.dakoda.alr.game.world.quest.Quest;
-import com.dakoda.alr.game.world.quest.objectives.*;
+import com.dakoda.alr.game.world.quest.objectives.QuestObjective_Kill;
 
 public class ContentQuest_Default extends ContentRegistrar {
+
+    private Integer ID = 0;
+
+    protected Integer ID() {
+        return ID++;
+    }
 
     public void init() {
         //register Quests here
