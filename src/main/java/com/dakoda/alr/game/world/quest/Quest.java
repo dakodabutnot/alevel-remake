@@ -8,6 +8,24 @@ import com.dakoda.alr.game.world.quest.objectives.QuestObjective;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * -> "Glorified" Builder class. <-
+ *
+ * This is my own edited version of the Builder pattern.
+ * Instead of having an inner-class which allows for the upper-class to be
+ * instantiated, my upper-class has the methods that would've been
+ * in the Builder class.
+ *
+ * The reason is that in a game engine, domain objects' logic
+ * is handled elsewhere for the most part, and the actual objects themselves
+ * don't require a lot of methods to be used elsewhere aside from getters.
+ *
+ * The downside of this is that all of the variables inside of this class
+ * are exposed.
+ *
+ * The absolute upside is that game objects can be made fast and easily,
+ * and the resulting code is human-readable.
+ */
 public class Quest implements GameObject {
 
     private String description = "";
