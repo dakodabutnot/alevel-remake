@@ -41,10 +41,6 @@ public class Entity_Hostile implements Entity {
         return progression;
     }
 
-    public Inventory inventory() {
-        return null;
-    }
-
     public Location location() {
         return null;
     }
