@@ -7,6 +7,7 @@ import com.dakoda.alr.game.exception.InvalidRegistrationRequestException;
 import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
+import com.dakoda.alr.game.world.quest.Quest;
 import com.dakoda.alr.game.world.recipe.Recipe;
 
 import java.util.HashMap;

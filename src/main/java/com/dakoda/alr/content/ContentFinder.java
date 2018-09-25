@@ -5,6 +5,7 @@ import com.dakoda.alr.game.world.entity.Entity;
 import com.dakoda.alr.game.world.entity.type.Entity_Hostile;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
+import com.dakoda.alr.game.world.quest.Quest;
 
 public interface ContentFinder {
 
