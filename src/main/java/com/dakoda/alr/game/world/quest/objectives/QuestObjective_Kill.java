@@ -21,7 +21,7 @@ public class QuestObjective_Kill implements QuestObjective {
 
     public QuestObjective_Kill withCriteria(Questable object, Integer needs) throws InvalidParameterException {
         if (!(object instanceof Entity_Hostile)) {
-            throw new InvalidParameterException("Tried to parse a non-'Entity_Hostile' object to a quest requirement that consumes 'Entity_Hostile'.");
+            throw new InvalidParameterException("Tried to parse a non-'Hostile' object to a quest requirement that consumes 'Hostile'.");
         } else {
             this.criteria.put((Entity_Hostile) object, needs);
         }

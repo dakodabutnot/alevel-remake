@@ -49,7 +49,7 @@ public final class Player implements Entity {
     }
 
     public Location location() {
-        return TextRPG.master.currentLocation();
+        return TextRPG.master.location.currentLocation();
     }
 
     public Inventory inventory() {

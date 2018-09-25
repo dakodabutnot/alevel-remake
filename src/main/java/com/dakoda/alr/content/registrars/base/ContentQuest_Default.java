@@ -1,15 +1,18 @@
-package com.dakoda.alr.content.registrars;
+package com.dakoda.alr.content.registrars.base;
 
 import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.content.ContentFinder;
+import com.dakoda.alr.content.registrars.Registrar;
+import com.dakoda.alr.game.world.quest.Quest;
+import com.dakoda.alr.game.world.quest.objectives.*;
 
-public class Registrar_Quest extends Registrar {
+public class ContentQuest_Default extends Registrar {
 
     public void init() {
         //register Quests here
         register(0, new Quest()
                 .withDescription("A zombie is terrorising the village!")
-                .withObjective(new QuestObjective.toKill()
+                .withObjective(new QuestObjective_Kill()
                         .withDescription("Kill the zombie.")
                         .withCriteria(ContentFinder.findEntityByID(0), 1))
                 .withExperienceReward(10)

@@ -1,6 +1,8 @@
 package com.dakoda.alr.content.registrars;
 
 import com.dakoda.alr.TextRPG;
+import com.dakoda.alr.content.ContentMaster;
+import com.dakoda.alr.game.GameMaster;
 import com.dakoda.alr.game.GameObject;
 import com.dakoda.alr.game.world.item.type.ItemArmour;
 import com.dakoda.alr.game.world.item.type.ItemWeapon;
@@ -9,8 +11,8 @@ public abstract class Registrar {
 
     public abstract void init();
 
-    void register(Integer id, GameObject object) {
-        TextRPG.content.register(id, object);
+    protected void register(Integer id, GameObject object) {
+        TextRPG.master.content.register(id, object);
     }
 
     class Registrar_Default extends Registrar {

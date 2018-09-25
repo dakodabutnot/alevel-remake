@@ -1,5 +1,6 @@
 package com.dakoda.alr.game.world.item;
 
+import com.dakoda.alr.content.ContentFinder;
 import com.dakoda.alr.game.world.item.type.ItemArmour;
 import com.dakoda.alr.game.world.item.type.ItemWeapon;
 import com.dakoda.alr.content.ContentMaster;
@@ -10,8 +11,8 @@ import java.util.EnumMap;
 
 public class Equipment {
 
-    private final ItemWeapon EMPTY_WEP = (ItemWeapon) ContentMaster.findItemByID(0);
-    private final ItemArmour EMPTY_ARM = (ItemArmour) ContentMaster.findItemByID(1);
+    private final ItemWeapon EMPTY_WEP = (ItemWeapon) ContentFinder.findItemByID(0);
+    private final ItemArmour EMPTY_ARM = (ItemArmour) ContentFinder.findItemByID(1);
     private EnumMap<ItemArmour.Slot, ItemArmour> equippedArmour = new EnumMap<>(ItemArmour.Slot.class);
     private EquippedWeapons equippedWeapons = new EquippedWeapons();
 

@@ -10,23 +10,23 @@ import com.dakoda.alr.game.world.quest.Quest;
 public interface ContentFinder {
 
     static Item findItemByID(Integer id) {
-        return TextRPG.content.findItemByID(id);
+        return TextRPG.master.content.findItemByID(id);
     }
 
     static Entity findEntityByID(Integer id) {
-        return TextRPG.content.findEntityByID(id);
+        return TextRPG.master.content.findEntityByID(id);
     }
 
     static Entity_Hostile findHostileByID(Integer id) {
-        return (Entity_Hostile) TextRPG.content.findEntityByID(id);
+        return (Entity_Hostile) TextRPG.master.content.findEntityByID(id);
     }
 
     static Location findLocationByID(Integer id) {
-        return TextRPG.content.findLocationByID(id);
+        return TextRPG.master.content.findLocationByID(id);
     }
 
     static Quest findQuestByID(Integer id) {
-        return TextRPG.content.findQuestByID(id);
+        return TextRPG.master.content.findQuestByID(id);
     }
 
 }

@@ -2,17 +2,42 @@ package com.dakoda.alr;
 
 import com.dakoda.alr.client.cli.CLIMain;
 import com.dakoda.alr.content.ContentMaster;
+import com.dakoda.alr.content.registrars.base.ContentEntity_Default;
+import com.dakoda.alr.content.registrars.base.ContentItem_Default;
+import com.dakoda.alr.content.registrars.base.ContentLocation_Default;
+import com.dakoda.alr.content.registrars.base.ContentQuest_Default;
 import com.dakoda.alr.game.GameMaster;
-import com.dakoda.alr.game.mechanic.Currency;
+import com.dakoda.alr.game.world.entity.Making;
+import com.dakoda.alr.game.world.entity.Progression;
+import com.dakoda.alr.game.world.item.Inventory;
 
 public class TextRPG {
 
     public static GameMaster master = new GameMaster();
-    public static ContentMaster content = new ContentMaster();
 
     public static void main(String[] args) {
+        content();
         CLIMain.run();
+    }
 
-        System.out.println(Currency.convertToUnits(612873123));
+    public static void content() {
+        //IMPORTANT
+        //Game objects should be registered in this order:
+        //  ITEM    -> ENTITY   -> OTHER
+        //Item registrars
+        master.addContent(new ContentItem_Default());
+        //Entity registrars
+        master.addContent(new ContentEntity_Default());
+        //Other registrars
+        master.addContent(new ContentLocation_Default());
+        master.addContent(new ContentQuest_Default());
+
+        //temp player init
+        master.playerInit("Player",
+                new Making(),
+                Progression.Profession.BARD,
+                new Inventory()
+                        .withCurrencyValue(10L)
+        );
     }
 }
