@@ -8,14 +8,39 @@ import com.dakoda.alr.game.world.item.Inventory;
 import com.dakoda.alr.game.world.location.LocationMaster;
 import com.dakoda.alr.game.world.quest.QuestMaster;
 
+// TODO: 04/09/2018
+/**
+ * -> Singleton class. <-
+ *
+ * Only one instance of the class can exist in the program, and is
+ * instantiated statically.
+ * Other instances cannot be instantiated because the constructor
+ * is private.
+ *
+ * The instance can be fetched with '.instance()'.
+ *
+ * The same is done for ContentMaster, QuestMaster, LocationMaster and Player.
+ * They are all singletons because I only want one of them to ever exist
+ * in the code.
+ */
 public final class GameMaster {
 
-    public ContentMaster content = new ContentMaster();
-    public QuestMaster quest = new QuestMaster();
-    public LocationMaster location = new LocationMaster();
+    private static GameMaster INSTANCE = new GameMaster();
+
+    public ContentMaster content = ContentMaster.instance();
+    public QuestMaster quest = QuestMaster.instance();
+    public LocationMaster location = LocationMaster.instance();
 
     //Player
-    public Player player = new Player();
+    public Player player = Player.instance();
+
+    private GameMaster() {
+
+    }
+
+    public static GameMaster instance() {
+        return INSTANCE;
+    }
 
     public void addContent(ContentRegistrar registrar) {
         registrar.init();

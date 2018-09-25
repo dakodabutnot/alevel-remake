@@ -15,11 +15,21 @@ import java.util.Map;
 
 public class ContentMaster {
 
+    private static ContentMaster INSTANCE = new ContentMaster();
+
     private HashMap<Integer, Item> itemMap = new HashMap<>();
     private HashMap<Integer, Entity> entityMap = new HashMap<>();
     private HashMap<Integer, Location> locationMap = new HashMap<>();
     private HashMap<Integer, Quest> questMap = new HashMap<>();
     private HashMap<Integer, Recipe> recipeMap = new HashMap<>();
+
+    private ContentMaster() {
+
+    }
+
+    public static ContentMaster instance() {
+        return INSTANCE;
+    }
 
     void register(Integer id, Object object) {
         if ((object instanceof GameObject)) {

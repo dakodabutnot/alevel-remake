@@ -10,10 +10,20 @@ import com.dakoda.alr.game.world.location.Location;
 
 public final class Player implements Entity {
 
+    private static Player INSTANCE = new Player();
+
     private String name;
     private Making making;
     private Progression progression;
     private Inventory inventory;
+
+    private Player() {
+
+    }
+
+    public static Player instance() {
+        return INSTANCE;
+    }
 
     public GameObject.Type objectType() {
         return GameObject.Type.ENTITY;

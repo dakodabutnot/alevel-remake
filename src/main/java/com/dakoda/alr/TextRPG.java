@@ -11,7 +11,7 @@ import com.dakoda.alr.game.world.item.Inventory;
 
 public class TextRPG {
 
-    public static GameMaster master = new GameMaster();
+    public static GameMaster master = GameMaster.instance();
 
     public static void main(String[] args) {
         content();

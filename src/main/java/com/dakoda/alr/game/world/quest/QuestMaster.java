@@ -4,8 +4,18 @@ import java.util.ArrayList;
 
 public class QuestMaster {
 
+    private static QuestMaster INSTANCE = new QuestMaster();
+
     private ArrayList<Quest> currentQuests = new ArrayList<>();
     private ArrayList<Quest> completedQuests = new ArrayList<>();
+
+    private QuestMaster() {
+
+    }
+
+    public static QuestMaster instance() {
+        return INSTANCE;
+    }
 
     public boolean hasCompletedQuest(Quest quest) {
         return completedQuests.contains(quest);
