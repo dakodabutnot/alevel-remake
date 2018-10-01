@@ -11,6 +11,7 @@ public class Making {
     private FurColour furColour;
     private HairColour hairColour;
     private EyeColour eyeColour;
+    private Race race;
 
     public Making withGender(Gender gender) {
         this.gender = gender;
@@ -19,6 +20,11 @@ public class Making {
 
     public Making withSexuality(Sexuality sexuality) {
         this.sexuality = sexuality;
+        return this;
+    }
+
+    public Making withRace(Race race) {
+        this.race = race;
         return this;
     }
 
@@ -150,6 +156,10 @@ public class Making {
         }
     }
 
+    public enum Race {
+        HUMAN, FENDAN;
+    }
+
     public boolean isSkinAsFur() {
         return skinAsFur;
     }
@@ -176,5 +186,9 @@ public class Making {
 
     public SkinColour getSkinColour() {
         return skinColour;
+    }
+
+    public Race getRace() {
+        return race;
     }
 }

@@ -2,9 +2,6 @@ package com.dakoda.alr.game;
 
 import com.dakoda.alr.content.ContentMaster;
 import com.dakoda.alr.content.ContentRegistrar;
-import com.dakoda.alr.game.world.entity.Progression;
-import com.dakoda.alr.game.world.entity.Making;
-import com.dakoda.alr.game.world.item.Inventory;
 import com.dakoda.alr.game.world.location.LocationMaster;
 import com.dakoda.alr.game.world.quest.QuestMaster;
 
@@ -32,7 +29,12 @@ public final class GameMaster {
     public LocationMaster location = LocationMaster.instance();
 
     //Player
-    public Player player = Player.instance();
+    public Player player;
+
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     private GameMaster() {
 
@@ -46,14 +48,4 @@ public final class GameMaster {
         registrar.init();
     }
 
-    public void playerInit(
-            String name, Making making, Progression.Profession profession, Inventory inventory
-    ) {
-        System.out.print("#PLAYER | building... -> ");
-        player.withName(name)
-                .withMaking(making)
-                .withProfession(profession)
-                .withInitialInventory(inventory);
-        System.out.println("DONE!");
-    }
 }

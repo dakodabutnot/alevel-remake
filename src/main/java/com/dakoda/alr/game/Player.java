@@ -8,16 +8,17 @@ import com.dakoda.alr.game.world.entity.Making;
 import com.dakoda.alr.game.world.item.Item;
 import com.dakoda.alr.game.world.location.Location;
 
-public final class Player implements Entity {
+public class Player implements Entity {
 
-    private static Player INSTANCE = new Player();
+    private static Player INSTANCE;
 
     private String name;
     private Making making;
     private Progression progression;
     private Inventory inventory;
+    private boolean built = false;
 
-    private Player() {
+    public Player() {
 
     }
 
@@ -25,37 +26,62 @@ public final class Player implements Entity {
         return INSTANCE;
     }
 
+    public void finalise() {
+        if (!built) {
+            this.built = true;
+            Player.INSTANCE = this;
+        }
+    }
+
     public GameObject.Type objectType() {
         return GameObject.Type.ENTITY;
     }
 
     public Player withName(String name) {
-        this.name = name;
-        return this;
+        if (!built) {
+            this.name = name;
+            return this;
+        }
+        return null;
     }
 
     public Player withMaking(Making making) {
-        this.making = making;
-        return this;
+        if (!built) {
+            this.making = making;
+            return this;
+        }
+        return null;
     }
 
     public Player withProfession(Progression.Profession profession) {
-        this.progression = new Progression(profession);
-        return this;
+        if (!built) {
+            this.progression = new Progression(profession);
+            return this;
+        }
+        return null;
     }
 
     public Player withProfession(Progression.Profession profession, Integer level) {
-        this.progression = new Progression(profession, level);
-        return this;
+        if (!built) {
+            this.progression = new Progression(profession, level);
+            return this;
+        }
+        return null;
     }
 
     public Player withInitialInventory(Inventory initialInventory) {
-        this.inventory = initialInventory;
-        return this;
+        if (!built) {
+            this.inventory = initialInventory;
+            return this;
+        }
+        return null;
     }
 
     public Player atLocation(Location location) {
-        return this;
+        if (!built) {
+            return this;
+        }
+        return null;
     }
 
     public Location location() {

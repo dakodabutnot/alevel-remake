@@ -1,5 +1,7 @@
 package com.dakoda.alr.content;
 
+import com.dakoda.alr.content.registrars.base.*;
+import com.dakoda.alr.game.GameMaster;
 import com.dakoda.alr.game.GameObject;
 import com.dakoda.alr.game.exception.DuplicateContentIDException;
 import com.dakoda.alr.game.exception.InvalidIDRequestException;

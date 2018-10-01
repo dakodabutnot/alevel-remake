@@ -26,25 +26,20 @@ public interface Looter {
             for (int i = 0; i < entry.getValue().weight(); i++) {
                 weights.add(new Weight(identifier));
             }
+            identifier++;
         }
         return drops.get(weights.get(new Random().nextInt(weights.size())).id);
     }
 
+    /**
+     * Wrapper class for an Integer
+     */
     class Weight {
 
         private Integer id;
 
         Weight(Integer id) {
             this.id = id;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj instanceof Weight) {
-                return ((Weight) obj).id.equals(this.id);
-            } else {
-                return false;
-            }
         }
     }
 }

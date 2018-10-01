@@ -1,0 +1,37 @@
+.cli-text-area {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 13px;
+    -fx-focus-color: transparent;
+    -fx-border-color: #222222;
+}
+
+.cli-text-area .content {
+    -fx-background-color: #222222;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: #222222;
+}
+
+.text-area, .text-area .content {
+    -fx-background-color: #222222;
+    -fx-background-radius: 0;
+}
+
+.cli-text-field {
+    -fx-padding: 8;
+    -fx-focus-color: transparent;
+    -fx-control-inner-background: #333333;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: #333333 #333333 #333333 #333333;
+    -fx-border-width: 1 0 0 0;
+    -fx-highlight-fill: null;
+    -fx-highlight-text-fill: null;
+}
+
+.cli-text-field:focused{
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color:rgba(255,0,0,0.2); /* here rgba (corrected) */
+}
+
+.root {
+    -fx-background-color: black ;
+}

@@ -8,6 +8,7 @@ public class Loot {
 
     private HashMap<Item, Entry> drops = new HashMap<>();
 
+    @SuppressWarnings("WeakerAccess")
     public HashMap<Item, Entry> drops() {
         return drops;
     }
