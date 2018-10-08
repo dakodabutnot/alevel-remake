@@ -1,24 +1,23 @@
-package com.dakoda.alr.client.fakecli.component;
+package com.dakoda.alr.client.fakecli.components;
 
+import com.dakoda.alr.TextRPG;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
-import static com.dakoda.alr.TextRPG.display;
-
-public class CLITextEntry extends TextField {
+public class FCLITextEntry extends TextField {
 
     private String prefix = "$ ";
     private String prefixRegex = "[$] ";
 
-    public static void init(CLITextEntry cliTextEntry) {
-        cliTextEntry.setPrefColumnCount(90);
-        cliTextEntry.getStyleClass().add("cli-text-field");
-        cliTextEntry.initInstance();
+    public static void init(FCLITextEntry fcliTextEntry, FCLIDisplay fcliDisplay) {
+        fcliTextEntry.setPrefColumnCount(90);
+        fcliTextEntry.getStyleClass().add("fcli-text-field");
+        fcliTextEntry.initInstance(fcliDisplay);
     }
 
-    public void initInstance() {
+    public void initInstance(FCLIDisplay display) {
         setOnKeyTyped(event -> validatePrefixExistence(event.getCode()));
-        setOnKeyPressed(event -> submitText(event.getCode(), this.getText()));
+        setOnKeyPressed(event -> submitText(display, event.getCode(), this.getText()));
     }
 
     private void validatePrefixExistence(KeyCode keyCode) {
@@ -36,13 +35,13 @@ public class CLITextEntry extends TextField {
         }
     }
 
-    private void submitText(KeyCode keyCode, String text) {
-        System.out.println("#KEYLOG | Keycode: " + keyCode.getName() + " at Caret position: " + this.getCaretPosition());
+    private void submitText(FCLIDisplay fcliDisplay, KeyCode keyCode, String text) {
+        TextRPG.debugMessage("#KEYLOG | key " + keyCode.getName() + " pressed at caret position " + getCaretPosition());
         if (keyCode.equals(KeyCode.ENTER)) {
             refresh();
             String toSubmit = text.replaceFirst(prefixRegex, "");
             if (toSubmit.trim().length() >= 1 && !toSubmit.equals("\n")) {
-                display.submit(toSubmit.trim());
+                fcliDisplay.submit(toSubmit.trim());
             }
         }
     }

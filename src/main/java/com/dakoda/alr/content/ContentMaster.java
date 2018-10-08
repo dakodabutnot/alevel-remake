@@ -88,7 +88,11 @@ public class ContentMaster {
             } else {
                 throw new InvalidRegistrationRequestException("A GameObject that somehow isn't registerable tried to be registered.");
             }
-            System.out.println("#REG " + ((GameObject) object).objectType() + " | Registered " + ((GameObject) object).name() + " ID " + id);
+            if (object instanceof Quest) {
+                System.out.println("#REG QUEST | Registered quest with " + ((Quest) object).criteria().size() + " objective(s) with ID " + id);
+            } else {
+                System.out.println("#REG " + ((GameObject) object).objectType() + " | Registered " + ((GameObject) object).name() + " ID " + id);
+            }
         } else {
             throw new InvalidRegistrationRequestException("An object that isn't a GameObject tried to register.");
         }

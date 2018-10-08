@@ -1,82 +1,66 @@
 package com.dakoda.alr;
 
-import com.dakoda.alr.client.fakecli.component.CLIDisplay;
-import com.dakoda.alr.client.fakecli.component.CLITextEntry;
-import com.dakoda.alr.client.fakecli.state.GameState;
-import com.dakoda.alr.client.fakecli.state.StateInitializer;
-import com.dakoda.alr.client.fakecli.state.StateMaster;
+import com.dakoda.alr.client.fakecli.FCLIMaster;
+import com.dakoda.alr.client.fakecli.StateMaster;
 import com.dakoda.alr.content.ContentInitializer;
 import com.dakoda.alr.game.GameMaster;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.Objects;
-
-import static com.dakoda.alr.client.fakecli.state.GameState.initialState;
 
 public class TextRPG extends Application {
 
-    boolean active = true;
-
+    private static final boolean debug = true;
+    private static final String initState = "SPLASH";
     public static GameMaster master = GameMaster.instance();
-    public static StateMaster stateMaster = new StateMaster();
-    public static CLIDisplay display = new CLIDisplay();
-    public static CLITextEntry input = new CLITextEntry();
-
-    public static GameState askingForInput = null;
-    public static String entry = "";
+    private static FCLIMaster fcliMaster = FCLIMaster.instance();
 
     public void start(Stage primaryStage) throws Exception {
-
+        soutDiv();
         initialize();
-        initialState("CHARACTER_CREATE_ROOT");
-
-        Thread gameLoop = new Thread(() -> {
-            while(active) {
-                try {
-                    stateMaster.nextState();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                if (stateMaster.isStackEmpty()) {
-                    close();
-                }
-            }
+        soutDiv();
+        Thread gameThread = new Thread(() -> {
+            threadLogic(primaryStage);
         });
-        gameLoop.start();
+        System.out.println("#FX | Parsed default state " + initState);
+        initStage(primaryStage);
+        gameThread.start();
+        fcliMaster.initialize(fcliMaster.stateMaster().getState(initState));
 
-        CLIDisplay.init(display);
-        display.setLineLimit(32);
-        CLITextEntry.init(input);
-        primaryStage.setTitle("ALevel-Remake");
-        primaryStage.setResizable(false);
+    }
 
-        BorderPane root = new BorderPane();
-        root.setCenter(display);
-        root.setBottom(input);
-        Scene scene = new Scene(root, 900, 450);
-        primaryStage.setScene(scene);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getClassLoader().getResource("css/cli.css")).toExternalForm());
-        primaryStage.show();
-
-        input.refresh();
+    private void threadLogic(Stage primaryStage) {
+        soutDiv();
+        primaryStage.setOnCloseRequest(event -> {
+            primaryStage.close();
+            close();
+        });
     }
 
     private static void initialize() {
-        StateInitializer.initialize();
         ContentInitializer.initialize(master);
+        StateMaster.initStates();
+        fcliMaster.fxMaster().initialize();
+        System.out.println("#REG SUCCESS | Woop-dee-doo! " + SuccessLenny.random());
     }
 
     private static void close() {
-        GameState.close();
         System.exit(0);
     }
 
-    public static void clearWait() {
-        askingForInput = null;
-        entry = "";
+    private void initStage(Stage primaryStage) {
+        primaryStage.setTitle("ALevel-Remake");
+        primaryStage.setResizable(false);
+        primaryStage.setScene(fcliMaster.fxMaster().getStyledRootScene());
+        System.out.println("#FX | Stage initialised fully");
+        primaryStage.show();
+        System.out.println("#FX SUCCESS | Hooray! " + SuccessLenny.random());
+    }
+
+    public static void debugMessage(String message) {
+        System.out.print(debug ? message + "\n" : "");
+    }
+
+    public static void soutDiv() {
+        System.out.println("---------------------------------");
     }
 }

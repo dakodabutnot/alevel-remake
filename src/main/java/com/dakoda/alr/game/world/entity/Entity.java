@@ -5,7 +5,6 @@ import com.dakoda.alr.game.world.entity.Progression.Profession;
 import com.dakoda.alr.game.world.location.Location;
 import com.dakoda.alr.game.world.quest.Questable;
 
-@SuppressWarnings("UnusedReturnValue")
 public interface Entity extends GameObject, Questable {
 
     String name();
@@ -31,3 +30,4 @@ public interface Entity extends GameObject, Questable {
     }
 
 }
+

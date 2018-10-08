@@ -48,3 +48,4 @@ public class QuestObjective_Get implements QuestObjective {
         return criteria;
     }
 }
+

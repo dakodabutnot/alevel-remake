@@ -7,3 +7,4 @@ public interface Prerequisite extends Serializable {
 
     boolean requirement();
 }
+

@@ -5,7 +5,6 @@ import com.dakoda.alr.content.ContentRegistrar;
 import com.dakoda.alr.game.world.location.LocationMaster;
 import com.dakoda.alr.game.world.quest.QuestMaster;
 
-// TODO: 04/09/2018
 /**
  * -> Singleton class. <-
  *
@@ -49,3 +48,4 @@ public final class GameMaster {
     }
 
 }
+

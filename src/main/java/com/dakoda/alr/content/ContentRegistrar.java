@@ -15,17 +15,17 @@ public abstract class ContentRegistrar {
 
     protected abstract Integer ID();
 
-    class Content_Default extends ContentRegistrar {
+    public static class Content_Default extends ContentRegistrar {
 
-        private Integer ID = 0;
+        private Integer ID;
 
         public void init() {
             //default registrations
-            register(ID(), new Item_Weapon()
+            register(-1, new Item_Weapon()
                     .withName("DEFAULT_WEP")
                     .asWeaponType(Item_Weapon.Type.EMPTY)
             );
-            register(ID(), new Item_Armour()
+            register(-2, new Item_Armour()
                     .withName("DEFAULT_ARM")
                     .equippableOn(Item_Armour.Slot.ANY)
                     .withMaterial(Item_Armour.Material.NONE)

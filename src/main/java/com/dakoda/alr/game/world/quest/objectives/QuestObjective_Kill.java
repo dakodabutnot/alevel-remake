@@ -48,3 +48,4 @@ public class QuestObjective_Kill implements QuestObjective {
         return criteria;
     }
 }
+
