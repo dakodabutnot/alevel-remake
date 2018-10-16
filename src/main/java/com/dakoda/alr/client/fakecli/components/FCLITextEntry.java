@@ -1,8 +1,10 @@
 package com.dakoda.alr.client.fakecli.components;
 
 import com.dakoda.alr.TextRPG;
+import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class FCLITextEntry extends TextField {
 
@@ -13,6 +15,14 @@ public class FCLITextEntry extends TextField {
         fcliTextEntry.setPrefColumnCount(90);
         fcliTextEntry.getStyleClass().add("fcli-text-field");
         fcliTextEntry.initInstance(fcliDisplay);
+    }
+
+    public void displaySubmitRedirect(KeyEvent event, FCLIDisplay display) {
+        submitText(display, event.getCode(), this.getText());
+    }
+
+    public void displayTypeRedirect(KeyEvent event) {
+        validatePrefixExistence(event.getCode());
     }
 
     public void initInstance(FCLIDisplay display) {
@@ -40,7 +50,7 @@ public class FCLITextEntry extends TextField {
         if (keyCode.equals(KeyCode.ENTER)) {
             refresh();
             String toSubmit = text.replaceFirst(prefixRegex, "");
-            if (toSubmit.trim().length() >= 1 && !toSubmit.equals("\n")) {
+            if (toSubmit.trim().length() >= 1) {
                 fcliDisplay.submit(toSubmit.trim());
             }
         }

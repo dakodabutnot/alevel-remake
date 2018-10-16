@@ -1,19 +1,19 @@
-package com.dakoda.alr.client.fakecli.states.menu;
+package com.dakoda.alr.client.fakecli.states.play;
 
 import com.dakoda.alr.client.fakecli.FCLIMaster;
-import com.dakoda.alr.client.fakecli.components.FCLIOptionList;
 import com.dakoda.alr.client.fakecli.components.FCLIText;
+import com.dakoda.alr.client.fakecli.components.FCLITextBundle;
 import com.dakoda.alr.client.fakecli.states.GameState;
-import com.dakoda.alr.client.fakecli.states.TextJumbos;
 
+import static com.dakoda.alr.TextRPG.master;
 import static com.dakoda.alr.client.fakecli.states.GameState.findState;
 import static com.dakoda.alr.client.fakecli.states.GameState.print;
 
-public class GameState_Menu_Splash implements GameState {
+public class GameState_Play_Character implements GameState {
 
     private boolean active = false;
     private String currentInput = "";
-    private static final String name = "SPLASH";
+    private String name = "PLAY_CHARACTER";
 
     public void preloop() {
 
@@ -37,16 +37,16 @@ public class GameState_Menu_Splash implements GameState {
     }
 
     public void printInfo() {
-        print(TextJumbos.SPLASH.value());
+        print(new FCLITextBundle(
+                new FCLIText(master.player.name(), true),
+                new FCLIText("Level " + master.player.progression().currentLevel() + " "
+                        + master.player.making().getRace().name() + " "
+                        + master.player.progression().profession().name())
+        ));
     }
 
     public void printOptions() {
-        print(new FCLIOptionList(
-                true,
-                new FCLIText("Start", "#00ff00"),
-                new FCLIText("Load", "#ffff00"),
-                new FCLIText("Exit", "ff0000")
-        ).getFinalTextBundle());
+
     }
 
     public void parseInput(String s) {
@@ -55,19 +55,12 @@ public class GameState_Menu_Splash implements GameState {
     }
 
     public void triggerInputValidation() {
-        switch(currentInput) {
-            case "start":
-                deactivateAndPushMultiple(
-                        findState("CREATE_CHARACTER_PROFESSION"),
-                        findState("CREATE_CHARACTER_RACE"),
-                        findState("CREATE_CHARACTER_NAME")
-                );
-                break;
-            case "load":
-                deactivateAndPush(findState("LOAD_SAVE"));
-                break;
-            case "exit":
-                deactivateAndPush(findState("EXIT"));
+        switch (currentInput) {
+            case "\n":
+            case "back":
+            case "return":
+            case "<":
+                deactivate();
                 break;
             default:
                 reset();
@@ -79,13 +72,31 @@ public class GameState_Menu_Splash implements GameState {
         return currentInput;
     }
 
+    public void deactivate() {
+        this.active = false;
+    }
+
     public void deactivateAndPush(GameState state) {
         this.active = false;
         FCLIMaster.instance().stateMaster().pushState(state);
     }
 
-    public void deactivateAndPushMultiple(GameState ... states) {
+    public void deactivateAndPush(GameState ... states) {
         this.active = false;
+        for (GameState state : states) {
+            FCLIMaster.instance().stateMaster().pushState(state);
+        }
+    }
+
+    public void retainAndPush(GameState state) {
+        deactivateAndPush(
+                findState(this.name),
+                state
+        );
+    }
+
+    public void retainAndPush(GameState ... states) {
+        deactivateAndPush(findState(this.name));
         for (GameState state : states) {
             FCLIMaster.instance().stateMaster().pushState(state);
         }

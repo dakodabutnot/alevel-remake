@@ -26,4 +26,9 @@ public class FCLITextBundle {
         texts.add(0, text);
         return this;
     }
+
+    public FCLITextBundle insertSuffixingText(FCLIText text) {
+        texts.add(text);
+        return this;
+    }
 }

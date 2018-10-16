@@ -1,16 +1,12 @@
 package com.dakoda.alr.client.fakecli;
 
-import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.client.fakecli.states.GameState;
-import com.dakoda.alr.client.fakecli.states.charactercreate.GameState_CreateChar_Name;
-import com.dakoda.alr.client.fakecli.states.charactercreate.GameState_CreateChar_Profession;
-import com.dakoda.alr.client.fakecli.states.charactercreate.GameState_CreateChar_Race;
-import com.dakoda.alr.client.fakecli.states.menu.GameState_Menu_Splash;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Stack;
+
+import static com.dakoda.alr.TextRPG.debugMessage;
 
 public class StateMaster {
 
@@ -58,9 +54,10 @@ public class StateMaster {
     public void stateLoop() {
         while (!isStackEmpty()) {
             currentState = stateStack.pop();
-            TextRPG.debugMessage("#STATE | Popped next state");
+            debugMessage("#STATE | Popped next state");
             currentState.set();
-            TextRPG.debugMessage("#STATE | Set initial state condition");
+            debugMessage("#STATE | Set initial state condition");
+            currentState.preloop();
             while (currentState.active()) {
                 Platform.runLater(() -> {
                     FCLIMaster.instance().fxMaster().fcliDisplay().flush();
@@ -70,7 +67,7 @@ public class StateMaster {
                 });
                 synchronized (StateMaster.stateWait) {
                     try {
-                        System.out.println("#STATE | Moved to state -> " + currentState.name());
+                        debugMessage("#STATE | Moved to state -> " + currentState.name());
                         stateWait.wait();
                         currentState.parseInput(input);
                         input = null;

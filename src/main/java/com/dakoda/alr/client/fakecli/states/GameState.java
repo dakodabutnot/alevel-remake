@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public interface GameState {
 
+    void preloop();
+
     void reset();
 
     String name();

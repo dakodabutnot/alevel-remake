@@ -2,7 +2,6 @@ package com.dakoda.alr.client.fakecli.components;
 
 import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.client.fakecli.FCLIMaster;
-import jdk.nashorn.internal.objects.annotations.Property;
 import org.fxmisc.richtext.InlineCssTextArea;
 
 import java.util.ArrayList;
@@ -20,6 +19,9 @@ public class FCLIDisplay extends InlineCssTextArea {
         this.setFocusTraversable(false);
         this.getStyleClass().add("fcli-text-area");
         TextRPG.debugMessage("#FX | Initialized display");
+//        This isn't working ¯\_(ツ)_/¯
+//        setOnKeyTyped(event -> FCLIMaster.instance().fxMaster().fcliTextEntry().displayTypeRedirect(event));
+//        setOnKeyPressed(event -> FCLIMaster.instance().fxMaster().fcliTextEntry().displaySubmitRedirect(event, this));
         this.updateDisplay();
     }
 

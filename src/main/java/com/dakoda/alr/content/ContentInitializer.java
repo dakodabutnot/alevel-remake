@@ -1,8 +1,11 @@
 package com.dakoda.alr.content;
 
+import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.content.ContentRegistrar.Content_Default;
 import com.dakoda.alr.content.registrars.base.*;
 import com.dakoda.alr.game.GameMaster;
+
+import static com.dakoda.alr.TextRPG.debugMessage;
 
 public interface ContentInitializer {
 
@@ -30,11 +33,11 @@ public interface ContentInitializer {
     }
 
     static void div(String next) {
-        System.out.println("#REG | now for " + next + "s...");
+        debugMessage("#REG | now for " + next + "s...");
     }
 
     static void divStart() {
-        System.out.println("#REG | let's start building stuff, eh?");
+        debugMessage("#REG | let's start building stuff, eh?");
     }
 
 }

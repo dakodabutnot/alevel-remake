@@ -7,6 +7,8 @@ import javafx.scene.layout.BorderPane;
 
 import java.util.Objects;
 
+import static com.dakoda.alr.TextRPG.debugMessage;
+
 public class FXMaster {
 
     private static FXMaster INSTANCE = new FXMaster();
@@ -37,15 +39,15 @@ public class FXMaster {
         BorderPane root = new BorderPane();
         root.setCenter(fcliDisplay);
         root.setBottom(fcliTextEntry);
-        System.out.print("#FX | Setup root pane -> ");
+        debugMessage("#FX | Setup root pane -> ");
         return root;
     }
 
     public Scene getStyledRootScene() {
         Scene scene = new Scene(getRootPane(), 900, 450);
-        System.out.println("hooked root pane");
+        debugMessage("hooked root pane");
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getClassLoader().getResource(stylesheetURL)).toExternalForm());
-        System.out.println("#FX | Applied stylesheet ('" + stylesheetURL + "')");
+        debugMessage("#FX | Applied stylesheet ('" + stylesheetURL + "')");
         return scene;
     }
 
@@ -57,7 +59,7 @@ public class FXMaster {
         return fcliDisplay;
     }
 
-    public FCLITextEntry textEntry() {
+    public FCLITextEntry fcliTextEntry() {
         return fcliTextEntry;
     }
 }

@@ -29,8 +29,12 @@ public class Player implements Entity {
     public void finalise() {
         if (!built) {
             this.built = true;
-            Player.INSTANCE = this;
+            setPlayer(this);
         }
+    }
+
+    public static void setPlayer(Player player) {
+        INSTANCE = player;
     }
 
     public GameObject.Type objectType() {
@@ -43,6 +47,12 @@ public class Player implements Entity {
             return this;
         }
         return null;
+    }
+
+    public void setName(String name) {
+        if (!built) {
+            this.name = name;
+        }
     }
 
     public Player withMaking(Making making) {
@@ -59,6 +69,10 @@ public class Player implements Entity {
             return this;
         }
         return null;
+    }
+
+    public void setProgression(Progression.Profession profession) {
+        this.progression = new Progression(profession);
     }
 
     public Player withProfession(Progression.Profession profession, Integer level) {
@@ -82,6 +96,38 @@ public class Player implements Entity {
             return this;
         }
         return null;
+    }
+
+    public void setRace(Making.Race race) {
+        if (!built) this.making = this.making.withRace(race);
+    }
+
+    public void setEyeColour(Making.EyeColour colour) {
+        if (!built) this.making = this.making.withEyeColour(colour);
+    }
+
+    public void setHairColour(Making.HairColour colour) {
+        if (!built) this.making = this.making.withHairColour(colour);
+    }
+
+    public void setGender(Making.Gender gender) {
+        if (!built) this.making = this.making.withGender(gender);
+    }
+
+    public void setSkinColour(Making.SkinColour colour) {
+        if (!built) this.making = this.making.withSkinColour(colour);
+    }
+
+    public void setSkinAsFur(boolean b) {
+        if (!built) this.making = this.making.withSkinAsFur();
+    }
+
+    public void setFurColour(Making.FurColour colour) {
+        if (!built) this.making = this.making.withFurColour(colour);
+    }
+
+    public void setSexuality(Making.Sexuality sexuality) {
+        if (!built) this.making = this.making.withSexuality(sexuality);
     }
 
     public Location location() {

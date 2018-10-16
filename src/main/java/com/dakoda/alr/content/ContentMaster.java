@@ -1,5 +1,6 @@
 package com.dakoda.alr.content;
 
+import com.dakoda.alr.TextRPG;
 import com.dakoda.alr.content.registrars.base.*;
 import com.dakoda.alr.game.GameMaster;
 import com.dakoda.alr.game.GameObject;
@@ -14,6 +15,8 @@ import com.dakoda.alr.game.world.recipe.Recipe;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.dakoda.alr.TextRPG.debugMessage;
 
 public class ContentMaster {
 
@@ -89,9 +92,9 @@ public class ContentMaster {
                 throw new InvalidRegistrationRequestException("A GameObject that somehow isn't registerable tried to be registered.");
             }
             if (object instanceof Quest) {
-                System.out.println("#REG QUEST | Registered quest with " + ((Quest) object).criteria().size() + " objective(s) with ID " + id);
+                debugMessage("#REG QUEST | Registered quest with " + ((Quest) object).criteria().size() + " objective(s) with ID " + id);
             } else {
-                System.out.println("#REG " + ((GameObject) object).objectType() + " | Registered " + ((GameObject) object).name() + " ID " + id);
+                debugMessage("#REG " + ((GameObject) object).objectType() + " | Registered " + ((GameObject) object).name() + " ID " + id);
             }
         } else {
             throw new InvalidRegistrationRequestException("An object that isn't a GameObject tried to register.");

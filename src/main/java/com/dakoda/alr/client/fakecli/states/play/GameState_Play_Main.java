@@ -1,8 +1,10 @@
-package com.dakoda.alr.client.fakecli.states;
+package com.dakoda.alr.client.fakecli.states.play;
 
 import com.dakoda.alr.client.fakecli.FCLIMaster;
+import com.dakoda.alr.client.fakecli.Keyword;
 import com.dakoda.alr.client.fakecli.components.FCLIOptionList;
 import com.dakoda.alr.client.fakecli.components.FCLIText;
+import com.dakoda.alr.client.fakecli.states.GameState;
 
 import static com.dakoda.alr.client.fakecli.states.GameState.findState;
 import static com.dakoda.alr.client.fakecli.states.GameState.print;
@@ -12,6 +14,10 @@ public class GameState_Play_Main implements GameState {
     private boolean active = false;
     private String currentInput = "";
     private String name = "PLAY_MAIN";
+
+    public void preloop() {
+
+    }
 
     public String name() {
         return name;
@@ -31,16 +37,16 @@ public class GameState_Play_Main implements GameState {
     }
 
     public void printInfo() {
-        print("\n");
+        print("");
     }
 
     public void printOptions() {
         print(new FCLIOptionList(
                 false,
-                new FCLIText("map", "#ffff70"),
-                new FCLIText("inventory", "#a0ffff"),
-                new FCLIText("quests", "a0ff00"),
-                new FCLIText("character", "#ffa0ab")
+                new FCLIText(Keyword.MAP.name().toLowerCase(), Keyword.MAP.hex()),
+                new FCLIText(Keyword.INVENTORY.name().toLowerCase(), Keyword.INVENTORY.hex()),
+                new FCLIText(Keyword.QUESTS.name().toLowerCase(), Keyword.QUESTS.hex()),
+                new FCLIText(Keyword.CHARACTER.name().toLowerCase(), Keyword.CHARACTER.hex())
         ).getFinalTextBundle());
     }
 
@@ -51,11 +57,23 @@ public class GameState_Play_Main implements GameState {
 
     public void triggerInputValidation() {
         switch(currentInput) {
+            case "m":
+            case "map":
+                break;
+            case "i":
+            case "inv":
             case "inventory":
-
+                retainAndPush(findState("PLAY_INVENTORY"));
+                break;
+            case "q":
+            case "quest":
             case "quests":
-
+                break;
+            case "c":
+            case "char":
             case "character":
+                retainAndPush(findState("PLAY_CHARACTER"));
+                break;
             default:
                 reset();
                 break;

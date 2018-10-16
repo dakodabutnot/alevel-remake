@@ -15,13 +15,11 @@ public class TextRPG extends Application {
     private static FCLIMaster fcliMaster = FCLIMaster.instance();
 
     public void start(Stage primaryStage) throws Exception {
-        soutDiv();
         initialize();
-        soutDiv();
         Thread gameThread = new Thread(() -> {
             threadLogic(primaryStage);
         });
-        System.out.println("#FX | Parsed default state " + initState);
+        debugMessage("#FX | Parsed default state " + initState);
         initStage(primaryStage);
         gameThread.start();
         fcliMaster.initialize(fcliMaster.stateMaster().getState(initState));
@@ -29,7 +27,7 @@ public class TextRPG extends Application {
     }
 
     private void threadLogic(Stage primaryStage) {
-        soutDiv();
+        debugDiv();
         primaryStage.setOnCloseRequest(event -> {
             primaryStage.close();
             close();
@@ -37,10 +35,12 @@ public class TextRPG extends Application {
     }
 
     private static void initialize() {
+        debugDiv();
         ContentInitializer.initialize(master);
         StateMaster.initStates();
         fcliMaster.fxMaster().initialize();
-        System.out.println("#REG SUCCESS | Woop-dee-doo! " + SuccessLenny.random());
+        debugMessage("#REG SUCCESS | Woop-dee-doo! " + SuccessLenny.random());
+        debugDiv();
     }
 
     private static void close() {
@@ -51,16 +51,16 @@ public class TextRPG extends Application {
         primaryStage.setTitle("ALevel-Remake");
         primaryStage.setResizable(false);
         primaryStage.setScene(fcliMaster.fxMaster().getStyledRootScene());
-        System.out.println("#FX | Stage initialised fully");
+        debugMessage("#FX | Stage initialised fully");
         primaryStage.show();
-        System.out.println("#FX SUCCESS | Hooray! " + SuccessLenny.random());
+        debugMessage("#FX SUCCESS | Hooray! " + SuccessLenny.random());
     }
 
     public static void debugMessage(String message) {
         System.out.print(debug ? message + "\n" : "");
     }
 
-    public static void soutDiv() {
-        System.out.println("---------------------------------");
+    public static void debugDiv() {
+        debugMessage("---------------------------------");
     }
 }
